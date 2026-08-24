@@ -11,7 +11,7 @@ CAD/v.2/Normali/
 CAD/v.2/Prove/
 
 # Escludi appunti
-Appunti/
+
 
 # Escludi tutti i file con un'estensione specifica
 *.kicad_prl
