@@ -1,9 +1,9 @@
 # Escludi CAD
-Argo/CAD/Modelli/
+CAD/Modelli/
 CAD/formule.pdf
 
 # Escludi appunti
-appunti
+Appunti/
 
 # Escludi tutti i file con un'estensione specifica
 *.kicad_prl
