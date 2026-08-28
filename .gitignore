@@ -10,7 +10,10 @@ CAD/v.2/Particolari/
 CAD/v.2/Normali/
 CAD/v.2/Prove/
 
-# Escludi appunti
+# code
+Code/rover/uwb_read.py
+Code/rover/map_save_draft.md
+Code/rover/mapdraft.py
 
 
 # Escludi tutti i file con un'estensione specifica
