@@ -15,3 +15,6 @@
 - **Raspberry pi4**
 - **Raspberry Pico**
 - **Arduino UNO**
+
+## ✶ Buffer module components:
+- 
