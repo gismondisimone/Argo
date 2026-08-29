@@ -30,53 +30,57 @@ distance_samples = []
 last_sample_time = time.time()
 
 while True:
-    if ser.in_waiting > 0:
-        # Read available bytes into our rolling buffer
-        rx_buffer.extend(ser.read(ser.in_waiting))
-        
-        # Search for header in buffer
-        while len(rx_buffer) >= FRAME_LENGTH:
-            header_index = rx_buffer.find(HEADER)
+    try:
+        # Read ALL available bytes in one pass
+        waiting_bytes = ser.in_waiting
+        if waiting_bytes > 0:
+            rx_buffer.extend(ser.read(waiting_bytes))
             
-            if header_index == -1:
-                # No header found, clear buffer except for last 2 bytes (in case header was split)
-                rx_buffer = rx_buffer[-2:]
-                break
-            
-            if header_index > 0:
-                # Discard junk bytes before the header
-                rx_buffer = rx_buffer[header_index:]
-            
-            # Ensure we have a complete frame
-            if len(rx_buffer) < FRAME_LENGTH:
-                break
+            # Process frames while buffer contains enough data
+            while len(rx_buffer) >= FRAME_LENGTH:
+                header_index = rx_buffer.find(HEADER)
                 
-            # Extract single full frame
-            frame = rx_buffer[:FRAME_LENGTH]
-            rx_buffer = rx_buffer[FRAME_LENGTH:]
-            
-            # Decode frame distances (2 base stations)
-            distances = []
-            for i in range(2):
-                byte_offset = 3 + (i * 4)
-                if byte_offset + 4 <= len(frame):
-                    distance_raw = struct.unpack('<I', frame[byte_offset:byte_offset+4])[0]
-                    if distance_raw > 0:
-                        distance_meters = (distance_raw / 1000.0) - 0.20
-                        distances.append(distance_meters)
+                if header_index == -1:
+                    rx_buffer = rx_buffer[-2:]
+                    break
+                
+                if header_index > 0:
+                    rx_buffer = rx_buffer[header_index:]
+                
+                if len(rx_buffer) < FRAME_LENGTH:
+                    break
+                    
+                frame = rx_buffer[:FRAME_LENGTH]
+                rx_buffer = rx_buffer[FRAME_LENGTH:]
+                
+                # Parse packet
+                distances = []
+                for i in range(2):
+                    byte_offset = 3 + (i * 4)
+                    if byte_offset + 4 <= len(frame):
+                        distance_raw = struct.unpack('<I', frame[byte_offset:byte_offset+4])[0]
+                        if distance_raw > 0:
+                            distances.append((distance_raw / 1000.0) - 0.20)
+                        else:
+                            distances.append(None)
                     else:
                         distances.append(None)
-                else:
-                    distances.append(None)
 
-            # Collect sample periodically
-            now = time.time()
-            if (now - last_sample_time) >= 0.1:
-                distance_samples.append(distances)
-                last_sample_time = now
+                now = time.time()
+                if (now - last_sample_time) >= 0.1:
+                    distance_samples.append(distances)
+                    last_sample_time = now
 
-                if len(distance_samples) >= 5:
-                    print_distances(distance_samples)
-                    distance_samples = []
-                    
-    time.sleep(0.01)
+                    if len(distance_samples) >= 5:
+                        print_distances(distance_samples)
+                        distance_samples = []
+
+    except (OSError, serial.SerialException) as e:
+        print(f"\nSerial error: {e}")
+        ser.close()
+        time.sleep(1)
+        ser = open_serial()
+        rx_buffer.clear()
+
+    # Smaller sleep time prevents serial buffer congestion
+    time.sleep(0.001)
