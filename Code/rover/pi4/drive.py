@@ -17,10 +17,11 @@ rx_buffer = bytearray()
 HEADER = b'\xaa%\x01'
 FRAME_LENGTH = 35
 
-def print_distances(samples):
+def calc_distances(samples):
     if not samples:
-        return
-    print("Average Base Station Distances:")
+        return None, None
+    left = None
+    right = None
     for i in range(len(samples[0])):
         valid_distances = [s[i] for s in samples if s[i] is not None and s[i] > 0]
         if valid_distances:
@@ -34,7 +35,8 @@ def print_distances(samples):
                 left = None
             if i == 1:
                 right = None
-    print("-" * 30)
+
+    return left, right
 
 distance_samples = []
 last_sample_time = time.time()
@@ -78,7 +80,17 @@ while True:
                     last_sample_time = now
 
                     if len(distance_samples) >= 5:
-                        print_distances(distance_samples)
+                        left, right = calc_distances(distance_samples)
+                        print(f"Left: {left}, Right: {right}")
+                        if left is not None and right is not None:
+                            if float(left) < float(right):
+                                print("Turning Right")
+                            elif float(left) > float(right):
+                                print("Turning Left")
+                            else:
+                                print("Going straight")
+                        else:
+                            print("One or both distances are not visible.")
                         distance_samples = []
 
     except (OSError, serial.SerialException) as e:
