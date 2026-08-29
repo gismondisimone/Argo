@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 #include <string.h>
-#include "stm32f10x.h"
+#include <stm32f10x.h>
 #include "deca_device_api.h"
 #include "deca_regs.h"
 #include "shared_defines.h"
