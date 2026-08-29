@@ -29,8 +29,6 @@ def print_distances(samples):
 distance_samples = []
 last_sample_time = time.time()
 
-print("Listening for UWB data...")
-
 while True:
     if ser.in_waiting > 0:
         # Read available bytes into our rolling buffer
