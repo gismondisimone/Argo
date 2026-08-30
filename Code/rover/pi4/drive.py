@@ -40,6 +40,80 @@ def calc_distances(samples):
 
 distance_samples = []
 last_sample_time = time.time()
+                
+mode = None
+
+while mode == None:
+    try:
+        if ser.in_waiting > 0:
+            rx_buffer.extend(ser.read(ser.in_waiting))
+            
+            while len(rx_buffer) >= FRAME_LENGTH:
+                header_index = rx_buffer.find(HEADER)
+                
+                if header_index == -1:
+                    rx_buffer = rx_buffer[-2:]
+                    break
+                
+                if header_index > 0:
+                    rx_buffer = rx_buffer[header_index:]
+                
+                if len(rx_buffer) < FRAME_LENGTH:
+                    break
+                    
+                frame = rx_buffer[:FRAME_LENGTH]
+                rx_buffer = rx_buffer[FRAME_LENGTH:]
+                
+                distances = []
+                for i in range(2):
+                    offset = 3 + (i * 4)
+                    if offset + 4 <= len(frame):
+                        raw = struct.unpack('<I', frame[offset:offset+4])[0]
+                        if raw > 0:
+                            distances.append((raw / 1000.0) - 0.20)
+                        else:
+                            distances.append(None)
+                    else:
+                        distances.append(None)
+
+                distance_samples.append(distances)
+                print("Configuring...")
+                if len(distance_samples) >= 5:
+                    ogleft, ogright = calc_distances(distance_samples)
+                    print(f"Left: {left}, Right: {right}")
+                print("Turning 45 deg left")
+
+                if len(distance_samples) >= 5:
+                    left, right = calc_distances(distance_samples)
+                    print(f"Left: {left}, Right: {right}")
+                    if left is not None and ogleft is not None:
+                        if float(left) < float(ogleft):
+                            print("Remote in front")
+                            mode = "front"
+                        elif float(left) > float(ogleft):
+                            print("Remote in back")
+                            mode = "back"
+                        else:
+                            print("Error in calculation. Please stay still during configuration.")
+                            mode = None
+                    else:
+                        print("One or both distances are not visible.")
+                        mode = None
+                    distance_samples = []
+
+                    print("Turning back straight")
+
+    except (OSError, serial.SerialException) as e:
+        print(f"\n[Hardware Reset Detected] {e}")
+        try:
+            ser.close()
+        except Exception:
+            pass
+        time.sleep(1)
+        ser = get_serial_port()
+        rx_buffer.clear()
+
+    time.sleep(0.001)
 
 while True:
     try:
@@ -84,11 +158,14 @@ while True:
                         print(f"Left: {left}, Right: {right}")
                         if left is not None and right is not None:
                             if float(left) < float(right):
-                                print("Turning Right")
+                                if mode == "front": print("Turning Right")
+                                else: print("Turning Left")
                             elif float(left) > float(right):
-                                print("Turning Left")
+                                if mode == "front": print("Turning Left")
+                                else: print("Turning Right")
                             else:
-                                print("Going straight")
+                                if mode == "front": print("Going straight")
+                                else: print("Going back")
                         else:
                             print("One or both distances are not visible.")
                         distance_samples = []
