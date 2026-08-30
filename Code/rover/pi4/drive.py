@@ -26,15 +26,11 @@ def calc_distances(samples):
         valid_distances = [s[i] for s in samples if s[i] is not None and s[i] > 0]
         if valid_distances:
             avg = sum(valid_distances) / len(valid_distances)
-            if i == 0:
-                left = f"{avg:.3f}"
-            if i == 1:
-                right = f"{avg:.3f}"
+            if i == 0: left = f"{avg:.2f}"
+            if i == 1: right = f"{avg:.2f}"
         else:
-            if i == 0:
-                left = None
-            if i == 1:
-                right = None
+            if i == 0: left = None
+            if i == 1: right = None
 
     return left, right
 
@@ -167,7 +163,7 @@ while True:
                     distance_samples.append(distances)
                     last_sample_time = now
 
-                    if len(distance_samples) >= 5:
+                    if len(distance_samples) >= 10:
                         left, right = calc_distances(distance_samples)
                         print(f"Left: {left}, Right: {right}")
                         if left is not None and right is not None:
