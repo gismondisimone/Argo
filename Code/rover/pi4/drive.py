@@ -73,45 +73,45 @@ while mode == None:
                         distances.append(None)
 
                 distance_samples.append(distances)
-                print("Configuring...")
                 if len(distance_samples) >= 5:
+                    print("Configuring...")
                     ogleft, ogright = calc_distances(distance_samples)
                     print(f"Left: {ogleft}, Right: {ogright}")
-                print("Turning 45 deg left")
-                time.sleep(2)
-                distances = []
-                for i in range(2):
-                    offset = 3 + (i * 4)
-                    if offset + 4 <= len(frame):
-                        raw = struct.unpack('<I', frame[offset:offset+4])[0]
-                        if raw > 0:
-                            distances.append((raw / 1000.0) - 0.20)
+                    print("Turning 45 deg left")
+                    time.sleep(2)
+                    distances = []
+                    for i in range(2):
+                        offset = 3 + (i * 4)
+                        if offset + 4 <= len(frame):
+                            raw = struct.unpack('<I', frame[offset:offset+4])[0]
+                            if raw > 0:
+                                distances.append((raw / 1000.0) - 0.20)
+                            else:
+                                distances.append(None)
                         else:
                             distances.append(None)
-                    else:
-                        distances.append(None)
 
-                distance_samples.append(distances)
+                    distance_samples.append(distances)
 
-                if len(distance_samples) >= 5:
-                    left, right = calc_distances(distance_samples)
-                    print(f"Left: {left}, Right: {right}")
-                    if left is not None and ogleft is not None:
-                        if float(left) < float(ogleft):
-                            print("Remote in front")
-                            mode = "front"
-                            break
-                        elif float(left) > float(ogleft):
-                            print("Remote in back")
-                            mode = "back"
-                            break
+                    if len(distance_samples) >= 5:
+                        left, right = calc_distances(distance_samples)
+                        print(f"Left: {left}, Right: {right}")
+                        if left is not None and ogleft is not None:
+                            if float(left) < float(ogleft):
+                                print("Remote in front")
+                                mode = "front"
+                                break
+                            elif float(left) > float(ogleft):
+                                print("Remote in back")
+                                mode = "back"
+                                break
+                            else:
+                                print("Error in calculation. Please stay still during configuration.")
                         else:
-                            print("Error in calculation. Please stay still during configuration.")
-                    else:
-                        print("One or both distances are not visible.")
-                    distance_samples = []
+                            print("One or both distances are not visible.")
+                        distance_samples = []
 
-                    print("Turning back straight")
+                        print("Turning back straight")
 
     except (OSError, serial.SerialException) as e:
         print(f"\n[Hardware Reset Detected] {e}")
@@ -167,10 +167,10 @@ while True:
                         left, right = calc_distances(distance_samples)
                         print(f"Left: {left}, Right: {right}")
                         if left is not None and right is not None:
-                            if float(left) < float(right):
+                            if (float(left) - float(right)) < -0.2:
                                 if mode == "front": print("Turning Right")
                                 else: print("Turning Left")
-                            elif float(left) > float(right):
+                            elif (float(left) - float(right)) > 0.2:
                                 if mode == "front": print("Turning Left")
                                 else: print("Turning Right")
                             else:
