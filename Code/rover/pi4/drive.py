@@ -80,8 +80,22 @@ while mode == None:
                 print("Configuring...")
                 if len(distance_samples) >= 5:
                     ogleft, ogright = calc_distances(distance_samples)
-                    print(f"Left: {left}, Right: {right}")
+                    print(f"Left: {ogleft}, Right: {ogright}")
                 print("Turning 45 deg left")
+                time.sleep(2)
+                distances = []
+                for i in range(2):
+                    offset = 3 + (i * 4)
+                    if offset + 4 <= len(frame):
+                        raw = struct.unpack('<I', frame[offset:offset+4])[0]
+                        if raw > 0:
+                            distances.append((raw / 1000.0) - 0.20)
+                        else:
+                            distances.append(None)
+                    else:
+                        distances.append(None)
+
+                distance_samples.append(distances)
 
                 if len(distance_samples) >= 5:
                     left, right = calc_distances(distance_samples)
@@ -90,15 +104,15 @@ while mode == None:
                         if float(left) < float(ogleft):
                             print("Remote in front")
                             mode = "front"
+                            break
                         elif float(left) > float(ogleft):
                             print("Remote in back")
                             mode = "back"
+                            break
                         else:
                             print("Error in calculation. Please stay still during configuration.")
-                            mode = None
                     else:
                         print("One or both distances are not visible.")
-                        mode = None
                     distance_samples = []
 
                     print("Turning back straight")
