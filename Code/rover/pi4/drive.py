@@ -93,25 +93,24 @@ while mode == None:
 
                     distance_samples.append(distances)
 
-                    if len(distance_samples) >= 5:
-                        left, right = calc_distances(distance_samples)
-                        print(f"Left: {left}, Right: {right}")
-                        if left is not None and ogleft is not None:
-                            if float(left) < float(ogleft):
-                                print("Remote in front")
-                                mode = "front"
-                                break
-                            elif float(left) > float(ogleft):
-                                print("Remote in back")
-                                mode = "back"
-                                break
-                            else:
-                                print("Error in calculation. Please stay still during configuration.")
+                    left, right = calc_distances(distance_samples)
+                    print(f"Left: {left}, Right: {right}")
+                    if left is not None and ogleft is not None:
+                        if float(left) - float(ogleft):
+                            print("Remote in front")
+                            mode = "front"
+                            break
+                        elif float(left) > float(ogleft):
+                            print("Remote in back")
+                            mode = "back"
+                            break
                         else:
-                            print("One or both distances are not visible.")
-                        distance_samples = []
+                            print("Error in calculation. Please stay still during configuration.")
+                    else:
+                        print("One or both distances are not visible.")
+                    distance_samples = []
 
-                        print("Turning back straight")
+                    print("Turning back straight")
 
     except (OSError, serial.SerialException) as e:
         print(f"\n[Hardware Reset Detected] {e}")
