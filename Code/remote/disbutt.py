@@ -1,74 +1,55 @@
 from machine import UART, Pin, SPI #type:ignore
 import time
-import st7789 # Ensure st7789.py driver is uploaded to MicroPython root #type:ignore
+import st7789 #type:ignore
 
-# UART Setup (BU03 UWB Kit)
+# Setup
 uart = UART(0, baudrate=115200, tx=Pin(0), rx=Pin(1), timeout=1000)
 
-# ST7789 Display Setup
 spi = SPI(0, baudrate=30000000, sck=Pin(18), mosi=Pin(19))
-
 display = st7789.ST7789(
-    spi,
-    240,
-    280,
-    reset=Pin(15, Pin.OUT),
-    dc=Pin(14, Pin.OUT),
-    cs=Pin(17, Pin.OUT),
-    backlight=Pin(13, Pin.OUT),
-    rotation=0
+    spi, 240, 280,
+    reset=Pin(15, Pin.OUT), dc=Pin(14, Pin.OUT), cs=Pin(17, Pin.OUT),
+    backlight=Pin(13, Pin.OUT), rotation=0
 )
 display.init()
 display.fill(st7789.BLACK)
 
-# 3. Button Setup (Pull-up)
-btn_up = Pin(2, Pin.IN, Pin.PULL_UP)
-btn_down = Pin(3, Pin.IN, Pin.PULL_UP)
-btn_select = Pin(4, Pin.IN, Pin.PULL_UP)
-btn_back = Pin(5, Pin.IN, Pin.PULL_UP)
+btn_home = Pin(2, Pin.IN, Pin.PULL_UP)
+btn_walk = Pin(3, Pin.IN, Pin.PULL_UP)
+btn_stop = Pin(4, Pin.IN, Pin.PULL_UP)
+btn_coord = Pin(5, Pin.IN, Pin.PULL_UP)
 
-def send_at_command(cmd, label):
+def send_uwb_signal(button_name):
+    """
+    Sends a custom data payload to Board 0 over UWB.
+    Syntax: AT+DATA=<target_id>,<data> or AT+SEND=<length>,<data>
+    (Adjust exact AT payload format per BU03 firmware spec)
+    """
+    cmd = f"AT+DATA=0,BTN_{button_name}\r\n".encode('utf-8')
     uart.write(cmd)
-    time.sleep(0.5)
-    response = b""
-    if uart.any():
-        response = uart.read()
     
-    text_res = response.decode('utf-8', 'ignore').strip()
-    print(f"{label}: {text_res}")
-    
-    # Update LCD Screen
+    # Update local screen
     display.fill(st7789.BLACK)
-    display.text(label, 10, 10, st7789.CYAN)
-    display.text(text_res[:20], 10, 40, st7789.WHITE)
-    return text_res
+    display.text("Sent Signal:", 10, 10, st7789.CYAN)
+    display.text(f"BTN_{button_name}", 10, 40, st7789.GREEN)
+    print(f"Transmitted: BTN_{button_name}")
 
-# Initial Configuration Sequence
-send_at_command(b'AT+SETCFG=0,0,1,1\r\n', "Set CFG")
-time.sleep(1)
-send_at_command(b'AT+SAVE\r\n', "Save CFG")
-time.sleep(1)
-send_at_command(b'AT+GETCFG\r\n', "Get CFG")
-
-# Main Loop: Read Buttons & Update Display
+# Main Event Loop
 while True:
-    if btn_up.value() == 0:
-        display.fill(st7789.BLACK)
-        display.text("Button: UP", 10, 10, st7789.GREEN)
-        time.sleep(0.2) # Basic debouncing
+    if btn_home.value() == 0:
+        send_uwb_signal("HOME")
+        time.sleep(0.25) # Debounce delay
 
-    if btn_down.value() == 0:
-        display.fill(st7789.BLACK)
-        display.text("Button: DOWN", 10, 10, st7789.GREEN)
-        time.sleep(0.2)
+    if btn_walk.value() == 0:
+        send_uwb_signal("WALK")
+        time.sleep(0.25)
 
-    if btn_select.value() == 0:
-        send_at_command(b'AT+GETCFG\r\n', "Query CFG")
-        time.sleep(0.2)
+    if btn_stop.value() == 0:
+        send_uwb_signal("STOP")
+        time.sleep(0.25)
 
-    if btn_back.value() == 0:
-        display.fill(st7789.BLACK)
-        display.text("Button: BACK", 10, 10, st7789.RED)
-        time.sleep(0.2)
+    if btn_coord.value() == 0:
+        send_uwb_signal("COORD")
+        time.sleep(0.25)
 
     time.sleep(0.05)
