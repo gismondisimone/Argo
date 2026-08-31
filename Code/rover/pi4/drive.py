@@ -96,7 +96,7 @@ while mode == None:
                     left, right = calc_distances(distance_samples)
                     print(f"Left: {left}, Right: {right}")
                     if left is not None and ogleft is not None:
-                        if float(left) - float(ogleft):
+                        if float(left) < float(ogleft):
                             print("Remote in front")
                             mode = "front"
                             break
@@ -166,10 +166,10 @@ while True:
                         left, right = calc_distances(distance_samples)
                         print(f"Left: {left}, Right: {right}")
                         if left is not None and right is not None:
-                            if (float(left) - float(right)) < -0.2:
+                            if (float(left) - float(right)) < -0.15:
                                 if mode == "front": print("Turning Right")
                                 else: print("Turning Left")
-                            elif (float(left) - float(right)) > 0.2:
+                            elif (float(left) - float(right)) > 0.15:
                                 if mode == "front": print("Turning Left")
                                 else: print("Turning Right")
                             else:
