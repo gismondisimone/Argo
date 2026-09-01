@@ -63,3 +63,4 @@ while True:
 #i just want my sticker man please
 # the video is about lsp, it's talking about blade rn
 # i'm js writing cause i want to get used to the keyboard layout, since it's smaller and i need to know exactly where the buttons are to play valo.
+# For some reason hackatime says i coded only for 4m instead of 9 :(
