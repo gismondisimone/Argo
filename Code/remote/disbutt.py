@@ -53,3 +53,13 @@ while True:
         time.sleep(0.25)
 
     time.sleep(0.05)
+
+# I gotta startunderstanding what to display
+# Fullness of the buffer
+# Percentage scan
+# Errors
+# LALALALALAALAL IDKKKK
+# im watching a kwite video, cant really think a lot
+#i just want my sticker man please
+# the video is about lsp, it's talking about blade rn
+# i'm js writing cause i want to get used to the keyboard layout, since it's smaller and i need to know exactly where the buttons are to play valo.
