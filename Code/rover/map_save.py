@@ -14,8 +14,19 @@ rightMotor = 27 #tocalibrate
 uart = serial.Serial(UART_DEVICE, baudrate=UART_BAUDRATE, timeout=0)
 
 meterxsecond = 0.5 #tocalibrate
+# need to calibrate the meter per second that the rover moves , change the turning type from 10 to 1-1!
 degxsecond = 2 #tocalibrate
 safe_map = []
+
+#gpio setup has to change since the motors have 3 pins, to connect to the driver and work by turning on them in the right order to decide the direction they move in.
+#the turning type needs to be changed from 10(one motor moves, the other one stays still) to 1-1(one moves forward the other moves backwards), to be more precise.
+#it also needs to save the movements the remote makes to be sure to follow them precisely, optimizing the direction of the path and avoiding costant turning, but being careful about passing through the same path the remote makes, to avoid falling in the trenches
+
+#the system needs to work on a node based map, that tracks the vistual coords in which the remote changes direction and uses them as guide. the array needs to be updated every time the remote changes direction.
+
+#at this point, the array that tracks the path of the remote is the one that needs to be used to create a graph of the path, and then the rover needs to use that graph to find the shortest path to go back to the base while still walking on path already proven to be safe.
+#the optimizing of the path needs to be done checking the total direction change of the remote, being careful to avoid zigzagging too much considering a human is gonna have the remote.
+#the tracking type needs to be changed, not to be relative to the robot but to check wich direction the remote is going in, checking for distance difference.
 
 gpio.setmode(gpio.BCM)
 gpio.setup(leftMotor, gpio.OUT, initial=gpio.LOW)
@@ -257,3 +268,8 @@ if __name__ == "__main__":
         gpio.output(rightMotor, gpio.LOW)
         gpio.cleanup()
         uart.close()
+
+
+# 6/8/2026 - le schede dovrebbero arrivare oggi da quanto ne sappiamo, spero pk tra due giorni parto e vado a palermo se tutto va bene e voglio la prossima settimana per capire come le bro funzionano. Poi una volta che le provo poi si vedrà se serviranno effettivamente a qualcosa.
+# invece riguardo ai motori bisogna prendere ancora i driver e poi controllare se gli stepdown funzionano, anche quelli ancora da prendere.
+# 24/8/2026 - ok la pausa è durata decisamente troppo, le schede sono arrivate una settimana fa ma le sto provando solo oggi. vedremo. non ho la pico al momento, aspetterò che simone me la porta oggi pom ma devo ricontrollare il codice. intanto mi dedico ai cartelloni immagino. Liliana deve darmi il testo  da scrivere. E COMPRARE LE CAZZO DI COSE ABBIAMO UN MESE DIO CANE BASTARDO IN CARROZZELLA.
