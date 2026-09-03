@@ -10,6 +10,10 @@ CAD/v.2/Particolari/
 CAD/v.2/Normali/
 CAD/v.2/Prove/
 
+# Escludi Production
+Production/Dxf/
+Production/Step/
+
 # code
 Code/rover/uwb_read.py
 Code/rover/map_save_draft.md
