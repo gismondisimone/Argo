@@ -8,7 +8,7 @@
 ---
 
 ## BOM
-All the bits and pieces needed can be found **[here](/BOM.md)**.
+All the bits and pieces needed can be found **[here](Production/BOM.md)**.
 
 ---
 
