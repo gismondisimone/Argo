@@ -54,13 +54,24 @@ while True:
 
     time.sleep(0.05)
 
-# I gotta startunderstanding what to display
-# Fullness of the buffer
-# Percentage scan
-# Errors
-# LALALALALAALAL IDKKKK
-# im watching a kwite video, cant really think a lot
-#i just want my sticker man please
-# the video is about lsp, it's talking about blade rn
-# i'm js writing cause i want to get used to the keyboard layout, since it's smaller and i need to know exactly where the buttons are to play valo.
-# For some reason hackatime says i coded only for 4m instead of 9 :(
+# another day another making the 5 minutes to not lose my streak
+# today i got a hairdresser appointment so im probably not gonna work much, but imma try in the afternoon.
+# tbf i don't want to waste time like this but i don't have much to do until we get the components, if i had something i'd do it.
+# but hackatime doesn't care abt ibispaint time ig, so this is the only way to make my 5 minutes :(
+# iv'e been working on the mascots and the merch art, we only need to get the banners text to write it and then theyre all good.
+# we need to get the measurements right this time tho
+# like julio said, it's been years that my school has partecipied to this competition and we still get the measurements wrong for the banners.
+
+# MADOOOOOOOOOOOOOOOO è tardissimo mi sono completamente dimenticata della streak stavo per andare a dormire e dimenticarmene xd
+# menomale che ho ancora un paio di braincells e scrivendo a simo mi sono ricordata :D
+# cmq non ho fatto un cazzo oggi, domani biblio che poi andiamo a casa di simo e saldo la santissima millefori e cerco di capire come collegare le robe
+# poi sabato (?) arriva lo schermo, da la easy ma devo capire come mettere in display le robe e come accocchiare tutto
+# di conseguenza devo pure cominciare a fare la parte dell'esp, sarebbe un'ottima idea di partenza per domani tbf
+
+# domani prima task ESP code
+# btw hackatime funziona come al cazzo ommiodio ogni 2 minuti si updatea ommiodio
+# OHHH VELOCE CHE DEVO GIOCARE DIO CANE
+# credo che un bro stia cercando di rizzarmi HELP
+# è un pò patato però
+
+# devo pure finire di trasferire la roba su sto pc xd
