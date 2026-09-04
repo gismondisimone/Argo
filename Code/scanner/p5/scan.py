@@ -84,10 +84,11 @@ def check_status():
 def rotate_plate():
     p0_post("/rotate_plate", {"degrees": 10})
 
-
 def rotate_cam():
     p0_post("/rotate_cam", {"degrees": 1})
 
+def rotate_bins():
+    p0_post("/rotate_bins", {"degrees": 10})
 
 def send(f_paths, f_pathd, pc_ip, pc_u, c_paths, c_pathd):
     global out_f
