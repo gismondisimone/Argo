@@ -6,20 +6,30 @@ String argoinoReq = "N/A";
 
 const int infrar = 2;
 const int motor = 10;
+const int linearA = 7; //da cambiare
+const int linearB = 6; //da cambiare
+const int scanModule = 3; //da cambiare
 
 const char* net = "Lil's Galaxy S22"; //da cambiare
 const char* psw = "Nobodyson"; //da cambiare
 
-const char* argoinoIP = "10.118.94.140"; //da cambiare
+String rpiTaxi = "10.118.94.140"; //da cambiare
+String rpiScan = "10.118.94.140"; //da cambiare
 const String localName = "mento";
 
 bool waitin = true;
+int scann = false;
 int full = 0;
 
 void setup() {
   pinMode(infrar, INPUT);
+  pinMode(scanModule, INPUT);
   pinMode(motor, OUTPUT);
+  pinMode(linearA, OUTPUT);
+  pinMode(linearB, OUTPUT);
   digitalWrite(motor, LOW);
+  digitalWrite(linearA, LOW);
+  digitalWrite(linearB, LOW);
 
   Serial.begin(115200);
 
@@ -46,31 +56,51 @@ void setup() {
 }
 
 void loop() {
-  if (WiFi.status() == WL_CONNECTED) {
-    if(waitin){
-      if(full<30){
-        int dist = analogRead(infrar);
-        Serial.println(dist);
-        if (dist > 300) {
-          Serial.println("Object detected");
-          delay(10);
-          digitalWrite(motor, LOW);
-          full = full + 1;
-          sendToIno("1");
-          waitin = true;
-          digitalWrite(motor, HIGH);
-          delay(3000);
-          digitalWrite(motor, LOW);
-          Serial.println("Made space..");
+  scann = digitalRead(scanModule);
+  if (WiFi.status() == WL_CONNECTED) {  
+    if (scann == 0) { 
+      if (waitin) {
+        if (full < 30) {
+          int dist = analogRead(infrar);
+          Serial.println(dist);
+          if (dist > 300) {
+            Serial.println("Object detected");
+            full = full + 1;
+            sendTo("1000", rpiTaxi);
+            digitalWrite(motor, HIGH);
+            delay(3000);
+            digitalWrite(motor, LOW);
+            Serial.println("Made space.");
+            sendTo(String(full), rpiTaxi);
+          } else {
+            digitalWrite(motor, LOW);
+            Serial.println("libero");
+            delay(100);
+          }
         }else{
           Serial.print("Conveyor full! Please head back to the base to scan.");
-          sendToIno("0");
+          sendTo("2000", rpiTaxi);
         }
-      } else {
-        digitalWrite(motor, LOW);
-        Serial.println("[mento] = libero");
+        delay(100);
       }
-      delay(100);
+    } else {
+      digitalWrite(motor, LOW);
+      waitin = false;
+      int empty = 30-full;
+      digitalWrite(motor, HIGH);
+      delay(empty*1000);
+      digitalWrite(motor, LOW);
+      for (int i = 0; i <= full; i++) {
+        digitalWrite(linearA, HIGH);
+        digitalWrite(linearB, LOW);
+        delay(1000);
+        digitalWrite(linearA, LOW);
+        digitalWrite(linearB, HIGH);
+        delay(1000);
+        Serial.println("Piece on plate. Waiting");
+        sendTo("1", rpiScan);
+
+      }
     }
 
     delay(100);
@@ -115,25 +145,25 @@ void loop() {
   delay(100);
 }
 
-String sendToIno(char* message) {
+void sendTo(const String& message, const String& receiver) {
   WiFiClient client;
-  if (client.connect(argoinoIP, 80)) {
-    client.print("GET /" + localName + "?data=" + message + "HTTP/1.1\r\n");
-    client.print("Host: " + String(argoinoIP) + "\r\n");
+  if (client.connect(receiver.c_str(), 80)) {
+    client.print("GET /" + localName + "?data=" + message + " HTTP/1.1\r\n");
+    client.print("Host: " + receiver + "\r\n");
     client.print("Connection: close\r\n\r\n");
     client.stop();
-    Serial.println("Sent to Arduino");
+    Serial.println("Sent to " + receiver);
   } else {
     Serial.println("Failed to connect");
-    while (!client.connect(argoinoIP, 80)) {
+    while (!client.connect(receiver.c_str(), 80)) {
       delay(1000);
-      Serial.println("Retrying connection to Arduino");
+      Serial.println("Retrying connection to " + receiver);
     }
-    client.print("GET /" + localName + "?data=" + message + "HTTP/1.1\r\n");
-    client.print("Host: " + String(argoinoIP) + "\r\n");
+    client.print("GET /" + localName + "?data=" + message + " HTTP/1.1\r\n");
+    client.print("Host: " + receiver + "\r\n");
     client.print("Connection: close\r\n\r\n");
     client.stop();
-    Serial.println("Sent to Arduino after retry");
+    Serial.println("Sent to " + receiver + " after retry");
   }
 }
 
