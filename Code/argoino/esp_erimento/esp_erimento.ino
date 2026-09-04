@@ -4,21 +4,22 @@
 WiFiServer mentoServer(80);
 String argoinoReq = "N/A";
 
-const int pho = 2;
+const int infrar = 2;
 const int motor = 10;
 
-const char* net = "Lil's Galaxy S22";
-const char* psw = "Nobodyson";
+const char* net = "Lil's Galaxy S22"; //da cambiare
+const char* psw = "Nobodyson"; //da cambiare
 
-const char* argoinoIP = "10.118.94.140"; 
+const char* argoinoIP = "10.118.94.140"; //da cambiare
 const String localName = "mento";
 
-bool waitin = false;
+bool waitin = true;
+int full = 0;
 
 void setup() {
-  pinMode(pho, INPUT);
+  pinMode(infrar, INPUT);
   pinMode(motor, OUTPUT);
-  digitalWrite(motor, HIGH);
+  digitalWrite(motor, LOW);
 
   Serial.begin(115200);
 
@@ -46,44 +47,27 @@ void setup() {
 
 void loop() {
   if (WiFi.status() == WL_CONNECTED) {
-    if(!waitin){
-      int dist = analogRead(pho);
-      //Serial.println(dist);
-      if (dist > 300) {
-        Serial.println("Object detected");
-        delay(10);
-        digitalWrite(motor, LOW);
-        WiFiClient client;
-        if (client.connect(argoinoIP, 80)) {
-          client.print("GET /" + localName + "?data=1 HTTP/1.1\r\n");
-          client.print("Host: " + String(argoinoIP) + "\r\n");
-          client.print("Connection: close\r\n\r\n");
-          client.stop();
-          Serial.println("Object detected, sent to Arduino");
+    if(waitin){
+      if(full<30){
+        int dist = analogRead(infrar);
+        Serial.println(dist);
+        if (dist > 300) {
+          Serial.println("Object detected");
+          delay(10);
+          digitalWrite(motor, LOW);
+          full = full + 1;
+          sendToIno("1");
           waitin = true;
           digitalWrite(motor, HIGH);
           delay(3000);
           digitalWrite(motor, LOW);
-          Serial.println("Stopped conveyor.");
-        } else {
-          Serial.println("Failed to connect to Arduino");
-          while (!client.connect(argoinoIP, 80)) {
-            delay(1000);
-            Serial.println("Retrying connection to Arduino");
-          }
-          client.print("GET /" + localName + "?data=1 HTTP/1.1\r\n");
-          client.print("Host: " + String(argoinoIP) + "\r\n");
-          client.print("Connection: close\r\n\r\n");
-          client.stop();
-          Serial.println("Object detected, sent to Arduino after retry");
-          waitin = true;
-          digitalWrite(motor, HIGH);
-          delay(2000);
-          digitalWrite(motor, LOW);
-          Serial.println("Stopped conveyor.");
+          Serial.println("Made space..");
+        }else{
+          Serial.print("Conveyor full! Please head back to the base to scan.");
+          sendToIno("0");
         }
       } else {
-        digitalWrite(motor, HIGH);
+        digitalWrite(motor, LOW);
         Serial.println("[mento] = libero");
       }
       delay(100);
@@ -129,6 +113,28 @@ void loop() {
     }
   }
   delay(100);
+}
+
+String sendToIno(char* message) {
+  WiFiClient client;
+  if (client.connect(argoinoIP, 80)) {
+    client.print("GET /" + localName + "?data=" + message + "HTTP/1.1\r\n");
+    client.print("Host: " + String(argoinoIP) + "\r\n");
+    client.print("Connection: close\r\n\r\n");
+    client.stop();
+    Serial.println("Sent to Arduino");
+  } else {
+    Serial.println("Failed to connect");
+    while (!client.connect(argoinoIP, 80)) {
+      delay(1000);
+      Serial.println("Retrying connection to Arduino");
+    }
+    client.print("GET /" + localName + "?data=" + message + "HTTP/1.1\r\n");
+    client.print("Host: " + String(argoinoIP) + "\r\n");
+    client.print("Connection: close\r\n\r\n");
+    client.stop();
+    Serial.println("Sent to Arduino after retry");
+  }
 }
 
 String extractData(String req) {
