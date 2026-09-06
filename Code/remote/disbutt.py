@@ -54,13 +54,17 @@ while True:
 
     time.sleep(0.05)
 
-# I gotta startunderstanding what to display
-# Fullness of the buffer
-# Percentage scan
-# Errors
-# LALALALALAALAL IDKKKK
-# im watching a kwite video, cant really think a lot
-#i just want my sticker man please
-# the video is about lsp, it's talking about blade rn
-# i'm js writing cause i want to get used to the keyboard layout, since it's smaller and i need to know exactly where the buttons are to play valo.
-# For some reason hackatime says i coded only for 4m instead of 9 :(
+# yo allora welcome back a un'altra sessione di non ho nulla da fare quindi mi prendo la streak del giorno
+# sono attualmente le due di notte, fa lowkey freddo e mia madre (o gioia) russa
+# per qualche motivo lo sticker di oggi non si può vedere??? ma non me ne frega cause so che sarà fire comunque
+# tochi è un patato
+# nyzro mmmmmmmm non tanto
+# ce non è che non mi piace giocare con lui è solo che ogni tanto è propio giocatore tossico da spam reportare
+# tornando a noi
+# oggi ho fatto un bel po di roba, che dovrà decisamente essere polishata meglio perché gia non mi ricordo nulla
+# domani arrivano le robe tra cui lo schermo per il telecomando, devo capire come fare le saldature varie che poi simo deve fare la pcb
+# sperando
+# intanto stavo cominciando a sistemare i codici delle altre schede che dovranno cambiare quasi totalmente
+# il porca madonna di attuatore lineare non serviva :sob: bastava benissimo anche solo un cazzo di stepper, sarebbe stato piu veloce piu preciso MA PURE UN DIOINCARROZZA DI SERVO
+# io bho sti ingegneri
+# devono tutti esplodere
