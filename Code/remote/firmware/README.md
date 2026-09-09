@@ -35,3 +35,5 @@ The rover must use the same channel, UWB configuration, PAN ID `0xCADE`, and pac
 4. Build it, then flash the generated `.hex` through the board’s SWD header with an ST-Link. Preserve a copy of the original factory firmware first if you may want to restore its AT/ranging behavior.
 
 The stock SDK driver owns SPI1 and the pins connected to the BU03 module. The TFT uses SPI2 so it does not conflict with the UWB radio.
+
+aiuto.
