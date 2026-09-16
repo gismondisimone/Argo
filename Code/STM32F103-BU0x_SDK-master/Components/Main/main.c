@@ -25,8 +25,8 @@
  */
 #define TFT_CS_PORT GPIOB
 #define TFT_CS_PIN  GPIO_Pin_12
-#define TFT_DC_PORT GPIOA
-#define TFT_DC_PIN  GPIO_Pin_1
+#define TFT_DC_PORT GPIOB
+#define TFT_DC_PIN  GPIO_Pin_14
 #define TFT_RST_PORT GPIOC
 #define TFT_RST_PIN GPIO_Pin_13
 
