@@ -165,7 +165,7 @@ static void tft_window(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
 static void tft_fill(uint16_t colour)
 {
     uint8_t pixel[2] = {colour >> 8, colour};
-    uint32_t count = 240UL * 280UL;
+    uint32_t count = 240UL * 320UL;
     tft_window(0, 0, 239, 279);
     GPIO_ResetBits(TFT_CS_PORT, TFT_CS_PIN);
     GPIO_SetBits(TFT_DC_PORT, TFT_DC_PIN);
@@ -305,24 +305,64 @@ static void radio_poll(void)
     }
 }
 
+static void radio_send_ranging(void)
+{
+    uint8_t frame[MAC_HEADER_LEN + 1];
+    uint16_t frame_len = sizeof(frame);
+    
+    /* Header standard MAC IEEE 802.15.4 */
+    frame[0] = 0x41; frame[1] = 0x88; frame[2] = sequence_number++;[cite: 1]
+    frame[3] = PAN_ID & 0xFF; frame[4] = PAN_ID >> 8;[cite: 1]
+    frame[5] = BROADCAST & 0xFF; frame[6] = BROADCAST >> 8;[cite: 1]
+    frame[7] = REMOTE_ADDR & 0xFF; frame[8] = REMOTE_ADDR >> 8;[cite: 1]
+    frame[9] = 0xA0; /* FRAME_TYPE_RANGING / BLINK continuo */
+    frame[10] = 0x00;
+    
+    dwt_forcetrxoff();[cite: 1]
+    dwt_writetxdata(frame_len, frame, 0);[cite: 1]
+    dwt_writetxfctrl(frame_len + FCS_LEN, 0, 0);[cite: 1]
+    dwt_starttx(DWT_START_TX_IMMEDIATE);[cite: 1]
+    while (!(dwt_read32bitreg(SYS_STATUS_ID) & SYS_STATUS_TXFRS_BIT_MASK)) { }[cite: 1]
+    dwt_write32bitreg(SYS_STATUS_ID, SYS_STATUS_TXFRS_BIT_MASK);[cite: 1]
+    
+    dwt_rxenable(DWT_START_RX_IMMEDIATE);[cite: 1]
+}
+
 int main(void)
 {
-    int8_t button;
-    SystemInit();
-    clock_init();
-    Hal_Driver_Init();       /* initializes SPI1 and the BU03/DW3000 wiring */
-    tft_init();
-    buttons_init();
-    display_data[0] = 0;
-    display_length = 1;
-    show_data();
-    radio_init();
+    int8_t button;[cite: 1]
+    uint32_t last_ranging_time = 0;
+    
+    SystemInit();[cite: 1]
+    clock_init();[cite: 1]
+    Hal_Driver_Init();[cite: 1]
+    tft_init();[cite: 1]
+    buttons_init();[cite: 1]
+    
+    display_data[0] = 0;[cite: 1]
+    display_length = 1;[cite: 1]
+    show_data();[cite: 1]
+    radio_init();[cite: 1]
+    
     while (1) {
-        radio_poll();
-        button = button_pressed();
+        /* 1. Ascolta continuamente la radio per messaggi in arrivo dall'Anchor */
+        radio_poll();[cite: 1]
+        
+        /* 2. Controllo e gestione dei pulsanti */
+        button = button_pressed();[cite: 1]
         if (button >= 0) {
-            delay_ms(20);    /* debounce */
-            if (button_pressed() < 0) radio_send_button((uint8_t)button);
+            delay_ms(20); /* Debounce */[cite: 1]
+            if (button_pressed() < 0) {
+                radio_send_button((uint8_t)button);[cite: 1]
+            }
+        }
+        
+        /* 3. Ranging continuo: invia un pacchetto ogni 100 ms (10 Hz) */
+        delay_ms(1);
+        last_ranging_time++;
+        if (last_ranging_time >= 100) {
+            last_ranging_time = 0;
+            radio_send_ranging();
         }
     }
 }
