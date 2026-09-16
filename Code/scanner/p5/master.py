@@ -1,8 +1,10 @@
+import json
 import subprocess as sp
 import time
 import datetime
 import os
 import requests #type:ignore
+from urllib import request
 from PIL import Image #type:ignore
 import numpy as np #type:ignore
 from hailo_platform import VDevice, FormatType #type:ignore
@@ -14,6 +16,34 @@ app = Flask(__name__)
 CLASSES = ["Candy", "Ceramic", "Other"]
 HEF_PATH = "/home/argo/ArcheoModel_Argo.hef" #da cambiare
 ESP_IP = "10.118.94.72"  # IP statico assegnato all'ESP32 #da cambiare
+#setup P0
+p0_ip = "10.176.43.149"
+p0_port = 8765
+p0_url = f"http://{p0_ip}:{p0_port}"
+
+def p0_get(path):
+    with request.urlopen(p0_url + path, timeout=5) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def p0_post(path, data=None, timeout=30):
+    if data is None:
+        data = {}
+
+    data = json.dumps(data).encode("utf-8")
+    req = request.Request(
+        p0_url + path,
+        data=data,
+        headers={"Content-Type": "application/json"},
+        method="POST"
+    )
+
+    with request.urlopen(req, timeout=timeout) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+def rotate_bins():
+    p0_post("/rotate_bins", {"degrees": 10})
+
 
 # Variabili globali per riutilizzare l'istanza Hailo
 vdevice = None
@@ -85,6 +115,7 @@ def handle_scan_request():
 
                 label = CLASSES[clas[0]]
                 print(f"Classe identificata: {label}")
+                rotate_bins()
 
             except Exception as e:
                 print(f"Errore durante la classificazione AI: {e}")
