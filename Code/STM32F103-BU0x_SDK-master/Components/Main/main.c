@@ -3,9 +3,6 @@
  *
  * Target: Ai-Thinker BU03-Kit (STM32F103C8T6 + BU03/DW3000)
  * Base SDK: https://gitee.com/Ai-Thinker-Open/STM32F103-BU0x_SDK
- *
- * Replace Components/Main/main.c in that SDK with this file, then build its
- * Keil project.  The companion receiver must use the packet format below.
  */
 
 #include <stdint.h>
@@ -17,19 +14,15 @@
 #include "uwb.h"
 #include "hal_drivers.h"
 
-/* ------- Wiring: all signals are 3.3 V only --------------------------------
- * ST7789: SCK=PB13, MOSI=PB15, CS=PB12, DC=PA1, RST=PC13, BL=3V3.
- * Buttons 1..6: PB8, PB9, PB10, PB11, PA2, PA3, each connected to GND.
- * PB14 (SPI2 MISO) is unused. Do not use PA0/PA4..PA7/PB0/PB5: the BU03
- * radio uses these pins internally.
- */
+/* Wiring ST7789 */
 #define TFT_CS_PORT GPIOB
 #define TFT_CS_PIN  GPIO_Pin_12
 #define TFT_DC_PORT GPIOB
-#define TFT_DC_PIN  GPIO_Pin_14
+#define TFT_DC_PIN  GPIO_Pin_14   /* Riassegnato a PB14 */
 #define TFT_RST_PORT GPIOC
 #define TFT_RST_PIN GPIO_Pin_13
 
+/* Wiring Buttons */
 #define BUTTON_B_PORT GPIOB
 #define BUTTON_B_PINS (GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10 | GPIO_Pin_11)
 #define BUTTON_A_PORT GPIOA
@@ -38,8 +31,9 @@
 #define PAN_ID       0xCADE
 #define REMOTE_ADDR  0x0001
 #define BROADCAST    0xFFFF
-#define FRAME_TYPE_BUTTON 0xA1
-#define FRAME_TYPE_DISPLAY 0xA2 /* receiver sends ASCII/binary data to show */
+#define FRAME_TYPE_BUTTON  0xA1
+#define FRAME_TYPE_RANGING 0xA0
+#define FRAME_TYPE_DISPLAY 0xA2
 #define MAC_HEADER_LEN 10
 #define MAX_RX_BYTES  32
 
@@ -48,7 +42,6 @@ static uint8_t sequence_number;
 static uint8_t display_data[MAX_RX_BYTES];
 static uint8_t display_length;
 
-/* Channel 5, 6.8 Mbps. The receiver must use exactly the same radio config. */
 static dwt_config_t uwb_config = {
     5, DWT_PLEN_128, DWT_PAC8, 9, 9, 1, DWT_BR_6M8,
     DWT_PHRMODE_STD, DWT_PHRRATE_STD, (129 + 8 - 8),
@@ -58,7 +51,6 @@ extern dwt_txconfig_t txconfig_options;
 
 static void delay_ms(uint32_t ms)
 {
-    /* The SDK's Sleep() is a millisecond delay and is already calibrated. */
     while (ms--) Sleep(1);
 }
 
@@ -165,16 +157,14 @@ static void tft_window(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
 static void tft_fill(uint16_t colour)
 {
     uint8_t pixel[2] = {colour >> 8, colour};
-    uint32_t count = 240UL * 320UL;
-    tft_window(0, 0, 239, 279);
+    uint32_t count = 240UL * 320UL; /* Pulizia estesa a 320 righe per rimuovere il noise */
+    tft_window(0, 0, 239, 319);
     GPIO_ResetBits(TFT_CS_PORT, TFT_CS_PIN);
     GPIO_SetBits(TFT_DC_PORT, TFT_DC_PIN);
     while (count--) { spi2_byte(pixel[0]); spi2_byte(pixel[1]); }
     GPIO_SetBits(TFT_CS_PORT, TFT_CS_PIN);
 }
 
-/* A compact hexadecimal display is deliberate: it can show arbitrary binary
- * UWB payloads without assuming that received bytes are printable text. */
 static const uint8_t hex_font[16][5] = {
     {0x1F,0x11,0x11,0x11,0x1F}, {0x00,0x12,0x1F,0x10,0x00},
     {0x1D,0x15,0x15,0x15,0x17}, {0x11,0x15,0x15,0x15,0x1F},
@@ -211,7 +201,6 @@ static void show_data(void)
 {
     uint8_t i;
     tft_fill(0x0000);
-    /* First byte is the last pressed button; following bytes are received data. */
     for (i = 0; i < display_length && i < 16; i++)
         tft_hex_byte(display_data[i], (i % 8) * 30, 30 + (i / 8) * 50, 3);
 }
@@ -281,6 +270,25 @@ static void radio_send_button(uint8_t button)
     dwt_rxenable(DWT_START_RX_IMMEDIATE);
 }
 
+static void radio_send_ranging(void)
+{
+    uint8_t frame[MAC_HEADER_LEN + 1];
+    uint16_t frame_len = sizeof(frame);
+    frame[0] = 0x41; frame[1] = 0x88; frame[2] = sequence_number++;
+    frame[3] = PAN_ID & 0xFF; frame[4] = PAN_ID >> 8;
+    frame[5] = BROADCAST & 0xFF; frame[6] = BROADCAST >> 8;
+    frame[7] = REMOTE_ADDR & 0xFF; frame[8] = REMOTE_ADDR >> 8;
+    frame[9] = FRAME_TYPE_RANGING;
+    frame[10] = 0x00;
+    dwt_forcetrxoff();
+    dwt_writetxdata(frame_len, frame, 0);
+    dwt_writetxfctrl(frame_len + FCS_LEN, 0, 0);
+    dwt_starttx(DWT_START_TX_IMMEDIATE);
+    while (!(dwt_read32bitreg(SYS_STATUS_ID) & SYS_STATUS_TXFRS_BIT_MASK)) { }
+    dwt_write32bitreg(SYS_STATUS_ID, SYS_STATUS_TXFRS_BIT_MASK);
+    dwt_rxenable(DWT_START_RX_IMMEDIATE);
+}
+
 static void radio_poll(void)
 {
     uint32_t status = dwt_read32bitreg(SYS_STATUS_ID);
@@ -305,59 +313,31 @@ static void radio_poll(void)
     }
 }
 
-static void radio_send_ranging(void)
-{
-    uint8_t frame[MAC_HEADER_LEN + 1];
-    uint16_t frame_len = sizeof(frame);
-    
-    /* Header standard MAC IEEE 802.15.4 */
-    frame[0] = 0x41; frame[1] = 0x88; frame[2] = sequence_number++;[cite: 1]
-    frame[3] = PAN_ID & 0xFF; frame[4] = PAN_ID >> 8;[cite: 1]
-    frame[5] = BROADCAST & 0xFF; frame[6] = BROADCAST >> 8;[cite: 1]
-    frame[7] = REMOTE_ADDR & 0xFF; frame[8] = REMOTE_ADDR >> 8;[cite: 1]
-    frame[9] = 0xA0; /* FRAME_TYPE_RANGING / BLINK continuo */
-    frame[10] = 0x00;
-    
-    dwt_forcetrxoff();[cite: 1]
-    dwt_writetxdata(frame_len, frame, 0);[cite: 1]
-    dwt_writetxfctrl(frame_len + FCS_LEN, 0, 0);[cite: 1]
-    dwt_starttx(DWT_START_TX_IMMEDIATE);[cite: 1]
-    while (!(dwt_read32bitreg(SYS_STATUS_ID) & SYS_STATUS_TXFRS_BIT_MASK)) { }[cite: 1]
-    dwt_write32bitreg(SYS_STATUS_ID, SYS_STATUS_TXFRS_BIT_MASK);[cite: 1]
-    
-    dwt_rxenable(DWT_START_RX_IMMEDIATE);[cite: 1]
-}
-
 int main(void)
 {
-    int8_t button;[cite: 1]
+    int8_t button;
     uint32_t last_ranging_time = 0;
     
-    SystemInit();[cite: 1]
-    clock_init();[cite: 1]
-    Hal_Driver_Init();[cite: 1]
-    tft_init();[cite: 1]
-    buttons_init();[cite: 1]
-    
-    display_data[0] = 0;[cite: 1]
-    display_length = 1;[cite: 1]
-    show_data();[cite: 1]
-    radio_init();[cite: 1]
+    SystemInit();
+    clock_init();
+    Hal_Driver_Init();
+    tft_init();
+    buttons_init();
+    display_data[0] = 0;
+    display_length = 1;
+    show_data();
+    radio_init();
     
     while (1) {
-        /* 1. Ascolta continuamente la radio per messaggi in arrivo dall'Anchor */
-        radio_poll();[cite: 1]
-        
-        /* 2. Controllo e gestione dei pulsanti */
-        button = button_pressed();[cite: 1]
+        radio_poll();
+        button = button_pressed();
         if (button >= 0) {
-            delay_ms(20); /* Debounce */[cite: 1]
+            delay_ms(20);
             if (button_pressed() < 0) {
-                radio_send_button((uint8_t)button);[cite: 1]
+                radio_send_button((uint8_t)button);
             }
         }
         
-        /* 3. Ranging continuo: invia un pacchetto ogni 100 ms (10 Hz) */
         delay_ms(1);
         last_ranging_time++;
         if (last_ranging_time >= 100) {
