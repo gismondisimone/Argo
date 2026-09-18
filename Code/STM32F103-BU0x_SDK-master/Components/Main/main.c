@@ -1,10 +1,3 @@
-/*
- * BU03-Kit remote controller
- *
- * Target: Ai-Thinker BU03-Kit (STM32F103C8T6 + BU03/DW3000)
- * Base SDK: https://gitee.com/Ai-Thinker-Open/STM32F103-BU0x_SDK
- */
-
 #include <stdint.h>
 #include <string.h>
 #include <stm32f10x.h>
@@ -14,15 +7,13 @@
 #include "uwb.h"
 #include "hal_drivers.h"
 
-/* Wiring ST7789 */
 #define TFT_CS_PORT GPIOB
 #define TFT_CS_PIN  GPIO_Pin_12
 #define TFT_DC_PORT GPIOB
-#define TFT_DC_PIN  GPIO_Pin_14   /* Riassegnato a PB14 */
+#define TFT_DC_PIN  GPIO_Pin_14
 #define TFT_RST_PORT GPIOC
 #define TFT_RST_PIN GPIO_Pin_13
 
-/* Wiring Buttons */
 #define BUTTON_B_PORT GPIOB
 #define BUTTON_B_PINS (GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10 | GPIO_Pin_11)
 #define BUTTON_A_PORT GPIOA
@@ -136,12 +127,12 @@ static void tft_init(void)
     delay_ms(20);
     GPIO_SetBits(TFT_RST_PORT, TFT_RST_PIN);
     delay_ms(120);
-    tft_command(0x01); delay_ms(150);       /* software reset */
-    tft_command(0x11); delay_ms(120);       /* sleep out */
+    tft_command(0x01); delay_ms(150);
+    tft_command(0x11); delay_ms(120);
     tft_command(0x36); tft_data(&madctl, 1);
-    tft_command(0x3A); tft_data(&color_mode, 1); /* RGB565 */
-    tft_command(0x21);                       /* display inversion on */
-    tft_command(0x29);                       /* display on */
+    tft_command(0x3A); tft_data(&color_mode, 1);
+    tft_command(0x21);
+    tft_command(0x29);
 }
 
 static void tft_window(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
@@ -157,7 +148,7 @@ static void tft_window(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
 static void tft_fill(uint16_t colour)
 {
     uint8_t pixel[2] = {colour >> 8, colour};
-    uint32_t count = 240UL * 320UL; /* Pulizia estesa a 320 righe per rimuovere il noise */
+    uint32_t count = 240UL * 320UL;
     tft_window(0, 0, 239, 319);
     GPIO_ResetBits(TFT_CS_PORT, TFT_CS_PIN);
     GPIO_SetBits(TFT_DC_PORT, TFT_DC_PIN);
@@ -272,19 +263,14 @@ static void radio_send_button(uint8_t button)
 
 static void radio_send_ranging(void)
 {
-    uint8_t frame[MAC_HEADER_LEN + 2];
+    uint8_t frame[MAC_HEADER_LEN + 1];
     uint16_t frame_len = sizeof(frame);
-    
     frame[0] = 0x41; frame[1] = 0x88; frame[2] = sequence_number++;
     frame[3] = PAN_ID & 0xFF; frame[4] = PAN_ID >> 8;
     frame[5] = BROADCAST & 0xFF; frame[6] = BROADCAST >> 8;
     frame[7] = REMOTE_ADDR & 0xFF; frame[8] = REMOTE_ADDR >> 8;
-    
-    /* Tipo frame TWR Poll nativo per firmware AT */
-    frame[9] = 0x21;  /* Poll Message */
+    frame[9] = FRAME_TYPE_RANGING;
     frame[10] = 0x00;
-    frame[11] = 0x00;
-    
     dwt_forcetrxoff();
     dwt_writetxdata(frame_len, frame, 0);
     dwt_writetxfctrl(frame_len + FCS_LEN, 0, 0);

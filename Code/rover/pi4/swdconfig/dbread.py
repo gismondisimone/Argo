@@ -1,4 +1,4 @@
-import serial
+import serial #type: ignore
 import struct
 import time
 

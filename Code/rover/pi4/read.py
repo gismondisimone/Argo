@@ -5,7 +5,7 @@ import time
 def get_serial_port():
     while True:
         try:
-            s = serial.Serial('/dev/serial0', baudrate=115200, timeout=1)
+            s = serial.Serial('/dev/ttyAMA0', baudrate=115200, timeout=1)
             print("Connected to serial port.")
             return s
         except Exception as e:
