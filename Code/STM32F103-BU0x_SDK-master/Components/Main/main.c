@@ -272,17 +272,10 @@ static void radio_send_button(uint8_t button)
 
 static void radio_send_ranging(void)
 {
-    uint8_t frame[MAC_HEADER_LEN + 1];
-    uint16_t frame_len = sizeof(frame);
-    frame[0] = 0x41; frame[1] = 0x88; frame[2] = sequence_number++;
-    frame[3] = PAN_ID & 0xFF; frame[4] = PAN_ID >> 8;
-    frame[5] = BROADCAST & 0xFF; frame[6] = BROADCAST >> 8;
-    frame[7] = REMOTE_ADDR & 0xFF; frame[8] = REMOTE_ADDR >> 8;
-    frame[9] = FRAME_TYPE_RANGING;
-    frame[10] = 0x00;
+    uint8_t msg[] = "PING_UWB\r\n";
     dwt_forcetrxoff();
-    dwt_writetxdata(frame_len, frame, 0);
-    dwt_writetxfctrl(frame_len + FCS_LEN, 0, 0);
+    dwt_writetxdata(sizeof(msg), msg, 0);
+    dwt_writetxfctrl(sizeof(msg) + FCS_LEN, 0, 0);
     dwt_starttx(DWT_START_TX_IMMEDIATE);
     while (!(dwt_read32bitreg(SYS_STATUS_ID) & SYS_STATUS_TXFRS_BIT_MASK)) { }
     dwt_write32bitreg(SYS_STATUS_ID, SYS_STATUS_TXFRS_BIT_MASK);
