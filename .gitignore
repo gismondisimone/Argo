@@ -18,7 +18,9 @@ Production/Step/
 Code/rover/uwb_read.py
 Code/rover/map_save_draft.md
 Code/rover/mapdraft.py
-Code/scanner/STM32F4xx_StdPeriph_Driver
+Code/scanner/STM32F103-BU0x_SDK-master
+Code/scanner/STM32F103-BU0x_SDK-master(base0)
+Code/scanner/STM32F103-BU0x_SDK-master(base1)
 
 
 # Escludi tutti i file con un'estensione specifica
