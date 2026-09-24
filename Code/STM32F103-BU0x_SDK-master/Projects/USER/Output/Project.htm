@@ -3,16 +3,16 @@
 <title>Static Call Graph - [.\Output\Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Output\Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Sep 18 19:27:20 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Sep 24 17:28:54 2026
 <BR><P>
-<H3>Maximum Stack Usage =        280 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        304 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; radio_poll &rArr; show_data &rArr; tft_hex_byte &rArr; tft_window &rArr; tft_data &rArr; spi2_byte
+main &rArr; poll_display &rArr; show &rArr; decimal &rArr; px &rArr; win &rArr; d &rArr; spi
 <P>
 <H3>
 Mutually Recursive functions
 </H3> <LI><a href="#[2c]">ADC1_2_IRQHandler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[2c]">ADC1_2_IRQHandler</a><BR>
- <LI><a href="#[152]">dwt_readfromdevice</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[150]">dwt_xfer3000</a><BR>
+ <LI><a href="#[154]">dwt_readfromdevice</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[152]">dwt_xfer3000</a><BR>
 </UL>
 <P>
 <H3>
@@ -104,7 +104,7 @@ Global Symbols
 <P><STRONG><a name="[47]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(.text)
 </UL>
-<P><STRONG><a name="[172]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[171]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[4f]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -114,17 +114,17 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[173]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[172]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[174]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[173]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[175]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[174]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[176]"></a>__rt_lib_shutdown_fini</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry12b.o(.ARM.Collect$$$$0000000E))
+<P><STRONG><a name="[175]"></a>__rt_lib_shutdown_fini</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry12b.o(.ARM.Collect$$$$0000000E))
 
-<P><STRONG><a name="[177]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[176]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000F))
 
-<P><STRONG><a name="[178]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$00000011))
+<P><STRONG><a name="[177]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$00000011))
 
 <P><STRONG><a name="[10]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
@@ -241,7 +241,7 @@ Global Symbols
 <P><STRONG><a name="[1a]"></a>WWDG_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[179]"></a>osal_CreateQueue</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, osal.o(.text), UNUSED)
+<P><STRONG><a name="[178]"></a>osal_CreateQueue</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, osal.o(.text), UNUSED)
 
 <P><STRONG><a name="[51]"></a>osal_TraverseQueue</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, osal.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dbg_printf
@@ -271,7 +271,7 @@ Global Symbols
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osal_EmptyQueue
 </UL>
 
-<P><STRONG><a name="[17a]"></a>osal_itoa</STRONG> (Thumb, 72 bytes, Stack size 44 bytes, osal.o(.text), UNUSED)
+<P><STRONG><a name="[179]"></a>osal_itoa</STRONG> (Thumb, 72 bytes, Stack size 44 bytes, osal.o(.text), UNUSED)
 
 <P><STRONG><a name="[59]"></a>osal_Str2Byte</STRONG> (Thumb, 82 bytes, Stack size 24 bytes, osal.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;toupper
@@ -281,7 +281,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 
-<P><STRONG><a name="[17b]"></a>portGetTickCnt</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, uwb.o(.text), UNUSED)
+<P><STRONG><a name="[17a]"></a>portGetTickCnt</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, uwb.o(.text), UNUSED)
 
 <P><STRONG><a name="[5e]"></a>sleep_ms</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, uwb.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset_DWIC
@@ -293,12 +293,12 @@ Global Symbols
 <P><STRONG><a name="[5d]"></a>Sleep</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, uwb.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sleep_ms
 </UL>
-<BR>[Called By]<UL><LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
-<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<BR>[Called By]<UL><LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms
+<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
 </UL>
 
-<P><STRONG><a name="[154]"></a>deca_usleep</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, uwb.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_run_pgfcal
+<P><STRONG><a name="[158]"></a>deca_usleep</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, uwb.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_run_pgfcal
 </UL>
 
 <P><STRONG><a name="[5f]"></a>reset_DWIC</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, uwb.o(.text))
@@ -344,7 +344,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sleep_ms
 </UL>
 
-<P><STRONG><a name="[133]"></a>EXTI_GetITEnStatus</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, uwb.o(.text))
+<P><STRONG><a name="[134]"></a>EXTI_GetITEnStatus</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, uwb.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decamutexon
 </UL>
 
@@ -362,7 +362,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decamutexon
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decamutexoff
 </UL>
-<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
+<BR>[Called By]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
 </UL>
 
 <P><STRONG><a name="[73]"></a>readfromspi_serial</STRONG> (Thumb, 96 bytes, Stack size 24 bytes, uwb.o(.text))
@@ -371,7 +371,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decamutexon
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decamutexoff
 </UL>
-<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
+<BR>[Called By]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
 </UL>
 
 <P><STRONG><a name="[74]"></a>process_deca_irq</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, uwb.o(.text))
@@ -383,9 +383,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[17c]"></a>disable_deca_irq</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, uwb.o(.text), UNUSED)
+<P><STRONG><a name="[17b]"></a>disable_deca_irq</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, uwb.o(.text), UNUSED)
 
-<P><STRONG><a name="[17d]"></a>enable_deca_irq</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, uwb.o(.text), UNUSED)
+<P><STRONG><a name="[17c]"></a>enable_deca_irq</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, uwb.o(.text), UNUSED)
 
 <P><STRONG><a name="[5a]"></a>toupper</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, toupper.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osal_Str2Byte
@@ -395,23 +395,22 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osal_Enqueue
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osal_Dequeue
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Channel5_IRQHandler
-<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_poll
 </UL>
 
 <P><STRONG><a name="[97]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Channel5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[17e]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
+<P><STRONG><a name="[17d]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
 <P><STRONG><a name="[77]"></a>__aeabi_memset</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset$wrapper
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 
-<P><STRONG><a name="[17f]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[17e]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
-<P><STRONG><a name="[180]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[17f]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[58]"></a>__aeabi_memclr</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
@@ -423,16 +422,16 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Channel5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[181]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[180]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[78]"></a>_memset$wrapper</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 
-<P><STRONG><a name="[144]"></a>__aeabi_fmul</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, fmul.o(.text))
+<P><STRONG><a name="[146]"></a>__aeabi_fmul</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, fmul.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_fmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<BR>[Called By]<UL><LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
 </UL>
 
 <P><STRONG><a name="[79]"></a>__aeabi_dadd</STRONG> (Thumb, 322 bytes, Stack size 48 bytes, dadd.o(.text), UNUSED)
@@ -441,9 +440,9 @@ Global Symbols
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_round
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
 </UL>
 
 <P><STRONG><a name="[7e]"></a>__aeabi_dsub</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dadd.o(.text), UNUSED)
@@ -457,13 +456,13 @@ Global Symbols
 <P><STRONG><a name="[80]"></a>__aeabi_dmul</STRONG> (Thumb, 228 bytes, Stack size 48 bytes, dmul.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<BR>[Called By]<UL><LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
 </UL>
 
 <P><STRONG><a name="[81]"></a>__aeabi_ddiv</STRONG> (Thumb, 222 bytes, Stack size 32 bytes, ddiv.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_round
 </UL>
-<BR>[Called By]<UL><LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<BR>[Called By]<UL><LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
 </UL>
 
 <P><STRONG><a name="[82]"></a>__aeabi_ui2f</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ffltui.o(.text))
@@ -471,32 +470,32 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<BR>[Called By]<UL><LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
 </UL>
 
-<P><STRONG><a name="[145]"></a>__aeabi_f2iz</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, ffixi.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<P><STRONG><a name="[147]"></a>__aeabi_f2iz</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, ffixi.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
 </UL>
 
 <P><STRONG><a name="[84]"></a>__aeabi_d2ulz</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, dfixul.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
-<BR>[Called By]<UL><LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<BR>[Called By]<UL><LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
 </UL>
 
-<P><STRONG><a name="[182]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
+<P><STRONG><a name="[181]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
 
-<P><STRONG><a name="[131]"></a>__aeabi_uidivmod</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[12f]"></a>__aeabi_uidivmod</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
 <P><STRONG><a name="[86]"></a>__aeabi_uldivmod</STRONG> (Thumb, 98 bytes, Stack size 40 bytes, uldiv.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
-<BR>[Called By]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
-<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
 </UL>
 
 <P><STRONG><a name="[7a]"></a>__aeabi_llsl</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
@@ -506,7 +505,7 @@ Global Symbols
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 
-<P><STRONG><a name="[183]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[182]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[85]"></a>__aeabi_llsr</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2ulz
@@ -514,17 +513,17 @@ Global Symbols
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 
-<P><STRONG><a name="[184]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[183]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
 
 <P><STRONG><a name="[7b]"></a>__aeabi_lasr</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, llsshr.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 
-<P><STRONG><a name="[185]"></a>_ll_sshift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llsshr.o(.text), UNUSED)
+<P><STRONG><a name="[184]"></a>_ll_sshift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llsshr.o(.text), UNUSED)
 
-<P><STRONG><a name="[186]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
+<P><STRONG><a name="[185]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
 
-<P><STRONG><a name="[187]"></a>_float_round</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, fepilogue.o(.text), UNUSED)
+<P><STRONG><a name="[186]"></a>_float_round</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, fepilogue.o(.text), UNUSED)
 
 <P><STRONG><a name="[83]"></a>_float_epilogue</STRONG> (Thumb, 92 bytes, Stack size 4 bytes, fepilogue.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = _float_epilogue
@@ -547,8 +546,8 @@ Global Symbols
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 
-<P><STRONG><a name="[12e]"></a>__aeabi_cdrcmple</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, cdrcmple.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<P><STRONG><a name="[12c]"></a>__aeabi_cdrcmple</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, cdrcmple.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
 </UL>
 
 <P><STRONG><a name="[50]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
@@ -557,11 +556,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[188]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[187]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
-<P><STRONG><a name="[189]"></a>__decompress</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
+<P><STRONG><a name="[188]"></a>__decompress</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
-<P><STRONG><a name="[18a]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
+<P><STRONG><a name="[189]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
 <P><STRONG><a name="[88]"></a>App_Module_Sys_Read_NVM</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, generic.o(i.App_Module_Sys_Read_NVM))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = App_Module_Sys_Read_NVM &rArr; HalRead_Flash
@@ -592,7 +591,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[106]"></a>ByteSwap</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, usb_regs.o(i.ByteSwap))
+<P><STRONG><a name="[104]"></a>ByteSwap</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, usb_regs.o(i.ByteSwap))
 <BR><BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup0_Process
 </UL>
 
@@ -603,18 +602,18 @@ Global Symbols
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Out0_Process
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;In0_Process
 </UL>
-<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
+<BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
 </UL>
 
-<P><STRONG><a name="[109]"></a>ClearDTOG_RX</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, usb_regs.o(i.ClearDTOG_RX))
+<P><STRONG><a name="[107]"></a>ClearDTOG_RX</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, usb_regs.o(i.ClearDTOG_RX))
 <BR><BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_ClearFeature
 </UL>
 
-<P><STRONG><a name="[107]"></a>ClearDTOG_TX</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, usb_regs.o(i.ClearDTOG_TX))
+<P><STRONG><a name="[105]"></a>ClearDTOG_TX</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, usb_regs.o(i.ClearDTOG_TX))
 <BR><BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_ClearFeature
 </UL>
 
-<P><STRONG><a name="[11f]"></a>Clear_Status_Out</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, usb_regs.o(i.Clear_Status_Out))
+<P><STRONG><a name="[11d]"></a>Clear_Status_Out</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, usb_regs.o(i.Clear_Status_Out))
 <BR><BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Virtual_Com_Port_Reset
 </UL>
 
@@ -648,7 +647,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[d0]"></a>DMA_Cmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f10x_dma.o(i.DMA_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_SendBuffer
+<BR><BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_SendBuffer
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalUASRT1_DMA_Config
 </UL>
 
@@ -703,7 +702,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[104]"></a>EXTI_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_exti.o(i.EXTI_ClearITPendingBit))
+<P><STRONG><a name="[102]"></a>EXTI_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_exti.o(i.EXTI_ClearITPendingBit))
 <BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_System
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBWakeUp_IRQHandler
 </UL>
@@ -736,20 +735,12 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalWrite_Flash
 </UL>
 
-<P><STRONG><a name="[15c]"></a>FLASH_PrefetchBufferCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_flash.o(i.FLASH_PrefetchBufferCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
 <P><STRONG><a name="[a8]"></a>FLASH_ProgramWord</STRONG> (Thumb, 76 bytes, Stack size 28 bytes, stm32f10x_flash.o(i.FLASH_ProgramWord))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = FLASH_ProgramWord &rArr; FLASH_WaitForLastOperation
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_WaitForLastOperation
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalWrite_Flash
-</UL>
-
-<P><STRONG><a name="[15d]"></a>FLASH_SetLatency</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f10x_flash.o(i.FLASH_SetLatency))
-<BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[d7]"></a>FLASH_Unlock</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f10x_flash.o(i.FLASH_Unlock))
@@ -784,24 +775,23 @@ Global Symbols
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalLedInit
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset_DWIC
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_init
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;screen_init
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_DW1000RSTnIRQ
 </UL>
 
 <P><STRONG><a name="[76]"></a>GPIO_ReadInputDataBit</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ReadInputDataBit))
 <BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_deca_irq
-<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button_pressed
+<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button
 </UL>
 
 <P><STRONG><a name="[61]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ResetBits))
 <BR><BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalLedSet
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Cable_Config
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset_DWIC
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_init
-<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_hex_byte
-<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_data
-<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_command
-<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_data
+<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;screen_init
+<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;c
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wakeup_device_with_io
 </UL>
 
@@ -809,11 +799,10 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hal_SPI1_Deca_Init
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalLedSet
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Cable_Config
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_init
-<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_hex_byte
-<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_data
-<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_command
-<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_data
+<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;screen_init
+<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;c
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wakeup_device_with_io
 </UL>
 
@@ -822,7 +811,7 @@ Global Symbols
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_SIL_Read
 </UL>
 
-<P><STRONG><a name="[118]"></a>GetEPRxCount</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_regs.o(i.GetEPRxCount))
+<P><STRONG><a name="[116]"></a>GetEPRxCount</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_regs.o(i.GetEPRxCount))
 <BR><BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_SIL_Read
 </UL>
 
@@ -848,7 +837,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hal_SPI1_Deca_Init
 </UL>
 
-<P><STRONG><a name="[10a]"></a>HalDelayTime_Counter</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, hal_timer.o(i.HalDelayTime_Counter))
+<P><STRONG><a name="[108]"></a>HalDelayTime_Counter</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, hal_timer.o(i.HalDelayTime_Counter))
 <BR><BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 
@@ -1208,8 +1197,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CTR_LP
 </UL>
 
-<P><STRONG><a name="[100]"></a>Leave_LowPowerMode</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, hw_config.o(i.Leave_LowPowerMode))
-<BR><BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume_Init
+<P><STRONG><a name="[fe]"></a>Leave_LowPowerMode</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, hw_config.o(i.Leave_LowPowerMode))
+<BR><BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume_Init
 </UL>
 
 <P><STRONG><a name="[13]"></a>MemManage_Handler</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f10x_it.o(i.MemManage_Handler))
@@ -1300,17 +1289,17 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Virtual_Com_Port_init
 </UL>
 
-<P><STRONG><a name="[103]"></a>QUEUE_PacketCreate</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, queue.o(i.QUEUE_PacketCreate))
+<P><STRONG><a name="[101]"></a>QUEUE_PacketCreate</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, queue.o(i.QUEUE_PacketCreate))
 <BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_System
 </UL>
 
-<P><STRONG><a name="[117]"></a>QUEUE_PacketIn</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, queue.o(i.QUEUE_PacketIn))
+<P><STRONG><a name="[115]"></a>QUEUE_PacketIn</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, queue.o(i.QUEUE_PacketIn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = QUEUE_PacketIn
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_RxWrite
 </UL>
 
-<P><STRONG><a name="[119]"></a>QUEUE_PacketOut</STRONG> (Thumb, 56 bytes, Stack size 12 bytes, queue.o(i.QUEUE_PacketOut))
+<P><STRONG><a name="[117]"></a>QUEUE_PacketOut</STRONG> (Thumb, 56 bytes, Stack size 12 bytes, queue.o(i.QUEUE_PacketOut))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = QUEUE_PacketOut
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_TxRead
@@ -1326,7 +1315,7 @@ Global Symbols
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hal_I2C_Sensor_Init
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hal_I2C_LCD_Init
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalTimerInit
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_init
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;screen_init
 </UL>
 
 <P><STRONG><a name="[e4]"></a>RCC_APB1PeriphResetCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB1PeriphResetCmd))
@@ -1343,15 +1332,11 @@ Global Symbols
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalUARTInit
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalLedInit
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_init
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;screen_init
 </UL>
 
-<P><STRONG><a name="[102]"></a>RCC_APB2PeriphResetCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphResetCmd))
+<P><STRONG><a name="[100]"></a>RCC_APB2PeriphResetCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphResetCmd))
 <BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_DeInit
-</UL>
-
-<P><STRONG><a name="[15a]"></a>RCC_DeInit</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_DeInit))
-<BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[e5]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 132 bytes, Stack size 12 bytes, stm32f10x_rcc.o(i.RCC_GetClocksFreq))
@@ -1361,72 +1346,27 @@ Global Symbols
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Init
 </UL>
 
-<P><STRONG><a name="[fd]"></a>RCC_GetFlagStatus</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_GetFlagStatus))
-<BR><BR>[Called By]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_WaitForHSEStartUp
-<LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[164]"></a>RCC_GetSYSCLKSource</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_GetSYSCLKSource))
-<BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[15e]"></a>RCC_HCLKConfig</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_HCLKConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[15b]"></a>RCC_HSEConfig</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_HSEConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[160]"></a>RCC_PCLK1Config</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_PCLK1Config))
-<BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[15f]"></a>RCC_PCLK2Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_PCLK2Config))
-<BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[162]"></a>RCC_PLLCmd</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_PLLCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[161]"></a>RCC_PLLConfig</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_PLLConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[163]"></a>RCC_SYSCLKConfig</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_SYSCLKConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[105]"></a>RCC_USBCLKConfig</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_USBCLKConfig))
+<P><STRONG><a name="[103]"></a>RCC_USBCLKConfig</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_USBCLKConfig))
 <BR><BR>[Called By]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_USBClock
 </UL>
 
-<P><STRONG><a name="[fc]"></a>RCC_WaitForHSEStartUp</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, stm32f10x_rcc.o(i.RCC_WaitForHSEStartUp))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = RCC_WaitForHSEStartUp
-</UL>
-<BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetFlagStatus
-</UL>
-<BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[fe]"></a>Resume</STRONG> (Thumb, 140 bytes, Stack size 24 bytes, usb_pwr.o(i.Resume))
+<P><STRONG><a name="[fc]"></a>Resume</STRONG> (Thumb, 140 bytes, Stack size 24 bytes, usb_pwr.o(i.Resume))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Resume &rArr; Resume_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume_Init
+<BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
+<BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
 </UL>
 
-<P><STRONG><a name="[ff]"></a>Resume_Init</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, usb_pwr.o(i.Resume_Init))
+<P><STRONG><a name="[fd]"></a>Resume_Init</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, usb_pwr.o(i.Resume_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Resume_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Leave_LowPowerMode
+<BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Leave_LowPowerMode
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume
+<BR>[Called By]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume
 </UL>
 
-<P><STRONG><a name="[101]"></a>SOF_Callback</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, usb_endp.o(i.SOF_Callback))
+<P><STRONG><a name="[ff]"></a>SOF_Callback</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, usb_endp.o(i.SOF_Callback))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = SOF_Callback &rArr; USB_TxRead &rArr; QUEUE_PacketOut
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UserToPMABufferCopy
@@ -1434,12 +1374,12 @@ Global Symbols
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxCount
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_TxRead
 </UL>
-<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
+<BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
 </UL>
 
 <P><STRONG><a name="[65]"></a>SPI_Cmd</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f10x_spi.o(i.SPI_Cmd))
 <BR><BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hal_SPI1_Deca_Init
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_init
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;screen_init
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_ConfigFastRate
 </UL>
 
@@ -1447,30 +1387,29 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SPI_I2S_DeInit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
-<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hal_SPI1_Deca_Init
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_init
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_ConfigFastRate
 </UL>
 
 <P><STRONG><a name="[16d]"></a>SPI_I2S_GetFlagStatus</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f10x_spi.o(i.SPI_I2S_GetFlagStatus))
-<BR><BR>[Called By]<UL><LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi2_byte
+<BR><BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi
 </UL>
 
 <P><STRONG><a name="[16f]"></a>SPI_I2S_ReceiveData</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_spi.o(i.SPI_I2S_ReceiveData))
-<BR><BR>[Called By]<UL><LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi2_byte
+<BR><BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi
 </UL>
 
 <P><STRONG><a name="[16e]"></a>SPI_I2S_SendData</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_spi.o(i.SPI_I2S_SendData))
-<BR><BR>[Called By]<UL><LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi2_byte
+<BR><BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi
 </UL>
 
 <P><STRONG><a name="[64]"></a>SPI_Init</STRONG> (Thumb, 56 bytes, Stack size 12 bytes, stm32f10x_spi.o(i.SPI_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SPI_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hal_SPI1_Deca_Init
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_init
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;screen_init
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_ConfigFastRate
 </UL>
 
@@ -1481,7 +1420,7 @@ Global Symbols
 <P><STRONG><a name="[16]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[11b]"></a>SetBTABLE</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, usb_regs.o(i.SetBTABLE))
+<P><STRONG><a name="[119]"></a>SetBTABLE</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, usb_regs.o(i.SetBTABLE))
 <BR><BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Virtual_Com_Port_Reset
 </UL>
 
@@ -1492,7 +1431,7 @@ Global Symbols
 <LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Virtual_Com_Port_Reset
 </UL>
 
-<P><STRONG><a name="[11d]"></a>SetEPRxAddr</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_regs.o(i.SetEPRxAddr))
+<P><STRONG><a name="[11b]"></a>SetEPRxAddr</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_regs.o(i.SetEPRxAddr))
 <BR><BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Virtual_Com_Port_Reset
 </UL>
 
@@ -1502,7 +1441,7 @@ Global Symbols
 <LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Virtual_Com_Port_Reset
 </UL>
 
-<P><STRONG><a name="[120]"></a>SetEPRxStatus</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, usb_regs.o(i.SetEPRxStatus))
+<P><STRONG><a name="[11e]"></a>SetEPRxStatus</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, usb_regs.o(i.SetEPRxStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Virtual_Com_Port_Reset
 </UL>
 
@@ -1511,28 +1450,28 @@ Global Symbols
 <LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EP3_OUT_Callback
 </UL>
 
-<P><STRONG><a name="[11e]"></a>SetEPTxAddr</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, usb_regs.o(i.SetEPTxAddr))
+<P><STRONG><a name="[11c]"></a>SetEPTxAddr</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, usb_regs.o(i.SetEPTxAddr))
 <BR><BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Virtual_Com_Port_Reset
 </UL>
 
 <P><STRONG><a name="[9c]"></a>SetEPTxCount</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usb_regs.o(i.SetEPTxCount))
 <BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DataStageOut
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DataStageIn
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SOF_Callback
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SOF_Callback
 <LI><a href="#[1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EP1_IN_Callback
 </UL>
 
-<P><STRONG><a name="[108]"></a>SetEPTxStatus</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, usb_regs.o(i.SetEPTxStatus))
+<P><STRONG><a name="[106]"></a>SetEPTxStatus</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, usb_regs.o(i.SetEPTxStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_ClearFeature
 <LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Virtual_Com_Port_Reset
 </UL>
 
 <P><STRONG><a name="[a2]"></a>SetEPTxValid</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, usb_regs.o(i.SetEPTxValid))
-<BR><BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SOF_Callback
+<BR><BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SOF_Callback
 <LI><a href="#[1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EP1_IN_Callback
 </UL>
 
-<P><STRONG><a name="[11c]"></a>SetEPType</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_regs.o(i.SetEPType))
+<P><STRONG><a name="[11a]"></a>SetEPType</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_regs.o(i.SetEPType))
 <BR><BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Virtual_Com_Port_Reset
 </UL>
 
@@ -1542,8 +1481,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_Init
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QUEUE_PacketCreate
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearITPendingBit
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QUEUE_PacketCreate
+<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearITPendingBit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalUsbInit
 </UL>
@@ -1552,7 +1491,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Set_USBClock
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_USBCLKConfig
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_USBCLKConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalUsbInit
 </UL>
@@ -1560,7 +1499,7 @@ Global Symbols
 <P><STRONG><a name="[90]"></a>Setup0_Process</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, usb_core.o(i.Setup0_Process))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = Setup0_Process &rArr; Data_Setup0 &rArr; DataStageIn &rArr; UserToPMABufferCopy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ByteSwap
+<BR>[Calls]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ByteSwap
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Post0_Process
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NoData_Setup0
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_Setup0
@@ -1571,9 +1510,9 @@ Global Symbols
 <P><STRONG><a name="[f5]"></a>Standard_ClearFeature</STRONG> (Thumb, 232 bytes, Stack size 24 bytes, usb_core.o(i.Standard_ClearFeature))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Standard_ClearFeature
 </UL>
-<BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearDTOG_TX
-<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearDTOG_RX
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxStatus
+<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearDTOG_TX
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearDTOG_RX
+<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxStatus
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxCount
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NoData_Setup0
@@ -1584,7 +1523,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usb_core.o(i.Data_Setup0)
 </UL>
-<P><STRONG><a name="[11a]"></a>Standard_GetDescriptorData</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_core.o(i.Standard_GetDescriptorData))
+<P><STRONG><a name="[118]"></a>Standard_GetDescriptorData</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_core.o(i.Standard_GetDescriptorData))
 <BR><BR>[Called By]<UL><LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Virtual_Com_Port_GetStringDescriptor
 <LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Virtual_Com_Port_GetDeviceDescriptor
 <LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Virtual_Com_Port_GetConfigDescriptor
@@ -1624,21 +1563,21 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NoData_Setup0
 </UL>
 
-<P><STRONG><a name="[116]"></a>Suspend</STRONG> (Thumb, 172 bytes, Stack size 24 bytes, usb_pwr.o(i.Suspend))
+<P><STRONG><a name="[114]"></a>Suspend</STRONG> (Thumb, 172 bytes, Stack size 24 bytes, usb_pwr.o(i.Suspend))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Suspend
 </UL>
-<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
+<BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
 </UL>
 
 <P><STRONG><a name="[19]"></a>SysTick_Handler</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f10x_it.o(i.SysTick_Handler))
-<BR><BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalDelayTime_Counter
+<BR><BR>[Calls]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalDelayTime_Counter
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[46]"></a>SystemInit</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SystemInit &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
 </UL>
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1649,12 +1588,12 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalIWDG_Feed
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalLed_Blink
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
-<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[10d]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ClearITPendingBit))
+<P><STRONG><a name="[10b]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ClearITPendingBit))
 <BR><BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
@@ -1662,7 +1601,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalTimerInit
 </UL>
 
-<P><STRONG><a name="[10c]"></a>TIM_GetITStatus</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_GetITStatus))
+<P><STRONG><a name="[10a]"></a>TIM_GetITStatus</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_GetITStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
@@ -1676,21 +1615,21 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalTimerInit
 </UL>
 
-<P><STRONG><a name="[10e]"></a>USART1_SendBuffer</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, hal_usart.o(i.USART1_SendBuffer))
+<P><STRONG><a name="[10c]"></a>USART1_SendBuffer</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, hal_usart.o(i.USART1_SendBuffer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
+<BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dbg_printf
 </UL>
 
-<P><STRONG><a name="[111]"></a>USART2SendByteData</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, hal_usart.o(i.USART2SendByteData))
+<P><STRONG><a name="[10f]"></a>USART2SendByteData</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, hal_usart.o(i.USART2SendByteData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = USART2SendByteData
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
+<BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
 </UL>
@@ -1698,10 +1637,10 @@ Global Symbols
 <P><STRONG><a name="[40]"></a>USART2_IRQHandler</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, hal_usart.o(i.USART2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = USART2_IRQHandler &rArr; USART_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
-<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ClearITPendingBit
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2SendByteData
+<BR>[Calls]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ClearITPendingBit
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2SendByteData
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
@@ -1709,7 +1648,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalUSART2_Init
 </UL>
 
-<P><STRONG><a name="[114]"></a>USART_ClearITPendingBit</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_ClearITPendingBit))
+<P><STRONG><a name="[112]"></a>USART_ClearITPendingBit</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_ClearITPendingBit))
 <BR><BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
 </UL>
 
@@ -1722,12 +1661,12 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalUASRT1_DMA_Config
 </UL>
 
-<P><STRONG><a name="[110]"></a>USART_GetFlagStatus</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_GetFlagStatus))
-<BR><BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_SendBuffer
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2SendByteData
+<P><STRONG><a name="[10e]"></a>USART_GetFlagStatus</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_GetFlagStatus))
+<BR><BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_SendBuffer
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2SendByteData
 </UL>
 
-<P><STRONG><a name="[112]"></a>USART_GetITStatus</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, stm32f10x_usart.o(i.USART_GetITStatus))
+<P><STRONG><a name="[110]"></a>USART_GetITStatus</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, stm32f10x_usart.o(i.USART_GetITStatus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = USART_GetITStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
@@ -1749,17 +1688,17 @@ Global Symbols
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalUARTInit
 </UL>
 
-<P><STRONG><a name="[113]"></a>USART_ReceiveData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_ReceiveData))
+<P><STRONG><a name="[111]"></a>USART_ReceiveData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_ReceiveData))
 <BR><BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[10f]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_SendData))
-<BR><BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_SendBuffer
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2SendByteData
+<P><STRONG><a name="[10d]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_SendData))
+<BR><BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_SendBuffer
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2SendByteData
 </UL>
 
 <P><STRONG><a name="[44]"></a>USBWakeUp_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, usb_it.o(i.USBWakeUp_IRQHandler))
-<BR><BR>[Calls]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearITPendingBit
+<BR><BR>[Calls]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearITPendingBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
@@ -1782,13 +1721,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalUsbInit
 </UL>
 
-<P><STRONG><a name="[115]"></a>USB_Istr</STRONG> (Thumb, 308 bytes, Stack size 56 bytes, usb_istr.o(i.USB_Istr))
+<P><STRONG><a name="[113]"></a>USB_Istr</STRONG> (Thumb, 308 bytes, Stack size 56 bytes, usb_istr.o(i.USB_Istr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = USB_Istr &rArr; CTR_LP &rArr; Setup0_Process &rArr; Data_Setup0 &rArr; DataStageIn &rArr; UserToPMABufferCopy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Suspend
-<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume
+<BR>[Calls]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Suspend
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CTR_LP
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SOF_Callback
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SOF_Callback
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_LP_CAN1_RX0_IRQHandler
 </UL>
@@ -1796,19 +1735,19 @@ Global Symbols
 <P><STRONG><a name="[2e]"></a>USB_LP_CAN1_RX0_IRQHandler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, usb_it.o(i.USB_LP_CAN1_RX0_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = USB_LP_CAN1_RX0_IRQHandler &rArr; USB_Istr &rArr; CTR_LP &rArr; Setup0_Process &rArr; Data_Setup0 &rArr; DataStageIn &rArr; UserToPMABufferCopy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
+<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[a4]"></a>USB_RxWrite</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, hw_config.o(i.USB_RxWrite))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = USB_RxWrite &rArr; QUEUE_PacketIn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QUEUE_PacketIn
+<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QUEUE_PacketIn
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EP3_OUT_Callback
 </UL>
 
-<P><STRONG><a name="[121]"></a>USB_SIL_Init</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_sil.o(i.USB_SIL_Init))
+<P><STRONG><a name="[11f]"></a>USB_SIL_Init</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_sil.o(i.USB_SIL_Init))
 <BR><BR>[Called By]<UL><LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Virtual_Com_Port_init
 </UL>
 
@@ -1817,7 +1756,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PMAToUserBufferCopy
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEPRxAddr
-<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEPRxCount
+<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEPRxCount
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EP3_OUT_Callback
 </UL>
@@ -1825,9 +1764,9 @@ Global Symbols
 <P><STRONG><a name="[a1]"></a>USB_TxRead</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, hw_config.o(i.USB_TxRead))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = USB_TxRead &rArr; QUEUE_PacketOut
 </UL>
-<BR>[Calls]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QUEUE_PacketOut
+<BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QUEUE_PacketOut
 </UL>
-<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SOF_Callback
+<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SOF_Callback
 <LI><a href="#[1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EP1_IN_Callback
 </UL>
 
@@ -1844,7 +1783,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = UserToPMABufferCopy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DataStageIn
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SOF_Callback
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SOF_Callback
 <LI><a href="#[1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EP1_IN_Callback
 </UL>
 
@@ -1854,12 +1793,12 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.data)
 </UL>
 <P><STRONG><a name="[c]"></a>Virtual_Com_Port_GetConfigDescriptor</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, usb_prop.o(i.Virtual_Com_Port_GetConfigDescriptor))
-<BR><BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
+<BR><BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.data)
 </UL>
 <P><STRONG><a name="[b]"></a>Virtual_Com_Port_GetDeviceDescriptor</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, usb_prop.o(i.Virtual_Com_Port_GetDeviceDescriptor))
-<BR><BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
+<BR><BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.data)
 </UL>
@@ -1867,7 +1806,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(i.Virtual_Com_Port_Data_Setup)
 </UL>
 <P><STRONG><a name="[d]"></a>Virtual_Com_Port_GetStringDescriptor</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_prop.o(i.Virtual_Com_Port_GetStringDescriptor))
-<BR><BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
+<BR><BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.data)
 </UL>
@@ -1880,15 +1819,15 @@ Global Symbols
 <P><STRONG><a name="[5]"></a>Virtual_Com_Port_Reset</STRONG> (Thumb, 208 bytes, Stack size 8 bytes, usb_prop.o(i.Virtual_Com_Port_Reset))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = Virtual_Com_Port_Reset &rArr; SetDeviceAddress
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPType
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxStatus
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxAddr
-<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxStatus
+<BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPType
+<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxStatus
+<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxAddr
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxStatus
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxCount
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxAddr
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxAddr
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDeviceAddress
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetBTABLE
-<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Clear_Status_Out
+<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetBTABLE
+<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Clear_Status_Out
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxValid
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.data)
@@ -1911,7 +1850,7 @@ Global Symbols
 <P><STRONG><a name="[4]"></a>Virtual_Com_Port_init</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, usb_prop.o(i.Virtual_Com_Port_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Virtual_Com_Port_init &rArr; Get_SerialNum &rArr; IntToUnicode
 </UL>
-<BR>[Calls]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_SIL_Init
+<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_SIL_Init
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerOn
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_SerialNum
 </UL>
@@ -1934,51 +1873,51 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Fill
 </UL>
 
-<P><STRONG><a name="[122]"></a>__0sprintf</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
+<P><STRONG><a name="[120]"></a>__0sprintf</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
-<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[18b]"></a>__1sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
+<P><STRONG><a name="[18a]"></a>__1sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
 
 <P><STRONG><a name="[5c]"></a>__2sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osal_Hex2Str
 </UL>
 
-<P><STRONG><a name="[18c]"></a>__c89sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
+<P><STRONG><a name="[18b]"></a>__c89sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
 
-<P><STRONG><a name="[18d]"></a>sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
+<P><STRONG><a name="[18c]"></a>sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
 
-<P><STRONG><a name="[124]"></a>__0vsnprintf</STRONG> (Thumb, 46 bytes, Stack size 24 bytes, printfa.o(i.__0vsnprintf), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[122]"></a>__0vsnprintf</STRONG> (Thumb, 46 bytes, Stack size 24 bytes, printfa.o(i.__0vsnprintf), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[18e]"></a>__1vsnprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0vsnprintf), UNUSED)
+<P><STRONG><a name="[18d]"></a>__1vsnprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0vsnprintf), UNUSED)
 
-<P><STRONG><a name="[18f]"></a>__2vsnprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0vsnprintf), UNUSED)
+<P><STRONG><a name="[18e]"></a>__2vsnprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0vsnprintf), UNUSED)
 
-<P><STRONG><a name="[190]"></a>__c89vsnprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0vsnprintf), UNUSED)
+<P><STRONG><a name="[18f]"></a>__c89vsnprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0vsnprintf), UNUSED)
 
-<P><STRONG><a name="[125]"></a>vsnprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0vsnprintf))
+<P><STRONG><a name="[123]"></a>vsnprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0vsnprintf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = vsnprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dbg_printf
 </UL>
 
-<P><STRONG><a name="[191]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[190]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[192]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[191]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[193]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[192]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
 <P><STRONG><a name="[52]"></a>_dbg_printf</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, hal_usart.o(i._dbg_printf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_SendBuffer
-<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vsnprintf
+<BR>[Calls]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_SendBuffer
+<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vsnprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osal_Dequeue
-<LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
+<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
 <LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UsageFault_Handler
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MemManage_Handler
 <LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HardFault_Handler
@@ -1990,118 +1929,117 @@ Global Symbols
 <P><STRONG><a name="[72]"></a>decamutexoff</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, deca_mutex.o(i.decamutexoff))
 <BR><BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writetospi_serial
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readfromspi_serial
-<LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_forcetrxoff
+<LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_forcetrxoff
 </UL>
 
 <P><STRONG><a name="[71]"></a>decamutexon</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, deca_mutex.o(i.decamutexon))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = decamutexon
 </UL>
-<BR>[Calls]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_GetITEnStatus
+<BR>[Calls]<UL><LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_GetITEnStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writetospi_serial
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readfromspi_serial
-<LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_forcetrxoff
+<LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_forcetrxoff
 </UL>
 
-<P><STRONG><a name="[135]"></a>dwt_calcbandwidthadj</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, deca_device.o(i.dwt_calcbandwidthadj))
+<P><STRONG><a name="[137]"></a>dwt_calcbandwidthadj</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, deca_device.o(i.dwt_calcbandwidthadj))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = dwt_calcbandwidthadj &rArr; dwt_enable_rf_tx &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_force_clocks
-<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_enable_rftx_blocks
-<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_enable_rf_tx
-<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_disable_rftx_blocks
-<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_disable_rf_tx
-<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
-<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify8bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_force_clocks
+<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_enable_rftx_blocks
+<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_enable_rf_tx
+<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_disable_rftx_blocks
+<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_disable_rf_tx
+<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
+<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
+<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify8bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configuretxrf
+<BR>[Called By]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configuretxrf
 </UL>
 
-<P><STRONG><a name="[13d]"></a>dwt_check_dev_id</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, deca_device.o(i.dwt_check_dev_id))
+<P><STRONG><a name="[13f]"></a>dwt_check_dev_id</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, deca_device.o(i.dwt_check_dev_id))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = dwt_check_dev_id &rArr; dwt_readdevid &rArr; dwt_read32bitoffsetreg &rArr; dwt_readfromdevice &rArr;  dwt_xfer3000 (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readdevid
+<BR>[Calls]<UL><LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readdevid
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_initialise
+<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_initialise
 </UL>
 
-<P><STRONG><a name="[13f]"></a>dwt_checkidlerc</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, deca_device.o(i.dwt_checkidlerc))
+<P><STRONG><a name="[141]"></a>dwt_checkidlerc</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, deca_device.o(i.dwt_checkidlerc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = dwt_checkidlerc &rArr; dwt_read16bitoffsetreg &rArr; dwt_readfromdevice &rArr;  dwt_xfer3000 (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read16bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read16bitoffsetreg
 </UL>
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[141]"></a>dwt_configmrxlut</STRONG> (Thumb, 164 bytes, Stack size 32 bytes, deca_device.o(i.dwt_configmrxlut))
+<P><STRONG><a name="[143]"></a>dwt_configmrxlut</STRONG> (Thumb, 164 bytes, Stack size 32 bytes, deca_device.o(i.dwt_configmrxlut))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = dwt_configmrxlut &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<BR>[Called By]<UL><LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
 </UL>
 
-<P><STRONG><a name="[143]"></a>dwt_configure</STRONG> (Thumb, 768 bytes, Stack size 40 bytes, deca_device.o(i.dwt_configure))
+<P><STRONG><a name="[145]"></a>dwt_configure</STRONG> (Thumb, 768 bytes, Stack size 40 bytes, deca_device.o(i.dwt_configure))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = dwt_configure &rArr; dwt_pgf_cal &rArr; dwt_run_pgfcal &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_sts_mnth
-<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dwt_kick_dgc_on_wakeup
-<LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_sts_mnth
+<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dwt_kick_dgc_on_wakeup
+<LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
-<LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
+<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sleep
-<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write8bitoffsetreg
-<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
-<LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setplenfine
-<LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setdwstate
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
-<LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_pgf_cal
-<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify8bitoffsetreg
-<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify32bitoffsetreg
-<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify16bitoffsetreg
-<LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configmrxlut
+<LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write8bitoffsetreg
+<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
+<LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setplenfine
+<LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setdwstate
+<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
+<LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_pgf_cal
+<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify8bitoffsetreg
+<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify32bitoffsetreg
+<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify16bitoffsetreg
+<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configmrxlut
 </UL>
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[14b]"></a>dwt_configuretxrf</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, deca_device.o(i.dwt_configuretxrf))
+<P><STRONG><a name="[14d]"></a>dwt_configuretxrf</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, deca_device.o(i.dwt_configuretxrf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = dwt_configuretxrf &rArr; dwt_calcbandwidthadj &rArr; dwt_enable_rf_tx &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
-<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write8bitoffsetreg
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
-<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write8bitoffsetreg
+<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
+<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
 </UL>
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[14c]"></a>dwt_forcetrxoff</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, deca_device.o(i.dwt_forcetrxoff))
+<P><STRONG><a name="[14e]"></a>dwt_forcetrxoff</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, deca_device.o(i.dwt_forcetrxoff))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = dwt_forcetrxoff &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
 <BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decamutexon
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decamutexoff
-<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
+<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
 </UL>
-<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_ranging
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_button
+<BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[159]"></a>dwt_generatecrc8</STRONG> (Thumb, 26 bytes, Stack size 12 bytes, deca_device.o(i.dwt_generatecrc8))
+<P><STRONG><a name="[163]"></a>dwt_generatecrc8</STRONG> (Thumb, 26 bytes, Stack size 12 bytes, deca_device.o(i.dwt_generatecrc8))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = dwt_generatecrc8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
+<BR>[Called By]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
 </UL>
 
-<P><STRONG><a name="[14e]"></a>dwt_initialise</STRONG> (Thumb, 236 bytes, Stack size 24 bytes, deca_device.o(i.dwt_initialise))
+<P><STRONG><a name="[150]"></a>dwt_initialise</STRONG> (Thumb, 236 bytes, Stack size 24 bytes, deca_device.o(i.dwt_initialise))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = dwt_initialise &rArr; _dwt_otpread &rArr; dwt_write16bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dwt_prog_ldo_and_bias_tune
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dwt_otpread
-<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write8bitoffsetreg
-<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_check_dev_id
+<BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dwt_prog_ldo_and_bias_tune
+<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dwt_otpread
+<LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write8bitoffsetreg
+<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_check_dev_id
 </UL>
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -2109,272 +2047,346 @@ Global Symbols
 <P><STRONG><a name="[75]"></a>dwt_isr</STRONG> (Thumb, 528 bytes, Stack size 32 bytes, deca_device.o(i.dwt_isr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = dwt_isr &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
-<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write8bitoffsetreg
-<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
-<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_signal_rx_buff_free
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
-<LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read16bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write8bitoffsetreg
+<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
+<LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_signal_rx_buff_free
+<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
+<LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read16bitoffsetreg
 </UL>
 <BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_deca_irq
 </UL>
 
-<P><STRONG><a name="[12c]"></a>dwt_modify16bitoffsetreg</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, deca_device.o(i.dwt_modify16bitoffsetreg))
+<P><STRONG><a name="[12a]"></a>dwt_modify16bitoffsetreg</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, deca_device.o(i.dwt_modify16bitoffsetreg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = dwt_modify16bitoffsetreg &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
+<BR>[Calls]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
 </UL>
-<BR>[Called By]<UL><LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dwt_prog_ldo_and_bias_tune
-<LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_pgf_cal
-<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<BR>[Called By]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dwt_prog_ldo_and_bias_tune
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setrxtimeout
+<LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_pgf_cal
+<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
 </UL>
 
-<P><STRONG><a name="[127]"></a>dwt_modify32bitoffsetreg</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, deca_device.o(i.dwt_modify32bitoffsetreg))
+<P><STRONG><a name="[125]"></a>dwt_modify32bitoffsetreg</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, deca_device.o(i.dwt_modify32bitoffsetreg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = dwt_modify32bitoffsetreg &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
+<BR>[Calls]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
 </UL>
-<BR>[Called By]<UL><LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_enable_rftx_blocks
-<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_enable_rf_tx
-<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dwt_kick_dgc_on_wakeup
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxfctrl
-<LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setdwstate
-<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<BR>[Called By]<UL><LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_enable_rftx_blocks
+<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_enable_rf_tx
+<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dwt_kick_dgc_on_wakeup
+<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxfctrl
+<LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setdwstate
+<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
 </UL>
 
-<P><STRONG><a name="[139]"></a>dwt_modify8bitoffsetreg</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, deca_device.o(i.dwt_modify8bitoffsetreg))
+<P><STRONG><a name="[13b]"></a>dwt_modify8bitoffsetreg</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, deca_device.o(i.dwt_modify8bitoffsetreg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = dwt_modify8bitoffsetreg &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
+<BR>[Calls]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
 </UL>
-<BR>[Called By]<UL><LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setdwstate
-<LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_run_pgfcal
-<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
-<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
+<BR>[Called By]<UL><LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setdwstate
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_run_pgfcal
+<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
 </UL>
 
-<P><STRONG><a name="[14a]"></a>dwt_pgf_cal</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, deca_device.o(i.dwt_pgf_cal))
+<P><STRONG><a name="[14c]"></a>dwt_pgf_cal</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, deca_device.o(i.dwt_pgf_cal))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = dwt_pgf_cal &rArr; dwt_run_pgfcal &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_run_pgfcal
-<LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read16bitoffsetreg
-<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify16bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_run_pgfcal
+<LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read16bitoffsetreg
+<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify16bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<BR>[Called By]<UL><LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
 </UL>
 
-<P><STRONG><a name="[140]"></a>dwt_read16bitoffsetreg</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, deca_device.o(i.dwt_read16bitoffsetreg))
+<P><STRONG><a name="[142]"></a>dwt_read16bitoffsetreg</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, deca_device.o(i.dwt_read16bitoffsetreg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = dwt_read16bitoffsetreg &rArr; dwt_readfromdevice &rArr;  dwt_xfer3000 (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readfromdevice
+<BR>[Calls]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readfromdevice
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_pgf_cal
+<BR>[Called By]<UL><LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_pgf_cal
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_isr
-<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_checkidlerc
+<LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_checkidlerc
 </UL>
 
-<P><STRONG><a name="[12a]"></a>dwt_read32bitoffsetreg</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, deca_device.o(i.dwt_read32bitoffsetreg))
+<P><STRONG><a name="[128]"></a>dwt_read32bitoffsetreg</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, deca_device.o(i.dwt_read32bitoffsetreg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = dwt_read32bitoffsetreg &rArr; dwt_readfromdevice &rArr;  dwt_xfer3000 (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readfromdevice
+<BR>[Calls]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readfromdevice
 </UL>
-<BR>[Called By]<UL><LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dwt_otpread
-<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_ranging
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_button
-<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_poll
-<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_starttx
-<LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_run_pgfcal
-<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readdevid
+<BR>[Called By]<UL><LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dwt_otpread
+<LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
+<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;poll_display
+<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_starttx
+<LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setrxaftertxdelay
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_run_pgfcal
+<LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readdevid
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_isr
-<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
 </UL>
 
-<P><STRONG><a name="[13a]"></a>dwt_read8bitoffsetreg</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, deca_device.o(i.dwt_read8bitoffsetreg))
+<P><STRONG><a name="[13c]"></a>dwt_read8bitoffsetreg</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, deca_device.o(i.dwt_read8bitoffsetreg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = dwt_read8bitoffsetreg &rArr; dwt_readfromdevice &rArr;  dwt_xfer3000 (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readfromdevice
+<BR>[Calls]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readfromdevice
 </UL>
-<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxfctrl
-<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_starttx
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_rxenable
-<LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_run_pgfcal
+<BR>[Called By]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
+<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxfctrl
+<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_starttx
+<LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_rxenable
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_run_pgfcal
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_isr
-<LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configuretxrf
-<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
-<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
+<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configuretxrf
+<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
 </UL>
 
-<P><STRONG><a name="[13e]"></a>dwt_readdevid</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, deca_device.o(i.dwt_readdevid))
+<P><STRONG><a name="[140]"></a>dwt_readdevid</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, deca_device.o(i.dwt_readdevid))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = dwt_readdevid &rArr; dwt_read32bitoffsetreg &rArr; dwt_readfromdevice &rArr;  dwt_xfer3000 (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_check_dev_id
+<BR>[Called By]<UL><LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_check_dev_id
 </UL>
 
-<P><STRONG><a name="[152]"></a>dwt_readfromdevice</STRONG> (Thumb, 12 bytes, Stack size 16 bytes, deca_device.o(i.dwt_readfromdevice))
+<P><STRONG><a name="[154]"></a>dwt_readfromdevice</STRONG> (Thumb, 12 bytes, Stack size 16 bytes, deca_device.o(i.dwt_readfromdevice))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16 + In Cycle
 <LI>Call Chain = dwt_readfromdevice &rArr;  dwt_xfer3000 (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
+<BR>[Calls]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
 </UL>
-<BR>[Called By]<UL><LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readrxdata
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
-<LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read16bitoffsetreg
+<BR>[Called By]<UL><LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readtxtimestamp
+<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readrxtimestamp
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readrxdata
+<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
+<LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read16bitoffsetreg
 </UL>
 
-<P><STRONG><a name="[153]"></a>dwt_readrxdata</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, deca_device.o(i.dwt_readrxdata))
+<P><STRONG><a name="[155]"></a>dwt_readrxdata</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, deca_device.o(i.dwt_readrxdata))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = dwt_readrxdata &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readfromdevice
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readfromdevice
 </UL>
-<BR>[Called By]<UL><LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_poll
+<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
+<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;poll_display
 </UL>
 
-<P><STRONG><a name="[151]"></a>dwt_run_pgfcal</STRONG> (Thumb, 154 bytes, Stack size 32 bytes, deca_device.o(i.dwt_run_pgfcal))
+<P><STRONG><a name="[156]"></a>dwt_readrxtimestamp</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, deca_device.o(i.dwt_readrxtimestamp))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = dwt_readrxtimestamp &rArr; dwt_readfromdevice &rArr;  dwt_xfer3000 (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readfromdevice
+</UL>
+<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
+</UL>
+
+<P><STRONG><a name="[157]"></a>dwt_readtxtimestamp</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, deca_device.o(i.dwt_readtxtimestamp))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = dwt_readtxtimestamp &rArr; dwt_readfromdevice &rArr;  dwt_xfer3000 (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readfromdevice
+</UL>
+<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
+</UL>
+
+<P><STRONG><a name="[153]"></a>dwt_run_pgfcal</STRONG> (Thumb, 154 bytes, Stack size 32 bytes, deca_device.o(i.dwt_run_pgfcal))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = dwt_run_pgfcal &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
-<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;deca_usleep
-<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write8bitoffsetreg
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
-<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify8bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;deca_usleep
+<LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write8bitoffsetreg
+<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
+<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify8bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_pgf_cal
+<BR>[Called By]<UL><LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_pgf_cal
 </UL>
 
-<P><STRONG><a name="[155]"></a>dwt_rxenable</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, deca_device.o(i.dwt_rxenable))
+<P><STRONG><a name="[159]"></a>dwt_rxenable</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, deca_device.o(i.dwt_rxenable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = dwt_rxenable &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
+<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
 </UL>
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_ranging
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_button
-<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_poll
 </UL>
 
-<P><STRONG><a name="[149]"></a>dwt_setdwstate</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, deca_device.o(i.dwt_setdwstate))
+<P><STRONG><a name="[15a]"></a>dwt_setdelayedtrxtime</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, deca_device.o(i.dwt_setdelayedtrxtime))
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = dwt_setdelayedtrxtime &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
+</UL>
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+</UL>
+<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
+</UL>
+
+<P><STRONG><a name="[14b]"></a>dwt_setdwstate</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, deca_device.o(i.dwt_setdwstate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = dwt_setdwstate &rArr; dwt_force_clocks &rArr; dwt_write16bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_force_clocks
-<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify8bitoffsetreg
-<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify32bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_force_clocks
+<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify8bitoffsetreg
+<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify32bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<BR>[Called By]<UL><LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
 </UL>
 
-<P><STRONG><a name="[148]"></a>dwt_setplenfine</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, deca_device.o(i.dwt_setplenfine))
+<P><STRONG><a name="[14a]"></a>dwt_setplenfine</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, deca_device.o(i.dwt_setplenfine))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = dwt_setplenfine &rArr; dwt_write8bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write8bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write8bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<BR>[Called By]<UL><LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
 </UL>
 
-<P><STRONG><a name="[14f]"></a>dwt_signal_rx_buff_free</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, deca_device.o(i.dwt_signal_rx_buff_free))
+<P><STRONG><a name="[15b]"></a>dwt_setpreambledetecttimeout</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, deca_device.o(i.dwt_setpreambledetecttimeout))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = dwt_setpreambledetecttimeout &rArr; dwt_write16bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
+</UL>
+<BR>[Calls]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
+</UL>
+<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
+</UL>
+
+<P><STRONG><a name="[15c]"></a>dwt_setrxaftertxdelay</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, deca_device.o(i.dwt_setrxaftertxdelay))
+<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = dwt_setrxaftertxdelay &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
+</UL>
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
+</UL>
+<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
+</UL>
+
+<P><STRONG><a name="[15d]"></a>dwt_setrxantennadelay</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, deca_device.o(i.dwt_setrxantennadelay))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = dwt_setrxantennadelay &rArr; dwt_write16bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
+</UL>
+<BR>[Calls]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
+</UL>
+<BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[15e]"></a>dwt_setrxtimeout</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, deca_device.o(i.dwt_setrxtimeout))
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = dwt_setrxtimeout &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
+</UL>
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify16bitoffsetreg
+</UL>
+<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
+</UL>
+
+<P><STRONG><a name="[15f]"></a>dwt_settxantennadelay</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, deca_device.o(i.dwt_settxantennadelay))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = dwt_settxantennadelay &rArr; dwt_write16bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
+</UL>
+<BR>[Calls]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
+</UL>
+<BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[151]"></a>dwt_signal_rx_buff_free</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, deca_device.o(i.dwt_signal_rx_buff_free))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = dwt_signal_rx_buff_free &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
+<BR>[Calls]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_isr
 </UL>
 
-<P><STRONG><a name="[156]"></a>dwt_starttx</STRONG> (Thumb, 216 bytes, Stack size 16 bytes, deca_device.o(i.dwt_starttx))
+<P><STRONG><a name="[160]"></a>dwt_starttx</STRONG> (Thumb, 216 bytes, Stack size 16 bytes, deca_device.o(i.dwt_starttx))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = dwt_starttx &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
+<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_ranging
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_button
+<BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
 </UL>
 
-<P><STRONG><a name="[129]"></a>dwt_write16bitoffsetreg</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, deca_device.o(i.dwt_write16bitoffsetreg))
+<P><STRONG><a name="[127]"></a>dwt_write16bitoffsetreg</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, deca_device.o(i.dwt_write16bitoffsetreg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = dwt_write16bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
+<BR>[Calls]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
 </UL>
-<BR>[Called By]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_force_clocks
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dwt_otpread
+<BR>[Called By]<UL><LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_force_clocks
+<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dwt_otpread
+<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_settxantennadelay
+<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setrxantennadelay
+<LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setpreambledetecttimeout
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_isr
-<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
-<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
+<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
 </UL>
 
-<P><STRONG><a name="[142]"></a>dwt_write32bitoffsetreg</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, deca_device.o(i.dwt_write32bitoffsetreg))
+<P><STRONG><a name="[144]"></a>dwt_write32bitoffsetreg</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, deca_device.o(i.dwt_write32bitoffsetreg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
+<BR>[Calls]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
 </UL>
-<BR>[Called By]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_enable_rf_tx
-<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_disable_rftx_blocks
-<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_disable_rf_tx
-<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_ranging
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_button
-<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_poll
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxdata
-<LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_run_pgfcal
-<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readrxdata
+<BR>[Called By]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_enable_rf_tx
+<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_disable_rftx_blocks
+<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_disable_rf_tx
+<LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
+<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;poll_display
+<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxdata
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setrxtimeout
+<LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setrxaftertxdelay
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setdelayedtrxtime
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_run_pgfcal
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readrxdata
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_isr
-<LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configuretxrf
-<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
-<LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configmrxlut
+<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configuretxrf
+<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configmrxlut
 </UL>
 
-<P><STRONG><a name="[146]"></a>dwt_write8bitoffsetreg</STRONG> (Thumb, 14 bytes, Stack size 16 bytes, deca_device.o(i.dwt_write8bitoffsetreg))
+<P><STRONG><a name="[148]"></a>dwt_write8bitoffsetreg</STRONG> (Thumb, 14 bytes, Stack size 16 bytes, deca_device.o(i.dwt_write8bitoffsetreg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = dwt_write8bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
+<BR>[Calls]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
 </UL>
-<BR>[Called By]<UL><LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setplenfine
-<LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_run_pgfcal
+<BR>[Called By]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setplenfine
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_run_pgfcal
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_isr
-<LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_initialise
-<LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configuretxrf
-<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_initialise
+<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configuretxrf
+<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
 </UL>
 
-<P><STRONG><a name="[14d]"></a>dwt_writetodevice</STRONG> (Thumb, 14 bytes, Stack size 16 bytes, deca_device.o(i.dwt_writetodevice))
+<P><STRONG><a name="[14f]"></a>dwt_writetodevice</STRONG> (Thumb, 14 bytes, Stack size 16 bytes, deca_device.o(i.dwt_writetodevice))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
+<BR>[Calls]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_xfer3000
 </UL>
-<BR>[Called By]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxdata
-<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write8bitoffsetreg
-<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
-<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_starttx
-<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_signal_rx_buff_free
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_rxenable
-<LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_forcetrxoff
+<BR>[Called By]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxdata
+<LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write8bitoffsetreg
+<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
+<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_starttx
+<LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_signal_rx_buff_free
+<LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_rxenable
+<LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_forcetrxoff
 </UL>
 
-<P><STRONG><a name="[157]"></a>dwt_writetxdata</STRONG> (Thumb, 78 bytes, Stack size 16 bytes, deca_device.o(i.dwt_writetxdata))
+<P><STRONG><a name="[161]"></a>dwt_writetxdata</STRONG> (Thumb, 78 bytes, Stack size 16 bytes, deca_device.o(i.dwt_writetxdata))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = dwt_writetxdata &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
-<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
 </UL>
-<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_ranging
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_button
+<BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
 </UL>
 
-<P><STRONG><a name="[158]"></a>dwt_writetxfctrl</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, deca_device.o(i.dwt_writetxfctrl))
+<P><STRONG><a name="[162]"></a>dwt_writetxfctrl</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, deca_device.o(i.dwt_writetxfctrl))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = dwt_writetxfctrl &rArr; dwt_modify32bitoffsetreg &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
-<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify32bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
+<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify32bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_ranging
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_button
+<BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
 </UL>
 
 <P><STRONG><a name="[b1]"></a>lis2dh12_iic_write_byte</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, lis2dh12.o(i.lis2dh12_iic_write_byte))
@@ -2385,40 +2397,35 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalIis2dh12Init
 </UL>
 
-<P><STRONG><a name="[45]"></a>main</STRONG> (Thumb, 290 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 280<LI>Call Chain = main &rArr; radio_poll &rArr; show_data &rArr; tft_hex_byte &rArr; tft_window &rArr; tft_data &rArr; spi2_byte
+<P><STRONG><a name="[45]"></a>main</STRONG> (Thumb, 246 bytes, Stack size 24 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 304<LI>Call Chain = main &rArr; poll_display &rArr; show &rArr; decimal &rArr; px &rArr; win &rArr; d &rArr; spi
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hal_Driver_Init
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset_DWIC
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;port_set_dw_ic_spi_fastrate
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_WaitForHSEStartUp
-<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_SYSCLKConfig
-<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_PLLConfig
-<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_PLLCmd
-<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_PCLK2Config
-<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_PCLK1Config
-<LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_HSEConfig
-<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_HCLKConfig
-<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetSYSCLKSource
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetFlagStatus
-<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_DeInit
-<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_SetLatency
-<LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_PrefetchBufferCmd
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_init
-<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_data
-<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_ranging
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_button
-<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_poll
-<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
-<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button_pressed
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_rxenable
-<LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_initialise
-<LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configuretxrf
-<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
-<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_checkidlerc
+<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;screen_init
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
+<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;poll_display
+<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms
+<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hdr
+<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button
+<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxfctrl
+<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxdata
+<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_starttx
+<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_settxantennadelay
+<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setrxantennadelay
+<LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_rxenable
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
+<LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_initialise
+<LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_forcetrxoff
+<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configuretxrf
+<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_checkidlerc
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL><P>
@@ -2431,7 +2438,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Channel5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[10b]"></a>SetSysClockTo72</STRONG> (Thumb, 160 bytes, Stack size 12 bytes, system_stm32f10x.o(i.SetSysClockTo72))
+<P><STRONG><a name="[109]"></a>SetSysClockTo72</STRONG> (Thumb, 160 bytes, Stack size 12 bytes, system_stm32f10x.o(i.SetSysClockTo72))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetSysClockTo72
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
@@ -2457,91 +2464,91 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalUARTInit
 </UL>
 
-<P><STRONG><a name="[126]"></a>_dwt_kick_dgc_on_wakeup</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, deca_device.o(i._dwt_kick_dgc_on_wakeup))
+<P><STRONG><a name="[124]"></a>_dwt_kick_dgc_on_wakeup</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, deca_device.o(i._dwt_kick_dgc_on_wakeup))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = _dwt_kick_dgc_on_wakeup &rArr; dwt_modify32bitoffsetreg &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify32bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify32bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<BR>[Called By]<UL><LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
 </UL>
 
-<P><STRONG><a name="[128]"></a>_dwt_otpread</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, deca_device.o(i._dwt_otpread))
+<P><STRONG><a name="[126]"></a>_dwt_otpread</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, deca_device.o(i._dwt_otpread))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = _dwt_otpread &rArr; dwt_write16bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_initialise
+<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_initialise
 </UL>
 
-<P><STRONG><a name="[12b]"></a>_dwt_prog_ldo_and_bias_tune</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, deca_device.o(i._dwt_prog_ldo_and_bias_tune))
+<P><STRONG><a name="[129]"></a>_dwt_prog_ldo_and_bias_tune</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, deca_device.o(i._dwt_prog_ldo_and_bias_tune))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = _dwt_prog_ldo_and_bias_tune &rArr; dwt_modify16bitoffsetreg &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify16bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify16bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_initialise
+<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_initialise
 </UL>
 
-<P><STRONG><a name="[13c]"></a>dwt_disable_rf_tx</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, deca_device.o(i.dwt_disable_rf_tx))
+<P><STRONG><a name="[13e]"></a>dwt_disable_rf_tx</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, deca_device.o(i.dwt_disable_rf_tx))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = dwt_disable_rf_tx &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
+<BR>[Called By]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
 </UL>
 
-<P><STRONG><a name="[13b]"></a>dwt_disable_rftx_blocks</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, deca_device.o(i.dwt_disable_rftx_blocks))
+<P><STRONG><a name="[13d]"></a>dwt_disable_rftx_blocks</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, deca_device.o(i.dwt_disable_rftx_blocks))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = dwt_disable_rftx_blocks &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
+<BR>[Called By]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
 </UL>
 
-<P><STRONG><a name="[137]"></a>dwt_enable_rf_tx</STRONG> (Thumb, 88 bytes, Stack size 24 bytes, deca_device.o(i.dwt_enable_rf_tx))
+<P><STRONG><a name="[139]"></a>dwt_enable_rf_tx</STRONG> (Thumb, 88 bytes, Stack size 24 bytes, deca_device.o(i.dwt_enable_rf_tx))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = dwt_enable_rf_tx &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
-<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify32bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify32bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
+<BR>[Called By]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
 </UL>
 
-<P><STRONG><a name="[138]"></a>dwt_enable_rftx_blocks</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, deca_device.o(i.dwt_enable_rftx_blocks))
+<P><STRONG><a name="[13a]"></a>dwt_enable_rftx_blocks</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, deca_device.o(i.dwt_enable_rftx_blocks))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = dwt_enable_rftx_blocks &rArr; dwt_modify32bitoffsetreg &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify32bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify32bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
+<BR>[Called By]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
 </UL>
 
-<P><STRONG><a name="[136]"></a>dwt_force_clocks</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, deca_device.o(i.dwt_force_clocks))
+<P><STRONG><a name="[138]"></a>dwt_force_clocks</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, deca_device.o(i.dwt_force_clocks))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = dwt_force_clocks &rArr; dwt_write16bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
+<BR>[Calls]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write16bitoffsetreg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setdwstate
-<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
+<BR>[Called By]<UL><LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setdwstate
+<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_calcbandwidthadj
 </UL>
 
-<P><STRONG><a name="[150]"></a>dwt_xfer3000</STRONG> (Thumb, 296 bytes, Stack size 32 bytes, deca_device.o(i.dwt_xfer3000))
+<P><STRONG><a name="[152]"></a>dwt_xfer3000</STRONG> (Thumb, 296 bytes, Stack size 32 bytes, deca_device.o(i.dwt_xfer3000))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
 <BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dbg_printf
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writetospi_serial
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readfromspi_serial
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
-<LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_generatecrc8
+<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read8bitoffsetreg
+<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_generatecrc8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readfromdevice
-<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify8bitoffsetreg
-<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify32bitoffsetreg
-<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify16bitoffsetreg
+<BR>[Called By]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetodevice
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readfromdevice
+<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify8bitoffsetreg
+<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify32bitoffsetreg
+<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_modify16bitoffsetreg
 </UL>
 
-<P><STRONG><a name="[147]"></a>get_sts_mnth</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, deca_device.o(i.get_sts_mnth))
-<BR><BR>[Called By]<UL><LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
+<P><STRONG><a name="[149]"></a>get_sts_mnth</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, deca_device.o(i.get_sts_mnth))
+<BR><BR>[Called By]<UL><LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_configure
 </UL>
 
 <P><STRONG><a name="[ab]"></a>IntToUnicode</STRONG> (Thumb, 54 bytes, Stack size 20 bytes, hw_config.o(i.IntToUnicode))
@@ -2591,151 +2598,173 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup0_Process
 </UL>
 
-<P><STRONG><a name="[132]"></a>button_pressed</STRONG> (Thumb, 126 bytes, Stack size 32 bytes, main.o(i.button_pressed))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = button_pressed
+<P><STRONG><a name="[130]"></a>button</STRONG> (Thumb, 96 bytes, Stack size 32 bytes, main.o(i.button))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = button
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[134]"></a>delay_ms</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(i.delay_ms))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = delay_ms
+<P><STRONG><a name="[131]"></a>c</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, main.o(i.c))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = c &rArr; spi
+</UL>
+<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi
+</UL>
+<BR>[Called By]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;win
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;screen_init
+</UL>
+
+<P><STRONG><a name="[133]"></a>d</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, main.o(i.d))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = d &rArr; spi
+</UL>
+<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi
+</UL>
+<BR>[Called By]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;win
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;screen_init
+<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;px
+</UL>
+
+<P><STRONG><a name="[135]"></a>decimal</STRONG> (Thumb, 190 bytes, Stack size 56 bytes, main.o(i.decimal))
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = decimal &rArr; px &rArr; win &rArr; d &rArr; spi
+</UL>
+<BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;px
+</UL>
+<BR>[Called By]<UL><LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show
+</UL>
+
+<P><STRONG><a name="[168]"></a>hdr</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, main.o(i.hdr))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = hdr
+</UL>
+<BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
+</UL>
+
+<P><STRONG><a name="[170]"></a>letter</STRONG> (Thumb, 112 bytes, Stack size 0 bytes, main.o(i.letter))
+<BR><BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;words
+</UL>
+
+<P><STRONG><a name="[166]"></a>ms</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(i.ms))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sleep
 </UL>
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_init
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;screen_init
 </UL>
 
-<P><STRONG><a name="[167]"></a>radio_poll</STRONG> (Thumb, 128 bytes, Stack size 136 bytes, main.o(i.radio_poll))
-<BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = radio_poll &rArr; show_data &rArr; tft_hex_byte &rArr; tft_window &rArr; tft_data &rArr; spi2_byte
+<P><STRONG><a name="[167]"></a>poll_display</STRONG> (Thumb, 110 bytes, Stack size 136 bytes, main.o(i.poll_display))
+<BR><BR>[Stack]<UL><LI>Max Depth = 280<LI>Call Chain = poll_display &rArr; show &rArr; decimal &rArr; px &rArr; win &rArr; d &rArr; spi
 </UL>
-<BR>[Calls]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
-<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_data
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_rxenable
-<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readrxdata
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readrxdata
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
 </UL>
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[168]"></a>radio_send_button</STRONG> (Thumb, 162 bytes, Stack size 40 bytes, main.o(i.radio_send_button))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = radio_send_button &rArr; show_data &rArr; tft_hex_byte &rArr; tft_window &rArr; tft_data &rArr; spi2_byte
+<P><STRONG><a name="[16b]"></a>put</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, main.o(i.put))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = put
 </UL>
-<BR>[Calls]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
-<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_data
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxfctrl
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxdata
-<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_starttx
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_rxenable
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
-<LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_forcetrxoff
+<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
+</UL>
+
+<P><STRONG><a name="[136]"></a>px</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, main.o(i.px))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = px &rArr; win &rArr; d &rArr; spi
+</UL>
+<BR>[Calls]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;win
+<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d
+</UL>
+<BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;words
+<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decimal
+</UL>
+
+<P><STRONG><a name="[169]"></a>range</STRONG> (Thumb, 406 bytes, Stack size 96 bytes, main.o(i.range))
+<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = range &rArr; dwt_writetxdata &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
+</UL>
+<BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
+<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put
+<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hdr
+<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxfctrl
+<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxdata
+<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_starttx
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setrxtimeout
+<LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setrxaftertxdelay
+<LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setpreambledetecttimeout
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setdelayedtrxtime
+<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readtxtimestamp
+<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readrxtimestamp
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_readrxdata
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
 </UL>
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[169]"></a>radio_send_ranging</STRONG> (Thumb, 132 bytes, Stack size 24 bytes, main.o(i.radio_send_ranging))
-<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = radio_send_ranging &rArr; dwt_writetxdata &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
-</UL>
-<BR>[Calls]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_write32bitoffsetreg
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxfctrl
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_writetxdata
-<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_starttx
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_rxenable
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_read32bitoffsetreg
-<LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_forcetrxoff
-</UL>
-<BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[166]"></a>show_data</STRONG> (Thumb, 144 bytes, Stack size 24 bytes, main.o(i.show_data))
-<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = show_data &rArr; tft_hex_byte &rArr; tft_window &rArr; tft_data &rArr; spi2_byte
-</UL>
-<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_window
-<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_hex_byte
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi2_byte
-</UL>
-<BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_send_button
-<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_poll
-</UL>
-
-<P><STRONG><a name="[16b]"></a>spi2_byte</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, main.o(i.spi2_byte))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = spi2_byte
-</UL>
-<BR>[Calls]<UL><LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_SendData
-<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_ReceiveData
-<LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_GetFlagStatus
-</UL>
-<BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_hex_byte
-<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_data
-<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_command
-<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_data
-</UL>
-
-<P><STRONG><a name="[170]"></a>tft_command</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, main.o(i.tft_command))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = tft_command &rArr; spi2_byte
-</UL>
-<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi2_byte
-</UL>
-<BR>[Called By]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_window
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_init
-</UL>
-
-<P><STRONG><a name="[171]"></a>tft_data</STRONG> (Thumb, 58 bytes, Stack size 24 bytes, main.o(i.tft_data))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = tft_data &rArr; spi2_byte
-</UL>
-<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi2_byte
-</UL>
-<BR>[Called By]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_window
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_init
-</UL>
-
-<P><STRONG><a name="[16c]"></a>tft_hex_byte</STRONG> (Thumb, 214 bytes, Stack size 56 bytes, main.o(i.tft_hex_byte))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = tft_hex_byte &rArr; tft_window &rArr; tft_data &rArr; spi2_byte
-</UL>
-<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_window
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi2_byte
-</UL>
-<BR>[Called By]<UL><LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_data
-</UL>
-
-<P><STRONG><a name="[165]"></a>tft_init</STRONG> (Thumb, 290 bytes, Stack size 56 bytes, main.o(i.tft_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = tft_init &rArr; tft_data &rArr; spi2_byte
+<P><STRONG><a name="[164]"></a>screen_init</STRONG> (Thumb, 232 bytes, Stack size 40 bytes, main.o(i.screen_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = screen_init &rArr; d &rArr; spi
 </UL>
 <BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Init
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_DeInit
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Cmd
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_data
-<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_command
-<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms
+<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;c
 </UL>
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[16a]"></a>tft_window</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, main.o(i.tft_window))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = tft_window &rArr; tft_data &rArr; spi2_byte
+<P><STRONG><a name="[165]"></a>show</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, main.o(i.show))
+<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = show &rArr; decimal &rArr; px &rArr; win &rArr; d &rArr; spi
 </UL>
-<BR>[Calls]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_data
-<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_command
+<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;words
+<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;win
+<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi
+<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decimal
 </UL>
-<BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tft_hex_byte
-<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_data
+<BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;poll_display
+</UL>
+
+<P><STRONG><a name="[132]"></a>spi</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, main.o(i.spi))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = spi
+</UL>
+<BR>[Calls]<UL><LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_SendData
+<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_ReceiveData
+<LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_GetFlagStatus
+</UL>
+<BR>[Called By]<UL><LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show
+<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;c
+</UL>
+
+<P><STRONG><a name="[16a]"></a>win</STRONG> (Thumb, 82 bytes, Stack size 24 bytes, main.o(i.win))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = win &rArr; d &rArr; spi
+</UL>
+<BR>[Calls]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;d
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;c
+</UL>
+<BR>[Called By]<UL><LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show
+<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;px
+</UL>
+
+<P><STRONG><a name="[16c]"></a>words</STRONG> (Thumb, 126 bytes, Stack size 48 bytes, main.o(i.words))
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = words &rArr; px &rArr; win &rArr; d &rArr; spi
+</UL>
+<BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;px
+<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;letter
+</UL>
+<BR>[Called By]<UL><LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show
 </UL>
 
 <P><STRONG><a name="[8d]"></a>NVIC_SystemReset</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_it.o(i.NVIC_SystemReset))
@@ -2745,41 +2774,41 @@ Local Symbols
 <LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BusFault_Handler
 </UL>
 
-<P><STRONG><a name="[12d]"></a>_fp_digits</STRONG> (Thumb, 366 bytes, Stack size 64 bytes, printfa.o(i._fp_digits), UNUSED)
+<P><STRONG><a name="[12b]"></a>_fp_digits</STRONG> (Thumb, 366 bytes, Stack size 64 bytes, printfa.o(i._fp_digits), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
-<LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
+<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2ulz
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[123]"></a>_printf_core</STRONG> (Thumb, 1704 bytes, Stack size 136 bytes, printfa.o(i._printf_core), UNUSED)
+<P><STRONG><a name="[121]"></a>_printf_core</STRONG> (Thumb, 1704 bytes, Stack size 136 bytes, printfa.o(i._printf_core), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
-<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
-<LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
-<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
-<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
+<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
+<LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
 </UL>
-<BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0vsnprintf
-<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sprintf
-</UL>
-
-<P><STRONG><a name="[130]"></a>_printf_post_padding</STRONG> (Thumb, 36 bytes, Stack size 24 bytes, printfa.o(i._printf_post_padding), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0vsnprintf
+<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sprintf
 </UL>
 
-<P><STRONG><a name="[12f]"></a>_printf_pre_padding</STRONG> (Thumb, 46 bytes, Stack size 24 bytes, printfa.o(i._printf_pre_padding), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[12e]"></a>_printf_post_padding</STRONG> (Thumb, 36 bytes, Stack size 24 bytes, printfa.o(i._printf_post_padding), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+</UL>
+
+<P><STRONG><a name="[12d]"></a>_printf_pre_padding</STRONG> (Thumb, 46 bytes, Stack size 24 bytes, printfa.o(i._printf_pre_padding), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
 <P><STRONG><a name="[4e]"></a>_snputc</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, printfa.o(i._snputc))
 <BR>[Address Reference Count : 1]<UL><LI> printfa.o(i.__0vsnprintf)
 </UL>
 <P><STRONG><a name="[4d]"></a>_sputc</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, printfa.o(i._sputc))
-<BR><BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sprintf
+<BR><BR>[Called By]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sprintf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printfa.o(i.__0sprintf)
 </UL><P>
