@@ -6,6 +6,7 @@
 #include "shared_defines.h"
 #include "uwb.h"
 #include "hal_drivers.h"
+#include "hal_usb.h"
 
 /* Anchor 0: DS-TWR responder, UART owner and command/display gateway. */
 #define PAN 0xCADE
@@ -31,7 +32,7 @@ static uint64_t rxts(void){uint8_t t[5];dwt_readrxtimestamp(t);return(uint64_t)t
 static uint64_t txts(void){uint8_t t[5];dwt_readtxtimestamp(t);return(uint64_t)t[0]|((uint64_t)t[1]<<8)|((uint64_t)t[2]<<16)|((uint64_t)t[3]<<24)|((uint64_t)t[4]<<32);}
 static uint32_t get32(const uint8_t*p){return(uint32_t)p[0]|((uint32_t)p[1]<<8)|((uint32_t)p[2]<<16)|((uint32_t)p[3]<<24);}
 static void uart_init(void){GPIO_InitTypeDef g;USART_InitTypeDef u;RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_USART1,ENABLE);g.GPIO_Pin=GPIO_Pin_9;g.GPIO_Speed=GPIO_Speed_50MHz;g.GPIO_Mode=GPIO_Mode_AF_PP;GPIO_Init(GPIOA,&g);u.USART_BaudRate=115200;u.USART_WordLength=USART_WordLength_8b;u.USART_StopBits=USART_StopBits_1;u.USART_Parity=USART_Parity_No;u.USART_HardwareFlowControl=USART_HardwareFlowControl_None;u.USART_Mode=USART_Mode_Tx;USART_Init(USART1,&u);USART_Cmd(USART1,ENABLE);}
-static void uart_send(void){uint8_t f[35],i;memset(f,0,sizeof(f));f[0]=0xAA;f[1]=0x25;f[2]=0x01;memcpy(f+3,distance_mm,8);for(i=0;i<sizeof(f);i++){while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET){}USART_SendData(USART1,f[i]);}}
+static void uart_send(void){uint8_t f[35],i;memset(f,0,sizeof(f));f[0]=0xAA;f[1]=0x25;f[2]=0x01;memcpy(f+3,distance_mm,8);for(i=0;i<sizeof(f);i++){while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET){}USART_SendData(USART1,f[i]);}HalUsbWrite(f,sizeof(f));}
 static void hdr(uint8_t*f,uint16_t dst,uint8_t kind){f[0]=0x41;f[1]=0x88;f[2]=seq++;f[3]=PAN;f[4]=PAN>>8;f[5]=dst;f[6]=dst>>8;f[7]=ME;f[8]=ME>>8;f[9]=kind;}
 static void display(uint8_t status){uint8_t f[20];hdr(f,TAG,DISPLAY);f[10]=status;memcpy(f+11,&distance_mm[0],4);memcpy(f+15,&distance_mm[1],4);dwt_forcetrxoff();dwt_writetxdata(sizeof(f),f,0);dwt_writetxfctrl(sizeof(f),0,0);dwt_starttx(DWT_START_TX_IMMEDIATE);while(!(dwt_read32bitreg(SYS_STATUS_ID)&SYS_STATUS_TXFRS_BIT_MASK)){}dwt_write32bitreg(SYS_STATUS_ID,SYS_STATUS_TXFRS_BIT_MASK);}
 static void twr_response(uint64_t poll_rx){uint8_t f[15],x[32];uint32_t delayed=(poll_rx+RESP_DELAY*UUS_TO_DWT_TIME)>>8,st;hdr(f,TAG,RESP);dwt_setdelayedtrxtime(delayed);dwt_setrxaftertxdelay(FINAL_DELAY);dwt_setrxtimeout(FINAL_TIMEOUT);dwt_setpreambledetecttimeout(5);dwt_writetxdata(sizeof(f),f,0);dwt_writetxfctrl(sizeof(f),0,1);if(dwt_starttx(DWT_START_TX_DELAYED|DWT_RESPONSE_EXPECTED)!=DWT_SUCCESS)return;do{st=dwt_read32bitreg(SYS_STATUS_ID);}while(!(st&(SYS_STATUS_RXFCG_BIT_MASK|SYS_STATUS_ALL_RX_TO|SYS_STATUS_ALL_RX_ERR)));if(st&SYS_STATUS_RXFCG_BIT_MASK){uint16_t n=dwt_read32bitreg(RX_FINFO_ID)&RX_FINFO_RXFLEN_BIT_MASK;dwt_write32bitreg(SYS_STATUS_ID,SYS_STATUS_RXFCG_BIT_MASK|SYS_STATUS_TXFRS_BIT_MASK);if(n==24){dwt_readrxdata(x,n,0);if(x[9]==FINAL&&x[5]==(uint8_t)ME&&x[6]==(ME>>8)){uint32_t ptx=get32(x+10),rrx=get32(x+14),ftx=get32(x+18),rtx=(uint32_t)txts(),frx=(uint32_t)rxts();double Ra=(double)(rrx-ptx),Rb=(double)(frx-rtx),Da=(double)(ftx-rrx),Db=(double)(rtx-(uint32_t)poll_rx),mm=((Ra*Rb-Da*Db)/(Ra+Rb+Da+Db))*DWT_TIME_UNITS*SPEED_OF_LIGHT*1000.0;if(mm>0&&mm<100000){distance_mm[0]=(uint32_t)(mm+.5);uart_send();}}}}else dwt_write32bitreg(SYS_STATUS_ID,SYS_STATUS_ALL_RX_TO|SYS_STATUS_ALL_RX_ERR);}
