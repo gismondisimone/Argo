@@ -167,11 +167,11 @@ while True:
                         print(f"Left: {left}, Right: {right}")
                         if left is not None and right is not None:
                             if (float(left) - float(right)) < -0.15:
-                                if mode == "front": print("Turning Right")
-                                else: print("Turning Left")
-                            elif (float(left) - float(right)) > 0.15:
                                 if mode == "front": print("Turning Left")
                                 else: print("Turning Right")
+                            elif (float(left) - float(right)) > 0.15:
+                                if mode == "front": print("Turning Right")
+                                else: print("Turning Left")
                             else:
                                 if mode == "front": print("Going straight")
                                 else: print("Going back")
