@@ -1,6 +1,10 @@
 import serial # type: ignore
 import struct
 import time
+from gpiozero import DigitalInputSensor #type:ignore
+
+ifr1 = DigitalInputSensor(10, pull_up=True) #dacambiare
+ifr2 = DigitalInputSensor(11, pull_up=True) #dacambiare
 
 def get_serial_port():
     while True:
@@ -166,7 +170,7 @@ while True:
                         left, right = calc_distances(distance_samples)
                         print(f"Left: {left}, Right: {right}")
                         if left is not None and right is not None:
-                            if left > 0.15 and right > 0.15:
+                            if left > 0.15 and right > 0.15 and ifr1 == 1 and ifr2 == 1:
                                 if (float(left) - float(right)) < -0.15:
                                     if mode == "front": print("Turning Left")
                                     else: print("Turning Right")
