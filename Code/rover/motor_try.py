@@ -57,19 +57,19 @@ def main():
         print("Motor test starting. Press Ctrl+C to stop.")
 
         # Straight line: both wheels forward, then both in reverse.
-        run_step("Forward", DRIVE_SPEED, DRIVE_SPEED, STRAIGHT_SECONDS,
+        run_step("Forward", DRIVE_SPEED, -DRIVE_SPEED, STRAIGHT_SECONDS,
                  left_motor, right_motor)
-        run_step("Backward", -DRIVE_SPEED, -DRIVE_SPEED, STRAIGHT_SECONDS,
+        run_step("Backward", -DRIVE_SPEED, DRIVE_SPEED, STRAIGHT_SECONDS,
                  left_motor, right_motor)
 
         # Pivot turns: the wheels move in opposite directions.
-        run_step("Pivot left (about 45 degrees)", -TURN_SPEED, TURN_SPEED,
+        run_step("Pivot left (about 45 degrees)", -TURN_SPEED, -TURN_SPEED,
                  TURN_45_SECONDS, left_motor, right_motor)
-        run_step("Pivot right (about 45 degrees)", TURN_SPEED, -TURN_SPEED,
+        run_step("Pivot right (about 45 degrees)", TURN_SPEED, TURN_SPEED,
                  TURN_45_SECONDS, left_motor, right_motor)
 
         # One-wheel turns: stop one wheel and drive the other.
-        run_step("Left turn: right wheel only", 0, TURN_SPEED,
+        run_step("Left turn: right wheel only", 0, -TURN_SPEED,
                  TURN_45_SECONDS, left_motor, right_motor)
         run_step("Right turn: left wheel only", TURN_SPEED, 0,
                  TURN_45_SECONDS, left_motor, right_motor)
