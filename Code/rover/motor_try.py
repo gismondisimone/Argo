@@ -2,10 +2,10 @@ import time
 from gpiozero import DigitalOutputDevice, PWMOutputDevice  # type: ignore
 
 # BCM GPIO pin numbers: set these to match the motor driver wiring.
-LEFT_PWM_PIN = 27
-LEFT_DIR_PIN = 22
-RIGHT_PWM_PIN = 23
-RIGHT_DIR_PIN = 24
+LEFT_PWM_PIN = 13
+LEFT_DIR_PIN = 15
+RIGHT_PWM_PIN = 16
+RIGHT_DIR_PIN = 18
 
 # Motor power as a fraction from 0.0 to 1.0.
 DRIVE_SPEED = 0.20

@@ -14,8 +14,8 @@ HEADER = b"\xaa%\x01"
 FRAME_LENGTH = 35
 
 #infrared
-Lir = 4 #dacambiare
-Rir = 17 #dacambiare
+Lir = 7 #dacambiare
+Rir = 11 #dacambiare
 
 # ZS-Z11H driver pins (BCM numbers). Fill these in after wiring the drivers.
 # Each driver needs one PWM pin and one DIR pin. Leave as None until then.
