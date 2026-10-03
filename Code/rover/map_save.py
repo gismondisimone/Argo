@@ -14,7 +14,6 @@ rightMotor = 27 #tocalibrate
 uart = serial.Serial(UART_DEVICE, baudrate=UART_BAUDRATE, timeout=0)
 
 meterxsecond = 0.5 #tocalibrate
-# need to calibrate the meter per second that the rover moves , change the turning type from 10 to 1-1!
 degxsecond = 2 #tocalibrate
 safe_map = []
 
@@ -268,8 +267,3 @@ if __name__ == "__main__":
         gpio.output(rightMotor, gpio.LOW)
         gpio.cleanup()
         uart.close()
-
-
-# 6/8/2026 - le schede dovrebbero arrivare oggi da quanto ne sappiamo, spero pk tra due giorni parto e vado a palermo se tutto va bene e voglio la prossima settimana per capire come le bro funzionano. Poi una volta che le provo poi si vedrà se serviranno effettivamente a qualcosa.
-# invece riguardo ai motori bisogna prendere ancora i driver e poi controllare se gli stepdown funzionano, anche quelli ancora da prendere.
-# 24/8/2026 - ok la pausa è durata decisamente troppo, le schede sono arrivate una settimana fa ma le sto provando solo oggi. vedremo. non ho la pico al momento, aspetterò che simone me la porta oggi pom ma devo ricontrollare il codice. intanto mi dedico ai cartelloni immagino. Liliana deve darmi il testo  da scrivere. E COMPRARE LE CAZZO DI COSE ABBIAMO UN MESE DIO CANE BASTARDO IN CARROZZELLA.

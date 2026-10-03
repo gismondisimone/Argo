@@ -3,6 +3,7 @@ import struct
 import time
 from gpiozero import DigitalInputSensor #type:ignore
 
+#infrared
 ifr1 = DigitalInputSensor(10, pull_up=True) #dacambiare
 ifr2 = DigitalInputSensor(11, pull_up=True) #dacambiare
 
