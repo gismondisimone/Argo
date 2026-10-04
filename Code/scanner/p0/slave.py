@@ -27,6 +27,12 @@ pin_bin = [
 ]
 
 pin_servo = OutputDevice(4) #servo
+"""
+#setup interruttori
+pin_play = Button(16, pull_up=True) # up(brown)
+pin_pause = Button(20, pull_up=True) # down(yellow)
+pin_stop = Button(21, pull_up=True) # stop(green)
+"""
 
 #main setup
 server_ip = "0.0.0.0"
@@ -174,6 +180,27 @@ def rotate_bins(degrees=10): #da cambiare
     cleanup_bins()
     return steps
 
+"""
+def status():
+    return {
+        "play": pin_play.is_pressed,
+        "pause": pin_pause.is_pressed,
+        "stop": pin_stop.is_pressed
+    }
+
+
+def wait_pause():
+    while True:
+        if pin_stop.is_pressed:
+            return "stop"
+
+        if pin_play.is_pressed:
+            time.sleep(0.3)
+            return "play"
+
+        time.sleep(0.05)
+"""
+
 class Server(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         return
@@ -193,6 +220,15 @@ class Server(BaseHTTPRequestHandler):
 
         return json.loads(self.rfile.read(size).decode("utf-8"))
 
+    """def do_GET(self):
+        if self.path == "/status":
+            self.send_data(200, status())
+
+        elif self.path == "/health":
+            self.send_data(200, {"ok": True})
+
+        else:
+            self.send_data(404, {"error": "not found"})"""
 
     def do_POST(self):
         try:
@@ -225,6 +261,10 @@ class Server(BaseHTTPRequestHandler):
 
             else:
                 self.send_data(404, {"error": "not found"})
+            
+            """elif self.path == "/wait_pause":
+                button = wait_pause()
+                self.send_data(200, {"ok": True, "button": button})"""
 
         except Exception as error:
             cleanup()
