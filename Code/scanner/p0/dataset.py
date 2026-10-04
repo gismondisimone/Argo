@@ -24,14 +24,6 @@ pin_bin = [
     OutputDevice(16),
 ]
 
-pin_servo = OutputDevice(4) #servo
-"""
-#setup interruttori
-pin_play = Button(16, pull_up=True) # up(brown)
-pin_pause = Button(20, pull_up=True) # down(yellow)
-pin_stop = Button(21, pull_up=True) # stop(green)
-"""
-
 #main setup
 server_ip = "0.0.0.0"
 server_port = 8765
@@ -39,21 +31,16 @@ server_port = 8765
 plate_sequence = [3, 1, 2, 0]
 cam_sequence = [0, 2, 1, 3]
 cam_reset_sequence = cam_sequence[::-1] #reverse #[3, 1, 2, 0]
-bin_sequence = [3, 1, 2, 0]
 
 plate_step_index = 0
 cam_step_index = 0
-bin_step_index = 0
 
 plate_error = 0
 cam_error = 0
-bin_error = 0
 
 step_angle = 1.8
 plate_gear = 4
 cam_gear = 9
-bin_gear = 1
-
 
 def cleanup():
     for pin in pin_piatto:
@@ -62,48 +49,18 @@ def cleanup():
     for pin in pin_cam:
         pin.off()
 
-    for pin in pin_bin:
-        pin.off()
-
 def cleanup_plate():
     for pin in pin_piatto:
         pin.off()
-
 
 def cleanup_cam():
     for pin in pin_cam:
         pin.off()
 
-def cleanup_bins():
-    for pin in pin_bin:
-        pin.off()
-
-
 def rotate_motor(pins, sequence, step_index, degrees, gear_ratio, error):
     exact_steps = (degrees * gear_ratio / step_angle) + error
     steps = int(exact_steps + 1e-9)
     error = exact_steps - steps
-
-    for _ in range(steps):
-        active_pin = sequence[step_index % len(sequence)]
-
-        for n, pin in enumerate(pins):
-            if n == active_pin:
-                pin.on()
-            else:
-                pin.off()
-
-        step_index += 1
-        time.sleep(0.01)
-
-    return step_index, error, steps
-
-def rotate_bin_motor(pins, sequence, step_index, diff, error):
-    if diff < 0:
-        sequence = sequence[::-1]
-        diff = -diff
-    steps = int(diff + 1e-9)
-    error = diff - steps
 
     for _ in range(steps):
         active_pin = sequence[step_index % len(sequence)]
@@ -184,41 +141,6 @@ def test_cam(steps=200):
 
     cleanup_cam()
 
-def rotate_bins(diff): #da cambiare
-    global bin_step_index, bin_error
-
-    bin_step_index, bin_error, steps = rotate_bin_motor(
-        pin_bin,
-        bin_sequence,
-        bin_step_index,
-        diff,
-        bin_error
-    )
-
-    cleanup_bins()
-    return steps
-
-"""
-def status():
-    return {
-        "play": pin_play.is_pressed,
-        "pause": pin_pause.is_pressed,
-        "stop": pin_stop.is_pressed
-    }
-
-
-def wait_pause():
-    while True:
-        if pin_stop.is_pressed:
-            return "stop"
-
-        if pin_play.is_pressed:
-            time.sleep(0.3)
-            return "play"
-
-        time.sleep(0.05)
-"""
-
 class Server(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         return
@@ -237,16 +159,6 @@ class Server(BaseHTTPRequestHandler):
             return {}
 
         return json.loads(self.rfile.read(size).decode("utf-8"))
-
-    """def do_GET(self):
-        if self.path == "/status":
-            self.send_data(200, status())
-
-        elif self.path == "/health":
-            self.send_data(200, {"ok": True})
-
-        else:
-            self.send_data(404, {"error": "not found"})"""
 
     def do_POST(self):
         try:
@@ -268,10 +180,6 @@ class Server(BaseHTTPRequestHandler):
                 steps = int(data.get("steps", 200))
                 test_cam(steps)
                 self.send_data(200, {"ok": True, "steps": steps})
-    
-            elif self.path == "/rotate_bins":
-                steps = rotate_bins(float(data.get("degrees", 10)))
-                self.send_data(200, {"ok": True, "steps": steps})
 
             elif self.path == "/cleanup":
                 cleanup()
@@ -279,10 +187,6 @@ class Server(BaseHTTPRequestHandler):
 
             else:
                 self.send_data(404, {"error": "not found"})
-            
-            """elif self.path == "/wait_pause":
-                button = wait_pause()
-                self.send_data(200, {"ok": True, "button": button})"""
 
         except Exception as error:
             cleanup()

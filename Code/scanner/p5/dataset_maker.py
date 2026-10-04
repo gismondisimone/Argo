@@ -13,7 +13,7 @@ p0_url = f"http://{p0_ip}:{p0_port}"
 
 #main setup
 dir = datetime.datetime.now().strftime('%Y_%m_%d__%H_%M')
-tot_s = 36 # 10° per step
+tot_s = 10 # 10° per step
 out_f = f"/home/argo/Desktop/out/scan_{dir}"
 data_f = f"{out_f}_data"
 pc_u = "Pollo"
@@ -45,40 +45,6 @@ def p0_post(path, data=None, timeout=30):
 
 def cleanup():
     p0_post("/cleanup")
-
-
-"""
-def check_status():
-    global paused
-
-    status = p0_get("/status")
-
-    # 1.check stop
-    if status["stop"]:
-        print("Stopped by user")
-        cleanup()
-        os._exit(0) #close
-
-    # 2.check pause
-    if status["pause"]:
-        if not paused:
-            print("Paused. Waiting for user...")
-            paused = True
-
-    while paused:
-        status = p0_post("/wait_pause", timeout=None)
-
-        #stop while paused
-        if status["button"] == "stop":
-            cleanup()
-            os._exit(0)
-
-        #check play
-        if status["button"] == "play":
-            print("Continuing")
-            paused = False
-            break
-"""
 
 def rotate_plate():
     p0_post("/rotate_plate", {"degrees": 10})
@@ -150,10 +116,8 @@ print(f"made dir:{dir}")
 s_time = time.time()
 
 print("scannin")
-#p0_get("/health")
 
 for i in range(tot_s):
-    #check_status()
 
     print(f"step {i+1} of {tot_s}")
     cleanup()
@@ -161,7 +125,6 @@ for i in range(tot_s):
     rotate_cam()
     cleanup()
     print("rotated")
-    #check_status()
     time.sleep(1.0)
 
     if i <= 9:
@@ -190,3 +153,4 @@ cleanup()
 p0_post("/reset_cam", {"degrees": 45})
 t_time = time.time() - s_time
 print(f"took {round(t_time, 2)} seconds")
+print("change piece to scan")
