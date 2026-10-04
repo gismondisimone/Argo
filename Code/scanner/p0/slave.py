@@ -69,7 +69,6 @@ def cleanup_plate():
     for pin in pin_piatto:
         pin.off()
 
-
 def cleanup_cam():
     for pin in pin_cam:
         pin.off()
