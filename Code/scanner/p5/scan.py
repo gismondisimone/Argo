@@ -20,6 +20,7 @@ pc_u = "Pollo"
 pc_ip = "10.234.61.77"    
 pc_fs = "C:/Users/Pollo/Desktop/Argo/pi_receive"
 pc_fd = "C:/Users/Pollo/Desktop/Argo/3d"
+psw = "volpedaseta10"
 paused = False
 
 def p0_get(path):
@@ -95,7 +96,6 @@ def send(f_paths, f_pathd, pc_ip, pc_u, c_paths, c_pathd):
         scan_pathdown = os.path.join(scan_path, scan_dir, "down")
         data_path = c_pathd.replace("\\", "/")
 
-        psw = "albalilli60"
         scanupcmd = [
              "sshpass", "-p", psw,
              "scp", "-o", "StrictHostKeyChecking=no", "-r", f_paths + "/up",
