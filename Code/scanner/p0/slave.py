@@ -25,12 +25,12 @@ pin_bin = [
 ]
 
 pin_servo = OutputDevice(4) #servo
-"""
+
 #setup interruttori
-pin_play = Button(16, pull_up=True) # up(brown)
-pin_pause = Button(20, pull_up=True) # down(yellow)
+pin_play = Button(19, pull_up=True) # play(brown)
+pin_pause = Button(20, pull_up=True) # pause(yellow)
 pin_stop = Button(21, pull_up=True) # stop(green)
-"""
+
 
 #main setup
 server_ip = "0.0.0.0"
@@ -197,7 +197,6 @@ def rotate_bins(diff): #da cambiare
     cleanup_bins()
     return steps
 
-"""
 def status():
     return {
         "play": pin_play.is_pressed,
@@ -216,7 +215,6 @@ def wait_pause():
             return "play"
 
         time.sleep(0.05)
-"""
 
 class Server(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
@@ -237,7 +235,7 @@ class Server(BaseHTTPRequestHandler):
 
         return json.loads(self.rfile.read(size).decode("utf-8"))
 
-    """def do_GET(self):
+    def do_GET(self):
         if self.path == "/status":
             self.send_data(200, status())
 
@@ -245,7 +243,7 @@ class Server(BaseHTTPRequestHandler):
             self.send_data(200, {"ok": True})
 
         else:
-            self.send_data(404, {"error": "not found"})"""
+            self.send_data(404, {"error": "not found"})
 
     def do_POST(self):
         try:
@@ -275,14 +273,14 @@ class Server(BaseHTTPRequestHandler):
             elif self.path == "/cleanup":
                 cleanup()
                 self.send_data(200, {"ok": True})
+            
+            elif self.path == "/wait_pause":
+                button = wait_pause()
+                self.send_data(200, {"ok": True, "button": button})
 
             else:
                 self.send_data(404, {"error": "not found"})
             
-            """elif self.path == "/wait_pause":
-                button = wait_pause()
-                self.send_data(200, {"ok": True, "button": button})"""
-
         except Exception as error:
             cleanup()
             self.send_data(500, {"error": str(error)})

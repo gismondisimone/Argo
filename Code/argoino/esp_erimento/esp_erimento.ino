@@ -60,7 +60,7 @@ void loop() {
   if (WiFi.status() == WL_CONNECTED) {  
     if (scann == 0) { 
       if (waitin) {
-        if (full < 30) {
+        if (full < 31) {
           int dist = analogRead(infrar);
           Serial.println(dist);
           if (dist > 300) {

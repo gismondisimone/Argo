@@ -43,12 +43,9 @@ def p0_post(path, data=None, timeout=30):
     with request.urlopen(req, timeout=timeout) as response:
         return json.loads(response.read().decode("utf-8"))
 
-
 def cleanup():
     p0_post("/cleanup")
 
-
-"""
 def check_status():
     global paused
 
@@ -79,7 +76,6 @@ def check_status():
             print("Continuing")
             paused = False
             break
-"""
 
 def rotate_plate():
     p0_post("/rotate_plate", {"degrees": 10})
@@ -150,10 +146,10 @@ print(f"made dir:{dir}")
 s_time = time.time()
 
 print("scannin")
-#p0_get("/health")
+p0_get("/health")
 
 for i in range(tot_s):
-    #check_status()
+    check_status()
 
     print(f"step {i+1} of {tot_s}")
     cleanup()
@@ -161,7 +157,7 @@ for i in range(tot_s):
     rotate_cam()
     cleanup()
     print("rotated")
-    #check_status()
+    check_status()
     time.sleep(1.0)
 
     if i <= 9:

@@ -87,7 +87,6 @@ def ArcheoClassify(image_path):
         return class_id, conf
 
 def notify_esp():
-    """Invia una richiesta HTTP all'ESP32 per sbloccare il nastro (equivalente a inviare 'oc' o risposta ok)"""
     try:
         url = f"http://{ESP_IP}/"
         response = requests.get(url, timeout=5)
@@ -100,7 +99,6 @@ def handle_scan_request():
     data = request.args.get('data')
     print(f"Richiesta ricevuta dall'ESP. Data: {data}")
 
-    # Il "1" corrisponde al segnale di invio pezzo sul piatto
     if data == "1":
         print("Segnale '1' ricevuto. Avvio procedura di scansione...")
         

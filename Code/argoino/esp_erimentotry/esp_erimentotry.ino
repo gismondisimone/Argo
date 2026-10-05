@@ -1,33 +1,35 @@
-const int puls = 3;     // Usare GPIO 3 (il GPIO 2 è di strapping/boot)
-const int motor = 8;    // Usare GPIO 8 (alcune schede C3 hanno il GPIO 10 collegato alla memoria flash)
-const int linearA = 7;
-const int linearB = 6;
+const int puls1 = 3;
+const int puls2 = 3;
+const int motor = 8;
+const int linearN = 7;
+const int linearR = 6;
 
-bool press = false;
+bool press1 = false;
+bool press2 = false;
 
 void setup() {
-  // Inizializza la seriale e aspetta un istante per la connessione USB CDC
   Serial.begin(115200);
   delay(1000);
 
-  pinMode(puls, INPUT_PULLUP); // Pulsante collegato tra GPIO 3 e GND
+  pinMode(puls1, INPUT_PULLUP);
+  pinMode(puls2, INPUT_PULLUP);
   pinMode(motor, OUTPUT);
-  pinMode(linearA, OUTPUT);
-  pinMode(linearB, OUTPUT);
+  pinMode(linearN, OUTPUT);
+  pinMode(linearR, OUTPUT);
 
   digitalWrite(motor, LOW);
-  digitalWrite(linearA, LOW);
-  digitalWrite(linearB, LOW);
+  digitalWrite(linearN, LOW);
+  digitalWrite(linearR, LOW);
 
-  Serial.println("--- Avvio completato con successo ---");
+  Serial.println("Setup Completed");
 }
 
 void loop() {
-  // Con INPUT_PULLUP il pulsante premuto legge LOW (0)
-  press = (digitalRead(puls) == LOW);
+  press1 = (digitalRead(puls1) == LOW);
+  press2 = (digitalRead(puls2) == LOW);
 
-  if (press) {
-    Serial.println("Pulsante premuto! Attivazione motore...");
+  if (press1) {
+    Serial.println("Piece detected, making space...");
     
     digitalWrite(motor, HIGH);
     delay(1000);
@@ -35,7 +37,17 @@ void loop() {
     digitalWrite(motor, LOW);
     delay(1000);
   }
+  if (press2) {
+    Serial.println("Linear actuator on");
+    digitalWrite(linearR, LOW);
+    digitalWrite(linearN, HIGH);
+    delay(1000);
 
-  // Piccola pausa fondamentale per lasciare respirare il sistema ed evitare crash del Watchdog
+    Serial.println("Linear actuator retracting");
+    digitalWrite(linearN, LOW);
+    digitalWrite(linearR, HIGH);
+    delay(1000);
+  }
+
   delay(20); 
 }
