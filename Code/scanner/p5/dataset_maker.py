@@ -13,7 +13,7 @@ p0_port = 8765
 p0_url = f"http://{p0_ip}:{p0_port}"
 
 #main setup
-dir = datetime.datetime.now().strftime('%Y_%m_%d__%H_%M')
+dir = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M')
 tot_s = 36 # 10° per step
 out_f = f"/home/argo/Desktop/out/scan_{dir}"
 data_f = f"{out_f}_data"
@@ -58,24 +58,15 @@ def send(f_paths, f_pathd, pc_ip, pc_u, c_paths, c_pathd):
     global out_f
     try:
         scan_path = c_paths.replace("\\", "/")
-        scan_dir = os.path.basename(f_paths)
-        remote_scan_dir = f"{scan_path}/{scan_dir}" # MODIFICATO
         data_path = c_pathd.replace("\\", "/")
-
-        # MODIFICATO: crea la cartella di destinazione remota prima di scp
-        mkdir_cmd = ["sshpass", "-p", psw, "ssh", "-o", "StrictHostKeyChecking=no", f"{pc_u}@{pc_ip}", f'cmd /c "if not exist \"{remote_scan_dir}\" mkdir \"{remote_scan_dir}\""']
+        
+        mkdir_cmd = ["sshpass", "-p", psw, "ssh", "-o", "StrictHostKeyChecking=no", f"{pc_u}@{pc_ip}", f'cmd /c "if not exist \"{scan_path}\" mkdir \"{scan_path}\""']
         subprocess.run(mkdir_cmd, check=True, timeout=30)
 
-        scanupcmd = [
+        scancmd = [
              "sshpass", "-p", psw,
-             "scp", "-o", "StrictHostKeyChecking=no", "-r", f_paths + "/up",
-             f"{pc_u}@{pc_ip}:{remote_scan_dir}/" # MODIFICATO
-        ]
-
-        scandowncmd = [
-             "sshpass", "-p", psw,
-             "scp", "-o", "StrictHostKeyChecking=no", "-r", f_paths + "/down",
-             f"{pc_u}@{pc_ip}:{remote_scan_dir}/" # MODIFICATO
+             "scp", "-o", "StrictHostKeyChecking=no", "-r", f_paths,
+             f"{pc_u}@{pc_ip}:{scan_path}"
         ]
 
         datacmd = [
@@ -86,12 +77,14 @@ def send(f_paths, f_pathd, pc_ip, pc_u, c_paths, c_pathd):
 
         print(f"Attempting to send to {pc_u}@{pc_ip}...")
         
-        subprocess.run(scanupcmd, check=True, timeout=30)
-        subprocess.run(datacmd, check=True, timeout=30)
+        subprocess.run(scancmd, check=True, timeout=300)
+        subprocess.run(datacmd, check=True, timeout=300)
         print(f"Files sent successfully to {pc_ip}, creating flag...")
-        flag_path = f"{remote_scan_dir}/done.txt".replace("/", "\\") # MODIFICATO
+        flag_path = f"{scan_path}/done.txt".replace("/", "\\")
         subprocess.run(["sshpass", "-p", psw, "ssh", f"{pc_u}@{pc_ip}", f'type nul > "{flag_path}"'], timeout=30)
-        subprocess.run(scandowncmd, check=True, timeout=30)
+        subprocess.run(["rm", "-rf", f_paths], check=True)
+        subprocess.run(["rm", "-rf", f_pathd], check=True)
+        print("Deleted local directories")
         print(f"Files sent successfully to {pc_ip}")
     except subprocess.TimeoutExpired:
         print(f"Error: Connection to {pc_ip} timed out. Check if host is reachable and SSH is running.")
@@ -103,12 +96,10 @@ def send(f_paths, f_pathd, pc_ip, pc_u, c_paths, c_pathd):
         print(f"        4) Path {c_paths} exists on remote machine")
 
 os.makedirs(out_f, exist_ok=True)
-os.makedirs(out_f + "/up", exist_ok=True)
-os.makedirs(out_f + "/down", exist_ok=True)
 os.makedirs(data_f, exist_ok=True)
 with open(f"{data_f}/data.txt", "w") as file:
     file.write(f"""data example.
-  humidity = {random.uniform(0.3, 0.7):.2f}%
+  humidity = {random.uniform(0, 100)}%
   porosity = {random.uniform(0.2, 1):.2f}
 
   position(x,y,z) = ({random.uniform(-10, 10):.3f}, {random.uniform(-10, 10):.3f}, {random.uniform(-10, 10):.3f})
@@ -134,19 +125,14 @@ for i in range(tot_s):
     else:
         n = str(i)
 
-    # Postprocess camera 0: salvataggio, rotazione 180° via cv2 e riscrittura
-    path_up = f"{out_f}/up/pos_{n}_side.jpg"
+    path = f"{out_f}/pos_{n}_side.jpg"
     subprocess.run([
-        "rpicam-still", "-t", "500", "--camera", "0", "-o", path_up, "> /dev/null"
+        "rpicam-still", "-t", "500", "--camera", "0", "-o", path, "> /dev/null"
     ])
-    img_up = cv2.imread(path_up)
-    if img_up is not None:
-        img_up = cv2.rotate(img_up, cv2.ROTATE_180)
-        cv2.imwrite(path_up, img_up)
-
-    subprocess.run([
-        "rpicam-still", "-t", "500", "--camera", "1", "-o", f"{out_f}/down/pos_{n}_down.jpg", "> /dev/null"
-    ])
+    img = cv2.imread(path)
+    if img is not None:
+        img = cv2.rotate(img, cv2.ROTATE_180)
+        cv2.imwrite(path, img)
 
 print("scan complete")
 send(out_f, data_f, pc_ip, pc_u, pc_fs, pc_fd)

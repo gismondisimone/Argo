@@ -16,11 +16,11 @@ dir = datetime.datetime.now().strftime('%Y_%m_%d__%H_%M')
 tot_s = 36 # 10° per step
 out_f = f"/home/argo/Desktop/out/scan_{dir}"
 data_f = f"{out_f}_data"
-pc_u = "Pollo"
-pc_ip = "10.234.61.77"    
-pc_fs = "C:/Users/Pollo/Desktop/Argo/pi_receive"
-pc_fd = "C:/Users/Pollo/Desktop/Argo/3d"
-psw = "volpedaseta10"
+pc_u = "simon"
+pc_ip = "10.234.61.77" #dacambiare
+pc_fs = f"C:/Users/{pc_u}/Desktop/Argo/pi_receive"
+pc_fd = f"C:/Users/{pc_u}/Desktop/Argo/3d"
+psw = "albalilli60"
 paused = False
 
 def p0_get(path):
