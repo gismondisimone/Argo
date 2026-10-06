@@ -108,7 +108,7 @@ def rotate_cam(degrees=1):
     return steps
 
 
-def reset_cam(degrees=45):
+def reset_cam(degrees):
     global cam_step_index, cam_error
 
     cam_step_index, cam_error, steps = rotate_motor(

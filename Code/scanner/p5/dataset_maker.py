@@ -1,19 +1,20 @@
 import datetime
 import time
 import subprocess
+import random
 import os
 import cv2 #type:ignore
 import json
 from urllib import request
 
 #setup P0
-p0_ip = "argoslave"
+p0_ip = "argoslave.local"
 p0_port = 8765
 p0_url = f"http://{p0_ip}:{p0_port}"
 
 #main setup
 dir = datetime.datetime.now().strftime('%Y_%m_%d__%H_%M')
-tot_s = 10 # 10° per step
+tot_s = 36 # 10° per step
 out_f = f"/home/argo/Desktop/out/scan_{dir}"
 data_f = f"{out_f}_data"
 pc_u = "Pollo"
@@ -58,20 +59,23 @@ def send(f_paths, f_pathd, pc_ip, pc_u, c_paths, c_pathd):
     try:
         scan_path = c_paths.replace("\\", "/")
         scan_dir = os.path.basename(f_paths)
-        scan_pathup = os.path.join(scan_path, scan_dir, "up")
-        scan_pathdown = os.path.join(scan_path, scan_dir, "down")
+        remote_scan_dir = f"{scan_path}/{scan_dir}" # MODIFICATO
         data_path = c_pathd.replace("\\", "/")
+
+        # MODIFICATO: crea la cartella di destinazione remota prima di scp
+        mkdir_cmd = ["sshpass", "-p", psw, "ssh", "-o", "StrictHostKeyChecking=no", f"{pc_u}@{pc_ip}", f'cmd /c "if not exist \"{remote_scan_dir}\" mkdir \"{remote_scan_dir}\""']
+        subprocess.run(mkdir_cmd, check=True, timeout=30)
 
         scanupcmd = [
              "sshpass", "-p", psw,
              "scp", "-o", "StrictHostKeyChecking=no", "-r", f_paths + "/up",
-             f"{pc_u}@{pc_ip}:{scan_pathup}"
+             f"{pc_u}@{pc_ip}:{remote_scan_dir}/" # MODIFICATO
         ]
 
         scandowncmd = [
              "sshpass", "-p", psw,
              "scp", "-o", "StrictHostKeyChecking=no", "-r", f_paths + "/down",
-             f"{pc_u}@{pc_ip}:{scan_pathdown}"
+             f"{pc_u}@{pc_ip}:{remote_scan_dir}/" # MODIFICATO
         ]
 
         datacmd = [
@@ -85,9 +89,7 @@ def send(f_paths, f_pathd, pc_ip, pc_u, c_paths, c_pathd):
         subprocess.run(scanupcmd, check=True, timeout=30)
         subprocess.run(datacmd, check=True, timeout=30)
         print(f"Files sent successfully to {pc_ip}, creating flag...")
-        with open("done.txt", "w") as f:
-             pass
-        flag_path = os.path.join(scan_path, "done.txt").replace("/", "\\")
+        flag_path = f"{remote_scan_dir}/done.txt".replace("/", "\\") # MODIFICATO
         subprocess.run(["sshpass", "-p", psw, "ssh", f"{pc_u}@{pc_ip}", f'type nul > "{flag_path}"'], timeout=30)
         subprocess.run(scandowncmd, check=True, timeout=30)
         print(f"Files sent successfully to {pc_ip}")
@@ -105,11 +107,11 @@ os.makedirs(out_f + "/up", exist_ok=True)
 os.makedirs(out_f + "/down", exist_ok=True)
 os.makedirs(data_f, exist_ok=True)
 with open(f"{data_f}/data.txt", "w") as file:
-    file.write("""data example.
-  humidity = 45%
-  porosity = 0.87
+    file.write(f"""data example.
+  humidity = {random.uniform(0.3, 0.7):.2f}%
+  porosity = {random.uniform(0.2, 1):.2f}
 
-  position(x,y,z) = (3.254, 34.650, -12.004)
+  position(x,y,z) = ({random.uniform(-10, 10):.3f}, {random.uniform(-10, 10):.3f}, {random.uniform(-10, 10):.3f})
     """)
 print(f"made dir:{dir}")
 
@@ -150,7 +152,7 @@ print("scan complete")
 send(out_f, data_f, pc_ip, pc_u, pc_fs, pc_fd)
 cleanup()
 
-p0_post("/reset_cam", {"degrees": 45})
+p0_post("/reset_cam", {"degrees": 45})  # Reset camera to original position
 t_time = time.time() - s_time
 print(f"took {round(t_time, 2)} seconds")
 print("change piece to scan")
