@@ -152,7 +152,7 @@ print("scan complete")
 send(out_f, data_f, pc_ip, pc_u, pc_fs, pc_fd)
 cleanup()
 
-p0_post("/reset_cam", {"degrees": 45})  # Reset camera to original position
+p0_post("/reset_cam", {"degrees": 45})
 t_time = time.time() - s_time
 print(f"took {round(t_time, 2)} seconds")
 print("change piece to scan")
