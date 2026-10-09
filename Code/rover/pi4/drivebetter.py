@@ -1,16 +1,16 @@
 import serial # type: ignore
 import struct
 import time
-from gpiozero import DigitalInputSensor #type:ignore
+from gpiozero import DigitalInputDevice #type:ignore
 
 #infrared
-ifr1 = DigitalInputSensor(10, pull_up=True) #dacambiare
-ifr2 = DigitalInputSensor(11, pull_up=True) #dacambiare
+ifr1 = DigitalInputDevice(4, pull_up=True) #dacambiare
+ifr2 = DigitalInputDevice(17, pull_up=True) #dacambiare
 
 def get_serial_port():
     while True:
         try:
-            s = serial.Serial('/dev/serial0', baudrate=115200, timeout=1)
+            s = serial.Serial('/dev/ttyACM0', baudrate=115200, timeout=1)
             print("Connected to serial port.")
             return s
         except Exception as e:
@@ -170,15 +170,16 @@ while True:
                     if len(distance_samples) >= 10:
                         left, right = calc_distances(distance_samples)
                         print(f"Left: {left}, Right: {right}")
+                        print(f"Infrared 1: {ifr1.is_active}, Infrared 2: {ifr2.is_active}")
                         if left is not None and right is not None:
-                            if ifr1 == 1 and ifr2 == 1:
-                                if left > 0.15 and right > 0.15:
+                            if not ifr1.is_active and not ifr2.is_active:
+                                if float(left) > 0.15 and float(right) > 0.15:
                                     if (float(left) - float(right)) < -0.15:
-                                        if mode == "front": print("Turning Left")
-                                        else: print("Turning Right")
-                                    elif (float(left) - float(right)) > 0.15:
                                         if mode == "front": print("Turning Right")
                                         else: print("Turning Left")
+                                    elif (float(left) - float(right)) > 0.15:
+                                        if mode == "front": print("Turning Left")
+                                        else: print("Turning Right")
                                     else:
                                         if mode == "front": print("Going straight")
                                         else: print("Going back")

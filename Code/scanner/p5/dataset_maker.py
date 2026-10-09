@@ -14,7 +14,7 @@ p0_url = f"http://{p0_ip}:{p0_port}"
 
 #main setup
 dir = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M')
-tot_s = 36 # 10° per step
+tot_s = 10 # 10° per step
 out_f = f"/home/argo/Desktop/out/scan_{dir}"
 data_f = f"{out_f}_data"
 pc_u = "Pollo"
@@ -127,7 +127,7 @@ for i in range(tot_s):
 
     path = f"{out_f}/pos_{n}_side.jpg"
     subprocess.run([
-        "rpicam-still", "-t", "500", "--camera", "0", "-o", path, "> /dev/null"
+        "rpicam-still", "-t", "500", "--camera", "0", "-o", path, "--brightness", "-0.2", "--ev", "0.1", "--saturation", "0.9", "--contrast", "1.4", "--awbgains", "1.4,2.0"
     ])
     img = cv2.imread(path)
     if img is not None:
@@ -138,7 +138,7 @@ print("scan complete")
 send(out_f, data_f, pc_ip, pc_u, pc_fs, pc_fd)
 cleanup()
 
-p0_post("/reset_cam", {"degrees": 45})
+p0_post("/reset_cam", {"degrees": 10})
 t_time = time.time() - s_time
 print(f"took {round(t_time, 2)} seconds")
 print("change piece to scan")

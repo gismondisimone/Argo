@@ -108,7 +108,7 @@ def rotate_cam(degrees=1):
     return steps
 
 
-def reset_cam(degrees):
+def reset_cam(degrees=10):
     global cam_step_index, cam_error
 
     cam_step_index, cam_error, steps = rotate_motor(
@@ -173,7 +173,7 @@ class Server(BaseHTTPRequestHandler):
                 self.send_data(200, {"ok": True, "steps": steps})
 
             elif self.path == "/reset_cam":
-                steps = reset_cam(float(data.get("degrees", 45)))
+                steps = reset_cam(float(data.get("degrees", 10)))
                 self.send_data(200, {"ok": True, "steps": steps})
 
             elif self.path == "/test_cam":
