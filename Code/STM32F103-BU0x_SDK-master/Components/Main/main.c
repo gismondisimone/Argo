@@ -7,9 +7,7 @@
 #include "uwb.h"
 #include "hal_drivers.h"
 
-/* ------------------------------------------------------------------ */
-/* Protocol                                                            */
-/* ------------------------------------------------------------------ */
+/*Protocol*/
 #define PAN     0xCADE
 #define TAG     0x0001
 #define BASE0   0x1000
@@ -22,7 +20,7 @@
 #define RXAD    16385
 
 /* RESP from BASE0 carries: r[10]=status, r[11]=percent, r[12]=last button id acked.
- * BUTTON from tag carries: f[10]=key, f[11]=event id (never 0).               */
+ * BUTTON from tag carries: f[10]=key, f[11]=event id (never 0).*/
 
 static dwt_config_t cfg={5,DWT_PLEN_128,DWT_PAC8,9,9,1,DWT_BR_6M8,DWT_PHRMODE_STD,DWT_PHRRATE_STD,(129+8-8),DWT_STS_MODE_OFF,DWT_STS_LEN_64,DWT_PDOA_M0};
 extern dwt_txconfig_t txconfig_options;
@@ -34,7 +32,7 @@ static void ms(uint32_t n){while(n--)Sleep(1);}
 
 /* ------------------------------------------------------------------ */
 /* Display: ST7789, 240x280 IPS, SPI2 (SCK=PB13, MOSI=PB15)            */
-/* Wiring: CS=PB12, DC=PB14, RST=PC13, BLK -> 3V3 (or your own GPIO)   */
+/* Wiring: CS=PB12, DC=PB14, RST=PC13, BLK -> 3V3                      */
 /* ------------------------------------------------------------------ */
 #define TFT_CS_PORT  GPIOB
 #define TFT_CS       GPIO_Pin_12
@@ -174,7 +172,8 @@ static const glyph_t font[]={
     {'P',{0x7F,0x09,0x09,0x09,0x06}},
     {'R',{0x7F,0x09,0x19,0x29,0x46}},
     {'S',{0x46,0x49,0x49,0x49,0x31}},
-    {'T',{0x01,0x01,0x7F,0x01,0x01}}
+    {'T',{0x01,0x01,0x7F,0x01,0x01}},
+    {'Y',{0x07,0x08,0x70,0x08,0x07}}
 };
 static const uint8_t* glyph(char ch){
     uint8_t i;
@@ -199,7 +198,7 @@ static void draw_text(uint16_t x,uint16_t y,const char*s,uint8_t sc,uint16_t fg,
 }
 
 /* ------------------------------------------------------------------ */
-/* UI: status line, big percentage, progress bar                        */
+/* UI: status line, big percentage, progress bar, last key             */
 /* ------------------------------------------------------------------ */
 #define BAR_X 10
 #define BAR_Y 170
@@ -240,6 +239,12 @@ static void ui_update(uint8_t state,uint8_t pct){
         fill_rect(BAR_X+2+filled,BAR_Y+2,inner-filled,BAR_H-4,C_GRAY);
         d_pct=pct;
     }
+}
+/* Shown under the bar once the base has acknowledged the key. */
+static void ui_key(uint8_t k){
+    char b[6]="KEY ";
+    b[4]='0'+k; b[5]=0;
+    draw_text(10,BAR_Y+BAR_H+15,b,3,C_WHITE,C_BLACK,5);
 }
 
 /* ------------------------------------------------------------------ */
@@ -379,7 +384,7 @@ int main(void){
             miss=0;
             state=pl[0];
             pct=(pl[1]>100)?100:pl[1];
-            if(key_pending&&pl[2]==key_id) key_pending=0;   /* acked */
+            if(key_pending&&pl[2]==key_id){ ui_key(key_pending); key_pending=0; }
         } else if(miss<255) miss++;
 
         range(BASE1,0);

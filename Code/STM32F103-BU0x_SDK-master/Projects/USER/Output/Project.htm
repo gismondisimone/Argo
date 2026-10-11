@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Output\Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Output\Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Oct 09 11:16:46 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Oct 09 12:02:22 2026
 <BR><P>
-<H3>Maximum Stack Usage =        240 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        248 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; range &rArr; dwt_writetxdata &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 <P>
@@ -2391,8 +2391,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HalIis2dh12Init
 </UL>
 
-<P><STRONG><a name="[45]"></a>main</STRONG> (Thumb, 282 bytes, Stack size 16 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = main &rArr; range &rArr; dwt_writetxdata &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
+<P><STRONG><a name="[45]"></a>main</STRONG> (Thumb, 326 bytes, Stack size 24 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = main &rArr; range &rArr; dwt_writetxdata &rArr; dwt_write32bitoffsetreg &rArr; dwt_writetodevice &rArr; dwt_xfer3000 &rArr; _dbg_printf &rArr; USART1_SendBuffer
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
@@ -2406,6 +2406,7 @@ Global Symbols
 <LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_button
 <LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;range
 <LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms
+<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;draw_text
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button
 <LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_settxantennadelay
 <LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_setrxantennadelay
@@ -2609,7 +2610,8 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;draw_char
 </UL>
-<BR>[Called By]<UL><LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_update
+<BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_update
 </UL>
 
 <P><STRONG><a name="[164]"></a>fill_rect</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, main.o(i.fill_rect))
