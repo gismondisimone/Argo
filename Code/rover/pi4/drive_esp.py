@@ -3,14 +3,14 @@ import struct
 import time
 import requests #type:ignore
 from urllib import request
-from gpiozero import DigitalInputSensor #type:ignore
+from gpiozero import DigitalInputDevice #type:ignore
 from flask import Flask, request #type:ignore
 
 app = Flask(__name__)
 
 #infrared
-ifr1 = DigitalInputSensor(10, pull_up=True) #dacambiare
-ifr2 = DigitalInputSensor(11, pull_up=True) #dacambiare
+ifr1 = DigitalInputDevice(10, pull_up=True) #dacambiare
+ifr2 = DigitalInputDevice(11, pull_up=True) #dacambiare
 ESP_IP = "10.118.94.72"
 
 def get_serial_port():

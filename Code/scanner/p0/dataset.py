@@ -1,7 +1,7 @@
 import time
 import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from gpiozero import OutputDevice, Button #type:ignore
+from gpiozero import OutputDevice, Servo, Button #type:ignore
 
 #setup stepper
 pin_piatto = [
@@ -24,6 +24,9 @@ pin_bin = [
     OutputDevice(16),
 ]
 
+pin_servo = Servo(4) #servo
+pin_servo.value = 0
+
 #main setup
 server_ip = "0.0.0.0"
 server_port = 8765
@@ -31,22 +34,30 @@ server_port = 8765
 plate_sequence = [3, 1, 2, 0]
 cam_sequence = [0, 2, 1, 3]
 cam_reset_sequence = cam_sequence[::-1] #reverse #[3, 1, 2, 0]
+bin_sequence = [3, 1, 2, 0]
 
 plate_step_index = 0
 cam_step_index = 0
+bin_step_index = 0
 
 plate_error = 0
 cam_error = 0
+bin_error = 0
 
 step_angle = 1.8
 plate_gear = 4
 cam_gear = 9
+bin_gear = 1
+
 
 def cleanup():
     for pin in pin_piatto:
         pin.off()
 
     for pin in pin_cam:
+        pin.off()
+
+    for pin in pin_bin:
         pin.off()
 
 def cleanup_plate():
@@ -57,10 +68,42 @@ def cleanup_cam():
     for pin in pin_cam:
         pin.off()
 
+def cleanup_bins():
+    for pin in pin_bin:
+        pin.off()
+
+def paddle():
+    pin_servo.value = 1
+    time.sleep(0.45)
+    pin_servo.value = -1
+    time.sleep(0.35)
+    pin_servo.value = None
+
 def rotate_motor(pins, sequence, step_index, degrees, gear_ratio, error):
     exact_steps = (degrees * gear_ratio / step_angle) + error
     steps = int(exact_steps + 1e-9)
     error = exact_steps - steps
+
+    for _ in range(steps):
+        active_pin = sequence[step_index % len(sequence)]
+
+        for n, pin in enumerate(pins):
+            if n == active_pin:
+                pin.on()
+            else:
+                pin.off()
+
+        step_index += 1
+        time.sleep(0.01)
+
+    return step_index, error, steps
+
+def rotate_bin_motor(pins, sequence, step_index, diff, error):
+    if diff < 0:
+        sequence = sequence[::-1]
+        diff = -diff
+    steps = int(diff + 1e-9)
+    error = diff - steps
 
     for _ in range(steps):
         active_pin = sequence[step_index % len(sequence)]
@@ -108,7 +151,7 @@ def rotate_cam(degrees=1):
     return steps
 
 
-def reset_cam(degrees=10):
+def reset_cam(degrees=45):
     global cam_step_index, cam_error
 
     cam_step_index, cam_error, steps = rotate_motor(
@@ -140,6 +183,20 @@ def test_cam(steps=200):
         time.sleep(0.02)
 
     cleanup_cam()
+
+def rotate_bins(diff): #da cambiare
+    global bin_step_index, bin_error
+
+    bin_step_index, bin_error, steps = rotate_bin_motor(
+        pin_bin,
+        bin_sequence,
+        bin_step_index,
+        diff,
+        bin_error
+    )
+
+    cleanup_bins()
+    return steps
 
 class Server(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
@@ -173,7 +230,7 @@ class Server(BaseHTTPRequestHandler):
                 self.send_data(200, {"ok": True, "steps": steps})
 
             elif self.path == "/reset_cam":
-                steps = reset_cam(float(data.get("degrees", 10)))
+                steps = reset_cam(float(data.get("degrees", 45)))
                 self.send_data(200, {"ok": True, "steps": steps})
 
             elif self.path == "/test_cam":
@@ -181,8 +238,16 @@ class Server(BaseHTTPRequestHandler):
                 test_cam(steps)
                 self.send_data(200, {"ok": True, "steps": steps})
 
+            elif self.path == "/rotate_bins":
+                steps = rotate_bins(float(data.get("degrees", 10)))
+                self.send_data(200, {"ok": True, "steps": steps})
+
             elif self.path == "/cleanup":
                 cleanup()
+                self.send_data(200, {"ok": True})
+
+            elif self.path == "/paddle":
+                paddle()
                 self.send_data(200, {"ok": True})
 
             else:
@@ -196,6 +261,7 @@ class Server(BaseHTTPRequestHandler):
 cleanup()
 server = ThreadingHTTPServer((server_ip, server_port), Server)
 print(f"P0 motor server listening on port {server_port}")
+rotate_bins(0) #initialize bin position
 
 try:
     server.serve_forever()

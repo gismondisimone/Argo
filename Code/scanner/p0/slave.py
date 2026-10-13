@@ -1,7 +1,7 @@
 import time
 import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from gpiozero import OutputDevice, Button #type:ignore
+from gpiozero import OutputDevice, Servo, Button #type:ignore
 
 #setup stepper
 pin_piatto = [
@@ -24,13 +24,13 @@ pin_bin = [
     OutputDevice(16),
 ]
 
-pin_servo = OutputDevice(4) #servo
+pin_servo = Servo(4) #servo
+pin_servo.value = 0
 
 #setup interruttori
 pin_play = Button(19, pull_up=True) # play(brown)
 pin_pause = Button(20, pull_up=True) # pause(yellow)
 pin_stop = Button(21, pull_up=True) # stop(green)
-
 
 #main setup
 server_ip = "0.0.0.0"
@@ -77,6 +77,12 @@ def cleanup_bins():
     for pin in pin_bin:
         pin.off()
 
+
+def paddle():
+    pin_servo.value = 0.5
+    time.sleep(0.5)
+    pin_servo.value = 0
+    time.sleep(0.5)
 
 def rotate_motor(pins, sequence, step_index, degrees, gear_ratio, error):
     exact_steps = (degrees * gear_ratio / step_angle) + error
@@ -265,7 +271,7 @@ class Server(BaseHTTPRequestHandler):
                 steps = int(data.get("steps", 200))
                 test_cam(steps)
                 self.send_data(200, {"ok": True, "steps": steps})
-    
+
             elif self.path == "/rotate_bins":
                 steps = rotate_bins(float(data.get("degrees", 10)))
                 self.send_data(200, {"ok": True, "steps": steps})
@@ -278,9 +284,13 @@ class Server(BaseHTTPRequestHandler):
                 button = wait_pause()
                 self.send_data(200, {"ok": True, "button": button})
 
+            elif self.path == "/paddle":
+                paddle()
+                self.send_data(200, {"ok": True})
+
             else:
                 self.send_data(404, {"error": "not found"})
-            
+
         except Exception as error:
             cleanup()
             self.send_data(500, {"error": str(error)})

@@ -13,11 +13,11 @@ from flask import Flask, request #type:ignore
 app = Flask(__name__)
 
 # Configurazioni
-CLASSES = ["Candy", "Ceramic", "Other"]
-HEF_PATH = "/home/argo/ArcheoModel_Argo.hef" #da cambiare
+CLASSES = ["Candy", "Ceramic", "Bolt", "Other"]
+HEF_PATH = "ArcheoModel_Argo.hef" #da cambiare
 ESP_IP = "10.118.94.72"  # IP statico assegnato all'ESP32 #da cambiare
 #setup P0
-p0_ip = "argoslave"
+p0_ip = "argoslave.local"
 p0_port = 8765
 p0_url = f"http://{p0_ip}:{p0_port}"
 current_bin = 0
@@ -45,6 +45,8 @@ def p0_post(path, data=None, timeout=30):
 def rotate_bins(diff):
     p0_post("/rotate_bins", {"degrees": diff})
 
+def paddle():
+    p0_post("/paddle")
 
 # Variabili globali per riutilizzare l'istanza Hailo
 vdevice = None
@@ -124,6 +126,8 @@ def handle_scan_request():
                     rotate_bins(target_bin - current_bin)
 
                 current_bin = target_bin
+                paddle()
+                print("Finish")
 
             except Exception as e:
                 print(f"Errore durante la classificazione AI: {e}")

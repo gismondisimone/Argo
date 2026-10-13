@@ -7,7 +7,7 @@ import json
 from urllib import request
 
 #setup P0
-p0_ip = "argoslave"
+p0_ip = "argoslave.local"
 p0_port = 8765
 p0_url = f"http://{p0_ip}:{p0_port}"
 
