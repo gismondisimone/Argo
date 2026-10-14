@@ -17,6 +17,7 @@ app = Flask(__name__)
 CLASSES = ["Candy", "Ceramic", "Bolt", "Other"]
 HEF_PATH = "ArcheoModel_Argo.hef" #da cambiare
 ESP_IP = "10.118.94.72"  # IP statico assegnato all'ESP32 #da cambiare
+ESP_IP = "mento.local"
 PORT = 5000
 #setup P0
 p0_ip = "argoslave.local"

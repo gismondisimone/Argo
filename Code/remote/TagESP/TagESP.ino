@@ -5,7 +5,7 @@
 
 #define WIFI_SSID      "Lil's Galaxy S22"
 #define WIFI_PASS      "Nobodyson"
-#define PI_HOST        "argotaxi.local"          /* Pi hostname, resolved with mDNS */
+#define PI_HOST        "argotaxi"          /* Pi hostname, resolved with mDNS */
 #define PI_IP_FALLBACK "10.234.61.207"     /* used if the name can't be resolved */
 #define PI_PORT        5000
 
