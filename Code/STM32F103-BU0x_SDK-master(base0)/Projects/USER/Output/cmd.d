@@ -1,0 +1,15 @@
+.\output\cmd.o: ..\..\Components\APP\cmd.c
+.\output\cmd.o: ../../Components/APP/cmd.h
+.\output\cmd.o: C:\Users\Pollo\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
+.\output\cmd.o: C:\Users\Pollo\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\cmd.o: ../../Components/APP/cmd_fn.h
+.\output\cmd.o: ..\..\Components\APP\Generic_cmd.h
+.\output\cmd.o: ..\..\Components\HAL\DW\twr_pdoa\inc\uwb_frames.h
+.\output\cmd.o: C:\Users\Pollo\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\output\cmd.o: ..\..\Components\HAL\DW\twr_pdoa\inc\OSAL_Comdef.h
+.\output\cmd.o: C:\Users\Pollo\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\output\cmd.o: C:\Users\Pollo\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\output\cmd.o: C:\Users\Pollo\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\output\cmd.o: C:\Users\Pollo\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\cmd.o: C:\Users\Pollo\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\output\cmd.o: C:\Users\Pollo\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h

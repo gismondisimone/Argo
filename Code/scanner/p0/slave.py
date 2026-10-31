@@ -1,34 +1,35 @@
 import time
 import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-
-from gpiozero import OutputDevice, Button #type:ignore
-
+from gpiozero import OutputDevice, Servo, Button #type:ignore
 
 #setup stepper
 pin_piatto = [
     OutputDevice(17),
-    OutputDevice(18),
     OutputDevice(27),
     OutputDevice(22),
+    OutputDevice(23),
 ]
 pin_cam = [
+    OutputDevice(24),
+    OutputDevice(25),
+    OutputDevice(5),
     OutputDevice(6),
-    OutputDevice(13),
-    OutputDevice(19),
-    OutputDevice(26),
 ]
 # da cambiare
 pin_bin = [
-    OutputDevice(7),
-    OutputDevice(14),
-    OutputDevice(20),
-    OutputDevice(27),
+    OutputDevice(12),
+    OutputDevice(13),
+    OutputDevice(26),
+    OutputDevice(16),
 ]
 
+pin_servo = Servo(4) #servo
+pin_servo.value = 0
+
 #setup interruttori
-pin_play = Button(16, pull_up=True) # up(brown)
-pin_pause = Button(20, pull_up=True) # down(yellow)
+pin_play = Button(19, pull_up=True) # play(brown)
+pin_pause = Button(20, pull_up=True) # pause(yellow)
 pin_stop = Button(21, pull_up=True) # stop(green)
 
 #main setup
@@ -37,7 +38,7 @@ server_port = 8765
 
 plate_sequence = [3, 1, 2, 0]
 cam_sequence = [0, 2, 1, 3]
-cam_reset_sequence = [3, 1, 2, 0]
+cam_reset_sequence = cam_sequence[::-1] #reverse #[3, 1, 2, 0]
 bin_sequence = [3, 1, 2, 0]
 
 plate_step_index = 0
@@ -51,7 +52,8 @@ bin_error = 0
 step_angle = 1.8
 plate_gear = 4
 cam_gear = 9
-bin_gear = 10
+bin_gear = 1
+
 
 def cleanup():
     for pin in pin_piatto:
@@ -67,7 +69,6 @@ def cleanup_plate():
     for pin in pin_piatto:
         pin.off()
 
-
 def cleanup_cam():
     for pin in pin_cam:
         pin.off()
@@ -76,6 +77,12 @@ def cleanup_bins():
     for pin in pin_bin:
         pin.off()
 
+
+def paddle():
+    pin_servo.value = 0.5
+    time.sleep(0.5)
+    pin_servo.value = 0
+    time.sleep(0.5)
 
 def rotate_motor(pins, sequence, step_index, degrees, gear_ratio, error):
     exact_steps = (degrees * gear_ratio / step_angle) + error
@@ -96,6 +103,26 @@ def rotate_motor(pins, sequence, step_index, degrees, gear_ratio, error):
 
     return step_index, error, steps
 
+def rotate_bin_motor(pins, sequence, step_index, diff, error):
+    if diff < 0:
+        sequence = sequence[::-1]
+        diff = -diff
+    steps = int(diff + 1e-9)
+    error = diff - steps
+
+    for _ in range(steps):
+        active_pin = sequence[step_index % len(sequence)]
+
+        for n, pin in enumerate(pins):
+            if n == active_pin:
+                pin.on()
+            else:
+                pin.off()
+
+        step_index += 1
+        time.sleep(0.01)
+
+    return step_index, error, steps
 
 def rotate_plate(degrees=10):
     global plate_step_index, plate_error
@@ -162,15 +189,14 @@ def test_cam(steps=200):
 
     cleanup_cam()
 
-def rotate_bins(degrees=10): #da cambiare
+def rotate_bins(diff): #da cambiare
     global bin_step_index, bin_error
 
-    bin_step_index, bin_error, steps = rotate_motor(
+    bin_step_index, bin_error, steps = rotate_bin_motor(
         pin_bin,
         bin_sequence,
         bin_step_index,
-        degrees,
-        bin_gear,
+        diff,
         bin_error
     )
 
@@ -195,7 +221,6 @@ def wait_pause():
             return "play"
 
         time.sleep(0.05)
-
 
 class Server(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
@@ -242,21 +267,25 @@ class Server(BaseHTTPRequestHandler):
                 steps = reset_cam(float(data.get("degrees", 45)))
                 self.send_data(200, {"ok": True, "steps": steps})
 
-            elif self.path == "/wait_pause":
-                button = wait_pause()
-                self.send_data(200, {"ok": True, "button": button})
-
             elif self.path == "/test_cam":
                 steps = int(data.get("steps", 200))
                 test_cam(steps)
                 self.send_data(200, {"ok": True, "steps": steps})
-    
+
             elif self.path == "/rotate_bins":
                 steps = rotate_bins(float(data.get("degrees", 10)))
                 self.send_data(200, {"ok": True, "steps": steps})
 
             elif self.path == "/cleanup":
                 cleanup()
+                self.send_data(200, {"ok": True})
+            
+            elif self.path == "/wait_pause":
+                button = wait_pause()
+                self.send_data(200, {"ok": True, "button": button})
+
+            elif self.path == "/paddle":
+                paddle()
                 self.send_data(200, {"ok": True})
 
             else:

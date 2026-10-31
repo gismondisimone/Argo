@@ -166,15 +166,18 @@ while True:
                         left, right = calc_distances(distance_samples)
                         print(f"Left: {left}, Right: {right}")
                         if left is not None and right is not None:
-                            if (float(left) - float(right)) < -0.15:
-                                if mode == "front": print("Turning Right")
-                                else: print("Turning Left")
-                            elif (float(left) - float(right)) > 0.15:
-                                if mode == "front": print("Turning Left")
-                                else: print("Turning Right")
+                            if left > 0.15 and right > 0.15:
+                                if (float(left) - float(right)) < -0.15:
+                                    if mode == "front": print("Turning Left")
+                                    else: print("Turning Right")
+                                elif (float(left) - float(right)) > 0.15:
+                                    if mode == "front": print("Turning Right")
+                                    else: print("Turning Left")
+                                else:
+                                    if mode == "front": print("Going straight")
+                                    else: print("Going back")
                             else:
-                                if mode == "front": print("Going straight")
-                                else: print("Going back")
+                                print("Too close to user. Stopping.")
                         else:
                             print("One or both distances are not visible.")
                         distance_samples = []

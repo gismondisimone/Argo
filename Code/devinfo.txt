@@ -1,0 +1,7 @@
+Board connection and names:
+- Pi4 : argotaxi
+- Pi5 : argoscan
+- Pi0 : argoslave
+
+psw: argomentare - network : Lil's Galaxy S22
+

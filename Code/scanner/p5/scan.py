@@ -6,9 +6,8 @@ import cv2 #type:ignore
 import json
 from urllib import request
 
-
 #setup P0
-p0_ip = "10.176.43.149"
+p0_ip = "argoslave.local"
 p0_port = 8765
 p0_url = f"http://{p0_ip}:{p0_port}"
 
@@ -18,11 +17,11 @@ tot_s = 36 # 10° per step
 out_f = f"/home/argo/Desktop/out/scan_{dir}"
 data_f = f"{out_f}_data"
 pc_u = "simon"
-pc_ip = "10.176.43.214"
-pc_fs = "C:/Users/simon/Desktop/Argo/pi_receive"
-pc_fd = "C:/Users/simon/Desktop/Argo/3d"
+pc_ip = "10.234.61.77" #dacambiare
+pc_fs = f"C:/Users/{pc_u}/Desktop/Argo/pi_receive"
+pc_fd = f"C:/Users/{pc_u}/Desktop/Argo/3d"
+psw = "albalilli60"
 paused = False
-
 
 def p0_get(path):
     with request.urlopen(p0_url + path, timeout=5) as response:
@@ -44,10 +43,8 @@ def p0_post(path, data=None, timeout=30):
     with request.urlopen(req, timeout=timeout) as response:
         return json.loads(response.read().decode("utf-8"))
 
-
 def cleanup():
     p0_post("/cleanup")
-
 
 def check_status():
     global paused
@@ -80,15 +77,11 @@ def check_status():
             paused = False
             break
 
-
 def rotate_plate():
     p0_post("/rotate_plate", {"degrees": 10})
 
 def rotate_cam():
     p0_post("/rotate_cam", {"degrees": 1})
-
-def rotate_bins():
-    p0_post("/rotate_bins", {"degrees": 10})
 
 def send(f_paths, f_pathd, pc_ip, pc_u, c_paths, c_pathd):
     global out_f
@@ -99,7 +92,6 @@ def send(f_paths, f_pathd, pc_ip, pc_u, c_paths, c_pathd):
         scan_pathdown = os.path.join(scan_path, scan_dir, "down")
         data_path = c_pathd.replace("\\", "/")
 
-        psw = "albalilli60"
         scanupcmd = [
              "sshpass", "-p", psw,
              "scp", "-o", "StrictHostKeyChecking=no", "-r", f_paths + "/up",
@@ -137,7 +129,6 @@ def send(f_paths, f_pathd, pc_ip, pc_u, c_paths, c_pathd):
         print(f"        2) SSH service is running on {pc_ip}")
         print(f"        3) Firewall allows port 22")
         print(f"        4) Path {c_paths} exists on remote machine")
-
 
 os.makedirs(out_f, exist_ok=True)
 os.makedirs(out_f + "/up", exist_ok=True)
