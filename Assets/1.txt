@@ -1,3 +1,0 @@
-Quanti reperti vengono trovati in media in ciascuna sessione di ricerca?
-Quanto sono grandi mediamente i reperti?
-Ci sarebbe un modo per farci prendere foto di reperti già classificati? Dobbiamo creare un dataset per allenare un modello di IA a categorizzare nuovi reperti autonomamente
