@@ -5,10 +5,12 @@
 ---
 
 ## Renders
+![ARGO](/Assets/Foto/Assembly/Argo_2.jpeg)
+
 ---
 
 ## BOM
-All the bits and pieces needed can be found **[here](Production/BOM.md)**.
+All the bits and pieces needed can be found **[here](Production/BOM.csv)**. And all the assembly steps are **[here](Production/README.md)**
 
 ---
 
