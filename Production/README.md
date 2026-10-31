@@ -14,36 +14,47 @@ In the second version, a great many new features have been added, and it has bee
 ![Rover1](/Assets/Foto/Assembly/Rover_1.jpeg)
 
 *Step 1 insert the corner brackets into the designated holes
+
 ![Rover2](/Assets/Foto/Assembly/Rover_2.jpeg)
 
 *Step 2 insert the M12 threaded rod x550mm and the M12 nuts
+
 ![Rover3](/Assets/Foto/Assembly/Rover_3.jpeg)
 
 *Step 3 secure both walls
+
 ![Rover4](/Assets/Foto/Assembly/Rover_4.jpeg)
 
 *Step 4 insert the tensioning system
+
 ![Rover5](/Assets/Foto/Assembly/Rover_5.jpeg)
 
 *Step 5 attach the hoverboard wheels using the custom mount
+
 ![Rover6](/Assets/Foto/Assembly/Rover_6.jpeg)
 
 *Step 6 insert the idler wheels
+
 ![Rover7](/Assets/Foto/Assembly/Rover_7.jpeg)
 
 *Step 7 Install the belt
+
 ![Rover8](/Assets/Foto/Assembly/Rover_8.jpeg)
 
 *Step 8 tighten the belt using the tensioner
+
 ![Rover9](/Assets/Foto/Assembly/Rover_9.jpeg)
 
 *Step 9 Install the front wall
+
 ![Rover10](/Assets/Foto/Assembly/Rover_10.jpeg)
 
 *Step 10 Insert the UWB Modules
+
 ![Rover11](/Assets/Foto/Assembly/Rover_11.jpeg)
 
 *Step 11 Insert all the elettronics 
+
 ![Rover12](/Assets/Foto/Assembly/Rover_12.jpeg)
 
 *Step 12 Install the bottom part
@@ -51,11 +62,48 @@ In the second version, a great many new features have been added, and it has bee
 ---
 
 ## Buffer Module
-![Buffer](/Assets/Foto/Assembly/Rover_10.jpeg)
+![Buffer1](/Assets/Foto/Assembly/Buffer_1.jpeg)
+
+*Step 1 insert the corner brackets into the designated holes
+
+![Buffer2](/Assets/Foto/Assembly/Buffer_2.jpeg)
+
+*Step 2 secure both walls
+
+![Buffer3](/Assets/Foto/Assembly/Buffer_3.jpeg)
+
+*Step 3 secure the last two walls, and install the edge guides
+
+![Buffer4](/Assets/Foto/Assembly/Buffer_4.jpeg)
+
+*Step 4 Install the first Conveyor Part
+
+![Buffer5](/Assets/Foto/Assembly/Buffer_5.jpeg)
+
+*Step 5 Install the last Conveyor Part
+
+![Buffer6](/Assets/Foto/Assembly/Buffer_6.jpeg)
+
+*Step 6 Install the piston
+
+![Buffer7](/Assets/Foto/Assembly/Buffer_7.jpeg)
+
+*Step 7 insert the corner brackets into the designated holes
+
+![Buffer8](/Assets/Foto/Assembly/Buffer_8.jpeg)
+
+*Step 8 Install the first wall
+
+![Buffer9](/Assets/Foto/Assembly/Buffer_9.jpeg)
+
+*Step 9 Instal the second wall
+
+![Buffer10](/Assets/Foto/Assembly/Buffer_10.jpeg)
+
+*Step 10 Install the last wall
+
+![Buffer11](/Assets/Foto/Assembly/Buffer_11.jpeg)
+
+*Step 11 Put the two parts together
+
 ---
-
-## Scanner Module
-
----
-
-## Remote
